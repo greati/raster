@@ -1,0 +1,25 @@
+scene:
+    background: black
+    objects:
+        my_line:
+            type: line
+            start: [0, 0, 0]
+            end: [1, 1, 1]
+            border:
+                color: white
+                type: solid
+                thickness: 5
+        my_circle:
+            type: circle
+            center: [0, 0, 0]
+            radius: 10
+            fill: white
+            border:
+                color: red
+                type: solid
+                thickness: 10
+    actions:
+        my_clip:
+            objects: [my_line, my_circle]
+
+
