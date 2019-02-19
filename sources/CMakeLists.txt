@@ -1,8 +1,34 @@
 cmake_minimum_required(VERSION 3.13)
 
-project(cppmathlib VERSION 0.1.0 LANGUAGES CXX)
+project(raster VERSION 0.1.0 LANGUAGES CXX)
 
 include(FetchContent)
+
+# general configs
+# --------------------------------------- #
+set(YAML_CPP_BUILD_TESTS OFF)
+
+# dependencies
+# --------------------------------------- #
+FetchContent_Declare(yamlcpp
+    GIT_REPOSITORY  https://github.com/jbeder/yaml-cpp
+    GIT_TAG         562aefc114938e388457e6a531ed7b54d9dc1b62 # 0.6.2
+)
+FetchContent_GetProperties(yamlcpp)
+if (NOT yamlcpp_POPULATED)
+    FetchContent_Populate(yamlcpp)
+    add_subdirectory(${yamlcpp_SOURCE_DIR} ${yamlcpp_BINARY_DIR})
+endif()
+
+FetchContent_Declare(googletest
+    GIT_REPOSITORY  https://github.com/google/googletest.git
+    GIT_TAG         2fe3bd994b3189899d93f1d5a881e725e046fdc2 # 1.8.1
+)
+FetchContent_GetProperties(googletest)
+if (NOT googletest_POPULATED)
+    FetchContent_Populate(googletest)
+    add_subdirectory(${googletest_SOURCE_DIR} ${googletest_BINARY_DIR})
+endif()
 
 
 # define build types and configurations
@@ -30,32 +56,29 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 # libraries
 # --------------------------------------- #
+add_library(yamlscenedescreader src/YAMLSceneDescReader.cpp)
+target_link_libraries(yamlscenedescreader PRIVATE yaml-cpp)
+target_include_directories(yamlscenedescreader PRIVATE include)
 
 # executables
 # --------------------------------------- #
+add_executable(driver src/driver.cpp)
+target_include_directories(driver PRIVATE include)
+target_link_libraries(driver PRIVATE yamlscenedescreader)
 
 # test definitions
 # use googletest framework
 # --------------------------------------- #
-FetchContent_Declare(googletest
-    GIT_REPOSITORY  https://github.com/google/googletest.git
-    GIT_TAG         2fe3bd994b3189899d93f1d5a881e725e046fdc2 # 1.8.1
-)
-FetchContent_GetProperties(googletest)
-if (NOT googletest_POPULATED)
-    FetchContent_Populate(googletest)
-    add_subdirectory(${googletest_SOURCE_DIR} ${googletest_BINARY_DIR})
-endif()
-
 include(GoogleTest)
 
 set(test_sources ${test_sources}
     tests/main.cpp
+    tests/yamlsd_reader_tests.cpp
 )
 
 add_executable(maintest ${test_sources})
-target_link_libraries(maintest PRIVATE gtest)
 target_include_directories(maintest PRIVATE include)
+target_link_libraries(maintest PRIVATE gtest yamlscenedescreader)
 
 gtest_discover_tests(maintest)
 
