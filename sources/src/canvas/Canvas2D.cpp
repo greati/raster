@@ -20,7 +20,7 @@ template<int N>
 std::pair<int, int> Canvas2D<N>::real_pos(const Canvas2D<N>::Point2D & point) const {
     validate(point);
     auto [i, j] = point;
-    auto start = i*_width + j*_height;
+    auto start = i*_width + j*N;
     return {start, start + N};
 }
 

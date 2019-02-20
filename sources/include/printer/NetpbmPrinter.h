@@ -3,32 +3,43 @@
 
 #include "Printer.h"
 
+enum class NetpbmParams {
+    IMAGE_WIDTH = 0,
+    IMAGE_HEIGHT = 1,
+    IMAGE_CHANNELS = 2,
+    PBM_TYPE = 3,
+    PBM_ENCODING = 4,
+    MAX_INTENSITY = 5
+};
+
+enum NetpbmType {
+    BIT_MAP = 0,
+    GRAY_MAP = 1,
+    PIX_MAP = 2
+};
+
+enum NetpbmEncoding {
+    ASCII = 0,
+    BINARY = 1
+};
+
 /**
  * A printer for the netpbm format.
  * 
  * @author Vitor Greati
  * */
-template<typename T>
-class NetpbmPrinter : public Printer<T> {
+template<typename T, typename ConfigKeyType = NetpbmParams>
+class NetpbmPrinter : public Printer<T, ConfigKeyType> {
 
     public:
 
-        enum class NetpbmParams {
-            IMAGE_SIZE = 0,
-            IMAGE_CHANNELS = 1,
-            PBM_TYPE = 2,
-            PBM_ENCODING = 3
-        };
-
-        enum class NetpbmType {
-            BIT_MAP = 1<<0,
-            GRAY_MAP = 1<<1,
-            PIX_MAP = 1<<2
-        };
-
-        enum class NetpbmEncoding {
-            ASCII = 1<<3,
-            BINARY = 1<<4
+        std::map<std::pair<NetpbmType, NetpbmEncoding>, std::string> magic_number_table = {
+            {{BIT_MAP, ASCII}, "P1"},
+            {{BIT_MAP, BINARY}, "P4"},
+            {{GRAY_MAP, ASCII}, "P2"},
+            {{GRAY_MAP, BINARY}, "P5"},
+            {{PIX_MAP, ASCII}, "P3"},
+            {{PIX_MAP, BINARY}, "P6"},
         };
 
     protected:
@@ -39,7 +50,7 @@ class NetpbmPrinter : public Printer<T> {
          * @param data data array
          * @return string representation of that data
          * */
-        std::string convert(const std::unique_ptr<T> & data, const Configs & configs) const override;
+        std::string convert(const std::unique_ptr<T> & data, const Configs<ConfigKeyType> & configs) const override;
 
     private:
 
@@ -48,16 +59,10 @@ class NetpbmPrinter : public Printer<T> {
          *
          * @param config the configuration
          * */
-        void validate(const Configs & params) const;
-
-        /**
-         * Give a magic number from a configuration.
-         *
-         * @param config configuration
-         * @return magic number
-         * */
-        std::string get_magic_number(int config) const;
+        void validate(const Configs<ConfigKeyType> & params) const;
 
 };
+
+template class Configs<NetpbmParams>;
 
 #endif

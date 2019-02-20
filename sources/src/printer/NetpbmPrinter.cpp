@@ -1,25 +1,30 @@
 #include "printer/NetpbmPrinter.h"
 #include <iomanip>
 
-template<typename T>
-std::string NetpbmPrinter<T>::convert(
+template<typename T, typename ConfigKeyType>
+std::string NetpbmPrinter<T, ConfigKeyType>::convert(
         const std::unique_ptr<T> & data, 
-        const Configs & configs) const {
+        const Configs<ConfigKeyType> & configs) const {
 
     validate(configs);
 
-    auto config = 0;
+    NetpbmType type = (NetpbmType) configs.template get<int>(NetpbmParams::PBM_TYPE);
+    NetpbmEncoding encoding = (NetpbmEncoding) configs.template get<int>(NetpbmParams::PBM_ENCODING);
+    auto width = configs.template get<int>(NetpbmParams::IMAGE_WIDTH);
+    auto height = configs.template get<int>(NetpbmParams::IMAGE_HEIGHT);
+    auto channels = configs.template get<int>(NetpbmParams::IMAGE_CHANNELS);
+    auto max_intensity = configs.template get<int>(NetpbmParams::MAX_INTENSITY);
 
-    auto magic_number = get_magic_number(config);
+    auto magic_number = magic_number_table.at({type, encoding});
 
     std::stringstream ss;
     ss << magic_number << std::endl;
-    auto [w, h] = std::pair{800, 600};
-    ss << w << " " << h << std::endl;
+    ss << width << " " << height << std::endl;
+    ss << max_intensity << std::endl;
     
-    for (auto j = 0; j < h; ++j) {
-        for (auto i = 0; i < w * 3; ++i) {
-            ss << data[j*h + i] << " ";
+    for (auto j = 0; j < height; ++j) {
+        for (auto i = 0; i < width * channels; ++i) {
+            ss << (int) data[j*height + i] << " ";
         }
         ss << std::endl;
     }
@@ -27,25 +32,9 @@ std::string NetpbmPrinter<T>::convert(
     return ss.str();
 }
 
-template<typename T>
-void NetpbmPrinter<T>::validate(const Configs & configs) const {
+template<typename T, typename ConfigKeyType>
+void NetpbmPrinter<T, ConfigKeyType>::validate(const Configs<ConfigKeyType> & configs) const {
     
 }
 
-template<typename T>
-std::string NetpbmPrinter<T>::get_magic_number(int config) const {
-    if (config & NetpbmType::BIT_MAP && config & NetpbmEncoding::ASCII)
-        return "P1";
-    else if (config & NetpbmType::BIT_MAP && config & NetpbmEncoding::BINARY)
-        return "P4";
-    else if (config & NetpbmType::GRAY_MAP && config & NetpbmEncoding::ASCII)
-        return "P2";
-    else if (config & NetpbmType::GRAY_MAP && config & NetpbmEncoding::BINARY)
-        return "P5";
-    else if (config & NetpbmType::PIX_MAP && config & NetpbmEncoding::ASCII)
-        return "P3";
-    else if (config & NetpbmType::PIX_MAP && config & NetpbmEncoding::BINARY)
-        return "P6";
-    else 
-        throw std::invalid_argument("invalid configuration");
-}
+template class NetpbmPrinter<unsigned char[], NetpbmParams>;

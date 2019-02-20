@@ -63,11 +63,14 @@ target_include_directories(yamlscenedescreader PRIVATE include)
 add_library(canvas2d src/canvas/Canvas2D.cpp)
 target_include_directories(canvas2d PRIVATE include)
 
+add_library(printer src/printer/NetpbmPrinter.cpp)
+target_include_directories(printer PRIVATE include)
+
 # executables
 # --------------------------------------- #
 add_executable(driver src/driver.cpp)
 target_include_directories(driver PRIVATE include)
-target_link_libraries(driver PRIVATE yamlscenedescreader canvas2d)
+target_link_libraries(driver PRIVATE yamlscenedescreader canvas2d printer)
 
 # test definitions
 # use googletest framework

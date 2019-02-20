@@ -13,7 +13,7 @@
  *
  * @author Vitor Greati
  * */
-template<typename T>
+template<typename T, typename ConfigKeyType = std::string>
 class Printer {
 
     public:
@@ -23,7 +23,7 @@ class Printer {
          *
          * @param data the data
          * */
-        inline void print(const std::unique_ptr<T> & data, const Configs & configs) { 
+        inline void print(const std::unique_ptr<T> & data, const Configs<ConfigKeyType> & configs) { 
             std::cout << convert(data, configs); 
         }
 
@@ -35,7 +35,7 @@ class Printer {
          * */
         inline void print(
                 const std::unique_ptr<T> & data,
-                const Configs & configs,
+                const Configs<ConfigKeyType> & configs,
                 const std::string & dest) {
             std::ofstream os;
             os.open(dest);
@@ -60,7 +60,7 @@ class Printer {
          * */
         virtual std::string convert(
                 const std::unique_ptr<T> & data,
-                const Configs & configs) const = 0;
+                const Configs<ConfigKeyType> & configs) const = 0;
 
 };
 

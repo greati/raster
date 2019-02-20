@@ -3,17 +3,20 @@
 
 #include <string>
 #include <map>
+#include <variant>
 
 /**
  * Represents a bundle of configurations.
  *
  * @author Vitor Greati
  * */
+template<typename KeyType = std::string>
 class Configs {
 
     protected:
 
-        using ConfigsData = std::map<std::string, std::string>;
+        using ConfigValue = std::variant<char, int, long, float, double, std::string>;
+        using ConfigsData = std::map<KeyType, ConfigValue>;
 
     private:
 
@@ -30,8 +33,10 @@ class Configs {
          * @param key the key
          * @return the value of the indicated type
          * */
-        template<typename T = std::string>
-        T get(const std::string & key) const;
+        template<typename GetType = std::string>
+        inline GetType get(const KeyType & key) const {
+            return std::get<GetType>(_configs.at(key));
+        }
 
 };
 
