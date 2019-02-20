@@ -56,7 +56,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 # libraries
 # --------------------------------------- #
-add_library(yamlscenedescreader src/YAMLSceneDescReader.cpp)
+add_library(yamlscenedescreader src/canvas/reader/YAMLSceneDescReader.cpp)
 target_link_libraries(yamlscenedescreader PRIVATE yaml-cpp)
 target_include_directories(yamlscenedescreader PRIVATE include)
 

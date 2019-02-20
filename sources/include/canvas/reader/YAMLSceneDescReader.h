@@ -2,7 +2,7 @@
 #define __YAMLSCENEREADER__
 
 #include <string>
-#include "SceneDescReader.h"
+#include "canvas/reader/SceneDescReader.h"
 #include "yaml-cpp/yaml.h"
 
 /**

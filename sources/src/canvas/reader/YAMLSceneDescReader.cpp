@@ -1,5 +1,5 @@
 #include <iostream>
-#include "YAMLSceneDescReader.h"
+#include "canvas/reader/YAMLSceneDescReader.h"
 
 void YAMLSceneDescReader::read(const std::string & filename) {
     

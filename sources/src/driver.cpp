@@ -1,5 +1,5 @@
 #include <iostream>
-#include "YAMLSceneDescReader.h"
+#include "canvas/reader/YAMLSceneDescReader.h"
 
 int main(void) {
 
