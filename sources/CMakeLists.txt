@@ -60,11 +60,14 @@ add_library(yamlscenedescreader src/canvas/reader/YAMLSceneDescReader.cpp)
 target_link_libraries(yamlscenedescreader PRIVATE yaml-cpp)
 target_include_directories(yamlscenedescreader PRIVATE include)
 
+add_library(canvas2d src/canvas/Canvas2D.cpp)
+target_include_directories(canvas2d PRIVATE include)
+
 # executables
 # --------------------------------------- #
 add_executable(driver src/driver.cpp)
 target_include_directories(driver PRIVATE include)
-target_link_libraries(driver PRIVATE yamlscenedescreader)
+target_link_libraries(driver PRIVATE yamlscenedescreader canvas2d)
 
 # test definitions
 # use googletest framework
