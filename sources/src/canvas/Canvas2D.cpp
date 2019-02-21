@@ -4,23 +4,23 @@ template<int N>
 typename Canvas2D<N>::Value Canvas2D<N>::at(Canvas2D<N>::Point2D point) const {
     auto [start, end] = real_pos(point);
     Canvas2D<N>::Value v;
-    for (auto i = start; i < end; ++i)
-        v[i] = _data[i];
+    for (auto i = start, j = 0; i < end; ++i, ++j)
+        v[j] = _data[i];
     return v;
 }
 
 template<int N>
 void Canvas2D<N>::set(Canvas2D<N>::Point2D point, Canvas2D<N>::Value value) const {
     auto [start, end] = real_pos(point);
-    for (auto i = start; i < end; ++i)
-        _data[i] = value[i];
+    for (auto i = start, j = 0; i < end; ++i, ++j)
+        _data[i] = value[j];
 }
 
 template<int N>
 std::pair<int, int> Canvas2D<N>::real_pos(const Canvas2D<N>::Point2D & point) const {
     validate(point);
     auto [i, j] = point;
-    auto start = i*_width + j*N;
+    auto start = i*_width*N + j*N;
     return {start, start + N};
 }
 

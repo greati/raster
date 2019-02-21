@@ -22,11 +22,10 @@ std::string NetpbmPrinter<T, ConfigKeyType>::convert(
     ss << width << " " << height << std::endl;
     ss << max_intensity << std::endl;
     
-    for (auto j = 0; j < height; ++j) {
-        for (auto i = 0; i < width * channels; ++i) {
-            ss << (int) data[j*height + i] << " ";
-        }
-        ss << std::endl;
+    for (auto i = 0; i < width * height * channels; ++i) {
+        ss << (int) data[i] << " ";
+        if ( (i+1) % (width*channels) == 0 )
+            ss << std::endl;
     }
     
     return ss.str();

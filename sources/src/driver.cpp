@@ -11,16 +11,19 @@ int main(void) {
     
     Canvas2D<3> canvas {100,100};
 
-    canvas.set({0,0}, {20,30,10});
-    
-    for (int i = 20; i < 40; ++i) {
-        for (int j = 20; j < 40; ++j) {
-            canvas.set({i, j}, {255,0,0}); 
-        }
+    for (int i = 10; i < 30; ++i) {
+      for (int j = 10; j < 30; ++j) {
+          canvas.set({i, j}, {255,0,0}); 
+      }
     }
 
-    auto [r, g, b] = canvas.at({20,39});
-    std::cout << (int) r << std::endl;
+    for (int i = 70; i < 90; ++i) {
+      for (int j = 70; j < 90; ++j) {
+          canvas.set({i, j}, {0,255,0}); 
+      }
+    }
+
+    auto [r, g, b] = canvas.at({1,1});
 
     NetpbmPrinter<unsigned char[]> printer;
 
