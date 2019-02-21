@@ -1,7 +1,8 @@
 #include "canvas/Canvas2D.h"
+#include <iostream>
 
 template<int N>
-typename Canvas2D<N>::Value Canvas2D<N>::at(Canvas2D<N>::Point2D point) const {
+typename Canvas2D<N>::Value Canvas2D<N>::at(Point2D<int> point) const {
     auto [start, end] = real_pos(point);
     Canvas2D<N>::Value v;
     for (auto i = start, j = 0; i < end; ++i, ++j)
@@ -10,14 +11,16 @@ typename Canvas2D<N>::Value Canvas2D<N>::at(Canvas2D<N>::Point2D point) const {
 }
 
 template<int N>
-void Canvas2D<N>::set(Canvas2D<N>::Point2D point, Canvas2D<N>::Value value) const {
+void Canvas2D<N>::set(Point2D<int> point, PixelValue<N> value) const {
     auto [start, end] = real_pos(point);
-    for (auto i = start, j = 0; i < end; ++i, ++j)
+    std::cout << "s " << start << " e " << end  <<std::endl;
+    for (int i = start, j = 0; i < end; ++i, ++j) {
         _data[i] = value[j];
+    }
 }
 
 template<int N>
-std::pair<int, int> Canvas2D<N>::real_pos(const Canvas2D<N>::Point2D & point) const {
+std::pair<int, int> Canvas2D<N>::real_pos(const Point2D<int> & point) const {
     validate(point);
     auto [i, j] = point;
     auto start = i*_width*N + j*N;
@@ -30,7 +33,7 @@ Canvas2D<N>::Canvas2D(int width, int height) : _width{width}, _height{height} {
 }
 
 template<int N>
-void Canvas2D<N>::validate(const Canvas2D<N>::Point2D & point) const {
+void Canvas2D<N>::validate(const Point2D<int> & point) const {
     auto [x, y] = point;
 
     if (x < 0 || x >= _width)

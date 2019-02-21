@@ -3,7 +3,7 @@
 
 template<typename T, typename ConfigKeyType>
 std::string NetpbmPrinter<T, ConfigKeyType>::convert(
-        const std::unique_ptr<T> & data, 
+        const T* data, 
         const Configs<ConfigKeyType> & configs) const {
 
     validate(configs);
@@ -36,4 +36,4 @@ void NetpbmPrinter<T, ConfigKeyType>::validate(const Configs<ConfigKeyType> & co
     
 }
 
-template class NetpbmPrinter<unsigned char[], NetpbmParams>;
+template class NetpbmPrinter<unsigned char, NetpbmParams>;

@@ -50,7 +50,7 @@ class NetpbmPrinter : public Printer<T, ConfigKeyType> {
          * @param data data array
          * @return string representation of that data
          * */
-        std::string convert(const std::unique_ptr<T> & data, const Configs<ConfigKeyType> & configs) const override;
+        std::string convert(const T* data, const Configs<ConfigKeyType> & configs) const override;
 
     private:
 

@@ -2,6 +2,8 @@
 #define __CANVAS2D__
 
 #include <memory>
+#include "Canvas.h"
+#include "common.h"
 
 /**
  * A canvas for drawing 2D scenes.
@@ -9,7 +11,7 @@
  * @author Vitor Greati
  */
 template<int N>
-class Canvas2D {
+class Canvas2D : public Canvas<Point2D<int>, N> {
 
     private:
         int _width;                                  /* Canvas width */
@@ -20,13 +22,11 @@ class Canvas2D {
         
         Canvas2D(int width, int height);
 
-        using Point2D = std::tuple<int, int>;
-
         using Value = std::array<unsigned char, N>; 
 
-        Value at(Point2D point) const;
+        Value at(Point2D<int> point) const;
 
-        void set(Point2D point, Value value) const;
+        void set(Point2D<int> point, PixelValue<N> value) const override;
 
         inline int channels() const noexcept { return N; }
 
@@ -34,7 +34,7 @@ class Canvas2D {
 
         inline int height() const noexcept { return _height; }
 
-        inline std::unique_ptr<unsigned char[]> data() noexcept { return std::move(_data); }
+        inline unsigned char* data() noexcept { return _data.get(); }
 
     private:
     
@@ -43,7 +43,7 @@ class Canvas2D {
          *
          * @param point the point
          * */
-        void validate(const Point2D & point) const;
+        void validate(const Point2D<int> & point) const;
         
         /**
          * Given a point, return its real position inside the data member.
@@ -51,7 +51,7 @@ class Canvas2D {
          * @param point the point
          * @return the real position in the data member
          * */
-        std::pair<int, int> real_pos(const Point2D & point) const;
+        std::pair<int, int> real_pos(const Point2D<int> & point) const;
         
 };
 

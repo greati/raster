@@ -3,12 +3,16 @@
 
 #include "drawers/Drawer.h"
 #include "objects/Object.h"
+#include "objects/LineSegment.h"
 
-class DDALineDrawer : public Drawer {
+class DDALineDrawer : public Drawer<LineSegment<>> {
 
     public:
-        std::vector<int> draw(std::shared_ptr<Object> obj) const override {
-            return {};
+
+        DDALineDrawer(Canvas<Point2D<int>>& canvas) : Drawer{canvas} {/*empty*/}
+
+        void draw(const LineSegment<> & line) const override {
+            /*alg*/
         };
 
 };

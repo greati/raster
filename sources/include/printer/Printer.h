@@ -23,7 +23,7 @@ class Printer {
          *
          * @param data the data
          * */
-        inline void print(const std::unique_ptr<T> & data, const Configs<ConfigKeyType> & configs) { 
+        inline void print(const T* data, const Configs<ConfigKeyType> & configs) { 
             std::cout << convert(data, configs); 
         }
 
@@ -34,7 +34,7 @@ class Printer {
          * @param dest file pathd destination
          * */
         inline void print(
-                const std::unique_ptr<T> & data,
+                const T* data,
                 const Configs<ConfigKeyType> & configs,
                 const std::string & dest) {
             std::ofstream os;
@@ -59,7 +59,7 @@ class Printer {
          * @return string representation of that data
          * */
         virtual std::string convert(
-                const std::unique_ptr<T> & data,
+                const T* data,
                 const Configs<ConfigKeyType> & configs) const = 0;
 
 };

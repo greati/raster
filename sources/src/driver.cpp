@@ -4,16 +4,18 @@
 #include "canvas/Canvas2D.h"
 #include "printer/NetpbmPrinter.h"
 #include "drawers/DDALineDrawer.h"
-#include "objects/Line.h"
+#include "drawers/PointDrawer.h"
+#include "objects/LineSegment.h"
+#include "objects/Point.h"
 
 int main(void) {
 
     //YAMLSceneDescReader reader;
     //reader.read("/home/vitorgreati/git-repos/raster/examples/basic-scene.yml");
     
-    Canvas2D<3> canvas {100,100};
+    Canvas2D<3> canvas {5,5};
 
-    for (int i = 10; i < 30; ++i) {
+/*    for (int i = 10; i < 30; ++i) {
       for (int j = 10; j < 30; ++j) {
           canvas.set({i, j}, {255,0,0}); 
       }
@@ -24,10 +26,10 @@ int main(void) {
           canvas.set({i, j}, {0,255,0}); 
       }
     }
-
+*/
     auto [r, g, b] = canvas.at({1,1});
 
-    NetpbmPrinter<unsigned char[]> printer;
+    NetpbmPrinter<unsigned char> printer;
 
     Configs<NetpbmParams> configs {{
         {NetpbmParams::IMAGE_WIDTH, canvas.width()},
@@ -38,13 +40,16 @@ int main(void) {
         {NetpbmParams::MAX_INTENSITY, 255}
     }};
     
+
+    /*DDALineDrawer line_drawer {canvas};
+    LineSegment<double> lineseg {{0,0}, {20,20}, {255,255,255}};
+    line_drawer.draw(lineseg);*/
+
+    PointDrawer point_drawer {canvas};
+    Point<> point {{2, 2}, {0, 255, 0}};
+    point_drawer.draw(point);
+
     printer.print(canvas.data(), configs, "../build/testimage.ppm"); 
-
-    DDALineDrawer line_drawer;
-
-    std::shared_ptr<Line> line = std::make_shared<Line>();
-
-    line_drawer.draw(line);
 
     return 0;
 }
