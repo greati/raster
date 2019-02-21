@@ -3,6 +3,8 @@
 #include "canvas/reader/YAMLSceneDescReader.h"
 #include "canvas/Canvas2D.h"
 #include "printer/NetpbmPrinter.h"
+#include "drawers/DDALineDrawer.h"
+#include "objects/Line.h"
 
 int main(void) {
 
@@ -37,6 +39,12 @@ int main(void) {
     }};
     
     printer.print(canvas.data(), configs, "../build/testimage.ppm"); 
+
+    DDALineDrawer line_drawer;
+
+    std::shared_ptr<Line> line = std::make_shared<Line>();
+
+    line_drawer.draw(line);
 
     return 0;
 }
