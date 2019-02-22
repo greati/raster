@@ -4,6 +4,7 @@
 #include "canvas/Canvas2D.h"
 #include "printer/NetpbmPrinter.h"
 #include "drawers/DDALineDrawer.h"
+#include "drawers/BresenhamLineDrawer.h"
 #include "drawers/PointDrawer.h"
 #include "objects/LineSegment.h"
 #include "objects/Point.h"
@@ -41,11 +42,13 @@ int main(void) {
     }};
     
 
-    DDALineDrawer line_drawer {canvas};
-    line_drawer.draw(LineSegment<double>{{10,10}, {1, 1}, {255, 255, 255}});
-    line_drawer.draw(LineSegment<double>{{10,10}, {1, 19}, {255, 255, 255}});
-    line_drawer.draw(LineSegment<double>{{1,15}, {10, 10}, {255, 255, 255}});
-    line_drawer.draw(LineSegment<double>{{0,1}, {19, 10}, {0, 255, 0}});
+    DDALineDrawer dda_drawer {canvas};
+    dda_drawer.draw(LineSegment<double>{{10,10}, {1, 1}, {255, 255, 255}});
+    dda_drawer.draw(LineSegment<double>{{10,10}, {1, 19}, {255, 255, 255}});
+    dda_drawer.draw(LineSegment<double>{{1,15}, {10, 10}, {255, 255, 255}});
+    dda_drawer.draw(LineSegment<double>{{0,1}, {19, 10}, {0, 255, 0}});
+
+    BresenhamLineDrawer bresenham_drawer {canvas};
 
     PointDrawer point_drawer {canvas};
     Point<> point {{2, 2}, {0, 255, 0}};
