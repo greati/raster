@@ -13,7 +13,6 @@ typename Canvas2D<N>::Value Canvas2D<N>::at(Point2D<int> point) const {
 template<int N>
 void Canvas2D<N>::set(Point2D<int> point, PixelValue<N> value) const {
     auto [start, end] = real_pos(point);
-    std::cout << "s " << start << " e " << end  <<std::endl;
     for (int i = start, j = 0; i < end; ++i, ++j) {
         _data[i] = value[j];
     }

@@ -12,7 +12,6 @@ class PointDrawer : Drawer<Point<>> {
 
         void draw(const Point<>& point) const {
             auto [px, py] = point.coords();
-            std::cout << px << " " << py << std::endl;
             auto [r, g, b] = point.color();
             this->_canvas.set({px, py}, {r, g, b});
         };

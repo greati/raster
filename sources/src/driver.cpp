@@ -13,7 +13,7 @@ int main(void) {
     //YAMLSceneDescReader reader;
     //reader.read("/home/vitorgreati/git-repos/raster/examples/basic-scene.yml");
     
-    Canvas2D<3> canvas {5,5};
+    Canvas2D<3> canvas {50,50};
 
 /*    for (int i = 10; i < 30; ++i) {
       for (int j = 10; j < 30; ++j) {
@@ -41,9 +41,11 @@ int main(void) {
     }};
     
 
-    /*DDALineDrawer line_drawer {canvas};
-    LineSegment<double> lineseg {{0,0}, {20,20}, {255,255,255}};
-    line_drawer.draw(lineseg);*/
+    DDALineDrawer line_drawer {canvas};
+    line_drawer.draw(LineSegment<double>{{10,10}, {1, 1}, {255, 255, 255}});
+    line_drawer.draw(LineSegment<double>{{10,10}, {1, 19}, {255, 255, 255}});
+    line_drawer.draw(LineSegment<double>{{1,15}, {10, 10}, {255, 255, 255}});
+    line_drawer.draw(LineSegment<double>{{0,1}, {19, 10}, {0, 255, 0}});
 
     PointDrawer point_drawer {canvas};
     Point<> point {{2, 2}, {0, 255, 0}};
