@@ -43,12 +43,16 @@ int main(void) {
     
 
     DDALineDrawer dda_drawer {canvas};
-    dda_drawer.draw(LineSegment<double>{{10,10}, {1, 1}, {255, 255, 255}});
-    dda_drawer.draw(LineSegment<double>{{10,10}, {1, 19}, {255, 255, 255}});
-    dda_drawer.draw(LineSegment<double>{{1,15}, {10, 10}, {255, 255, 255}});
-    dda_drawer.draw(LineSegment<double>{{0,1}, {19, 10}, {0, 255, 0}});
+    //dda_drawer.draw(LineSegment<double>{{10,10}, {1, 1}, {255, 255, 255}});
+    //dda_drawer.draw(LineSegment<double>{{10,10}, {1, 19}, {255, 255, 255}});
+    //dda_drawer.draw(LineSegment<double>{{1,15}, {10, 10}, {255, 255, 255}});
+    //dda_drawer.draw(LineSegment<double>{{0,1}, {19, 10}, {0, 255, 0}});
 
     BresenhamLineDrawer bresenham_drawer {canvas};
+    bresenham_drawer.draw(LineSegment<double>{{10,10}, {1, 1}, {255, 255, 255}});
+    bresenham_drawer.draw(LineSegment<double>{{10,10}, {1, 19}, {255, 255, 255}});
+    bresenham_drawer.draw(LineSegment<double>{{1,15}, {10, 10}, {255, 255, 255}});
+    bresenham_drawer.draw(LineSegment<double>{{0,1}, {19, 10}, {0, 255, 0}});
 
     PointDrawer point_drawer {canvas};
     Point<> point {{2, 2}, {0, 255, 0}};
