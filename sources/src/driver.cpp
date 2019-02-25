@@ -14,7 +14,7 @@ int main(void) {
     //YAMLSceneDescReader reader;
     //reader.read("/home/vitorgreati/git-repos/raster/examples/basic-scene.yml");
     
-    Canvas2D<3> canvas {50,50};
+    Canvas2D<3> canvas {200,200};
 
 /*    for (int i = 10; i < 30; ++i) {
       for (int j = 10; j < 30; ++j) {
@@ -49,14 +49,28 @@ int main(void) {
     //dda_drawer.draw(LineSegment<double>{{0,1}, {19, 10}, {0, 255, 0}});
 
     BresenhamLineDrawer bresenham_drawer {canvas};
-    bresenham_drawer.draw(LineSegment<double>{{10,10}, {1, 1}, {255, 255, 255}});
-    bresenham_drawer.draw(LineSegment<double>{{10,10}, {1, 19}, {255, 255, 255}});
-    bresenham_drawer.draw(LineSegment<double>{{1,15}, {10, 10}, {255, 255, 255}});
-    bresenham_drawer.draw(LineSegment<double>{{0,1}, {19, 10}, {0, 255, 0}});
+    bresenham_drawer.draw(LineSegment<double>{{90,30}, {90, 160}, {255, 255, 255}});
+    bresenham_drawer.draw(LineSegment<double>{{110,30}, {110, 160}, {255, 255, 255}});
+
+    bresenham_drawer.draw(LineSegment<double>{{120,30}, {80, 30}, {255, 255, 255}});
+    bresenham_drawer.draw(LineSegment<double>{{120,25}, {80, 25}, {255, 255, 255}});
+    bresenham_drawer.draw(LineSegment<double>{{120,25}, {120, 30}, {255, 255, 255}});
+    bresenham_drawer.draw(LineSegment<double>{{80,25}, {80, 30}, {255, 255, 255}});
+
+    bresenham_drawer.draw(LineSegment<double>{{95,10}, {95, 25}, {255, 255, 255}});
+    bresenham_drawer.draw(LineSegment<double>{{105,10}, {105, 25}, {255, 255, 255}});
+    bresenham_drawer.draw(LineSegment<double>{{95,10}, {105, 10}, {255, 255, 255}});
+
+    bresenham_drawer.draw(LineSegment<double>{{90,160}, {100, 170}, {255, 255, 255}});
+    bresenham_drawer.draw(LineSegment<double>{{110,160}, {100, 170}, {255, 255, 255}});
+    //bresenham_drawer.draw(LineSegment<double>{{10,10}, {1, 1}, {255, 255, 255}});
+    //bresenham_drawer.draw(LineSegment<double>{{10,10}, {1, 19}, {255, 255, 255}});
+    //bresenham_drawer.draw(LineSegment<double>{{1,15}, {10, 10}, {255, 255, 255}});
+    //bresenham_drawer.draw(LineSegment<double>{{0,1}, {19, 10}, {0, 255, 0}});
 
     PointDrawer point_drawer {canvas};
-    Point<> point {{2, 2}, {0, 255, 0}};
-    point_drawer.draw(point);
+    //Point<> point {{2, 2}, {0, 255, 0}};
+    //point_drawer.draw(point);
 
     printer.print(canvas.data(), configs, "../build/testimage.ppm"); 
 

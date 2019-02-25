@@ -72,10 +72,8 @@ class BresenhamLineDrawer : public Drawer<LineSegment<>> {
             int pk = 2 * Dx - Dy;
 
             this->_canvas.set({p1x, p1y}, {r, g, b});
-            std::cout << p1x << " " << p1y << std::endl;
             int x = p1x;
             for (int y = p1y + 1; y <= p2y; ++y) {
-                std::cout << pk << std::endl;
                 if (pk < 0)
                     pk = pk + 2 * Dx;
                 else {
@@ -83,7 +81,6 @@ class BresenhamLineDrawer : public Drawer<LineSegment<>> {
                     pk = pk + 2 * Dx - 2 * Dy;
                 }
                 this->_canvas.set({x, y}, {r, g, b});
-                std::cout << x << " " << y << std::endl;
             }
         }
 
