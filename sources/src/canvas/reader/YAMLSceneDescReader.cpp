@@ -1,12 +1,15 @@
 #include <iostream>
 #include "canvas/reader/YAMLSceneDescReader.h"
 
-void YAMLSceneDescReader::read(const std::string & filename) {
+void YAMLSceneDescReader::read(const std::string & filename) const {
     
-    YAML::Node config = YAML::LoadFile(filename);
+    YAML::Node root_node = YAML::LoadFile(filename);
 
-    if (config["scene"]) {
-        std::cout << "Last logged in: " << config["scene"].as<std::string>() << "\n";
-    }
+    if (!root_node["scene"])
+        throw new std::logic_error("Parse error: missing scene top level");
 
+    auto scene = root_node["scene"];
+
+    if (scene["background"])
+        this->visitor->visit_scene_background("hi");
 }

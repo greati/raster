@@ -2,6 +2,7 @@
 #define __SCENEREADER__
 
 #include <string>
+#include "canvas/Canvas.h"
 
 /**
  * Interface for scene description readers.
@@ -17,7 +18,7 @@ class SceneDescReader {
         * 
         * @param filename The path to the description file.
         * */
-       virtual void read(const std::string & filename) = 0; 
+       virtual void read(const std::string & filename) const = 0; 
 
 };
 

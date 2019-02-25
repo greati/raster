@@ -8,11 +8,12 @@
 #include "drawers/PointDrawer.h"
 #include "objects/LineSegment.h"
 #include "objects/Point.h"
+#include "canvas/CanvasDescVisitor.h"
 
 int main(void) {
 
-    //YAMLSceneDescReader reader;
-    //reader.read("/home/vitorgreati/git-repos/raster/examples/basic-scene.yml");
+    YAMLSceneDescReader reader;
+    reader.read("/home/vitorgreati/git-repos/raster/examples/basic-scene.yml");
     
     Canvas2D<3> canvas {200,200};
 

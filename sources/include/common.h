@@ -1,6 +1,8 @@
 #ifndef __COMMON__
 #define __COMMON__
 
+#include <array>
+
 template<typename T>
 using Point2D = std::pair<T, T>;
 
