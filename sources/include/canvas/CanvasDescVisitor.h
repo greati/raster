@@ -14,7 +14,7 @@ class CanvasDescVisitor : DescVisitor {
        
     public:
 
-        CanvasDescVisitor(const Canvas<Point2D<int>> & canvas) : _canvas {canvas} {}
+        CanvasDescVisitor(Canvas<Point2D<int>> & canvas) : DescVisitor{}, _canvas {canvas} {}
         
         void visit_scene_background(const std::string & background) const override;
 
