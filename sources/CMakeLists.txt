@@ -30,7 +30,6 @@ if (NOT googletest_POPULATED)
     add_subdirectory(${googletest_SOURCE_DIR} ${googletest_BINARY_DIR})
 endif()
 
-
 # define build types and configurations
 # --------------------------------------- #
 if (CMAKE_CONFIGURATION_TYPES)
@@ -57,8 +56,9 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 # libraries
 # --------------------------------------- #
 add_library(yamlscenedescreader src/canvas/reader/YAMLSceneDescReader.cpp)
-target_link_libraries(yamlscenedescreader PRIVATE yaml-cpp)
+target_link_libraries(yamlscenedescreader PUBLIC yaml-cpp)
 target_include_directories(yamlscenedescreader PRIVATE include)
+target_include_directories(yamlscenedescreader PUBLIC ${yamlcpp_SOURCE_DIR}/include)
 
 add_library(canvas2d src/canvas/Canvas2D.cpp src/canvas/CanvasDescVisitor.cpp)
 target_include_directories(canvas2d PRIVATE include)

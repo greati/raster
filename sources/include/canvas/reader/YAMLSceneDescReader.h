@@ -3,8 +3,9 @@
 
 #include <string>
 #include "canvas/reader/SceneDescReader.h"
-#include "yaml-cpp/yaml.h"
 #include "canvas/reader/DescVisitor.h"
+#include <memory>
+#include "yaml-cpp/yaml.h"
 
 /**
  * Reader for scenes described in YAML.
