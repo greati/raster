@@ -8,6 +8,10 @@ class DescVisitor {
 
     public:
 
+        DescVisitor() {/*empty*/};
+
+        ~DescVisitor() {};
+
         virtual void visit_scene_background(const std::string & background) const = 0;
 
         virtual void visit_object(const Point<> & obj) const = 0;

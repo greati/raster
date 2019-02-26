@@ -3,5 +3,5 @@
 
 TEST(YAMLSceneDescReaderTests, LoadFile) {
 
-    YAMLSceneDescReader yamlReader;
+    //YAMLSceneDescReader yamlReader;
 }

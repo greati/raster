@@ -11,5 +11,5 @@ void YAMLSceneDescReader::read(const std::string & filename) const {
     auto scene = root_node["scene"];
 
     if (scene["background"])
-        this->visitor->visit_scene_background("hi");
+        this->_visitor->visit_scene_background("hi");
 }

@@ -5,8 +5,9 @@
 #include "canvas/Canvas.h"
 #include "objects/Point.h"
 #include "objects/LineSegment.h"
+#include "common.h"
 
-class CanvasDescVisitor : DescVisitor {
+class CanvasDescVisitor : public DescVisitor {
 
     private:
 
@@ -14,7 +15,9 @@ class CanvasDescVisitor : DescVisitor {
        
     public:
 
-        CanvasDescVisitor(Canvas<Point2D<int>> & canvas) : DescVisitor{}, _canvas {canvas} {}
+        CanvasDescVisitor(Canvas<Point2D<int>> & canvas) : DescVisitor{}, _canvas {canvas} {/*empty*/}
+
+        ~CanvasDescVisitor() {}
         
         void visit_scene_background(const std::string & background) const override;
 

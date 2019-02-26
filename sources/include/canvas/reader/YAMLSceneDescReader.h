@@ -12,9 +12,11 @@
 class YAMLSceneDescReader : public SceneDescReader {
 
     private:
-       std::unique_ptr<DescVisitor> visitor;
+       std::unique_ptr<DescVisitor> _visitor;
 
     public:
+
+       YAMLSceneDescReader(std::unique_ptr<DescVisitor> visitor) : _visitor {std::move(visitor)} {}
 
        void read(const std::string & filename) const override;
 

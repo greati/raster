@@ -60,7 +60,7 @@ add_library(yamlscenedescreader src/canvas/reader/YAMLSceneDescReader.cpp)
 target_link_libraries(yamlscenedescreader PRIVATE yaml-cpp)
 target_include_directories(yamlscenedescreader PRIVATE include)
 
-add_library(canvas2d src/canvas/Canvas2D.cpp)
+add_library(canvas2d src/canvas/Canvas2D.cpp src/canvas/CanvasDescVisitor.cpp)
 target_include_directories(canvas2d PRIVATE include)
 
 add_library(printer src/printer/NetpbmPrinter.cpp)
