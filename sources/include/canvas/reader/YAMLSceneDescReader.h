@@ -6,6 +6,8 @@
 #include "canvas/reader/DescVisitor.h"
 #include <memory>
 #include "yaml-cpp/yaml.h"
+#include "common.h"
+#include "yaml/YamlCppObjects.h"
 
 /**
  * Reader for scenes described in YAML.
@@ -24,7 +26,7 @@ class YAMLSceneDescReader : public SceneDescReader {
     protected:
 
        void process_scene(const YAML::Node & scene_node) const;
-       void process_object(const YAML::Node & obj_node) const;
+       void process_object(const YAML::Node & obj_node, const std::string & obj_label) const;
 };
 
 #endif

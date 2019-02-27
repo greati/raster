@@ -1,0 +1,67 @@
+# ----------------------------------------------
+# A simple sword drawn with
+# polylines in a fancy polyline
+# background. 
+#
+# Although DDA has already been implemented, 
+# currently the lines are being
+# drawn by Bresenham algorithm only.
+#
+# @author Vitor Greati
+# ---------------------------------------------
+scene:
+    objects:
+        zigzag:
+            type: polyline
+            vertices:
+                - [199, 0]
+                - [0, 10]
+                - [199, 30]
+                - [0, 15]
+                - [199, 50]
+                - [0, 70]
+                - [199, 80]
+                - [0, 180]
+                - [199, 199]
+            stroke:
+                color: [80, 80, 80]
+        blade_power:
+            type: polyline
+            vertices:
+                - [70, 0]
+                - [100, 199]
+                - [129, 0]
+            stroke:
+                color: [150, 0, 255]
+        blade:
+            type: polyline
+            vertices:
+                - [90, 30]
+                - [90, 160]
+                - [100, 170]
+                - [110, 160]
+                - [110, 30]
+                - [90, 30]
+            stroke:
+                color: [255, 255, 255]
+        shaft_vertical:
+            type: polyline
+            vertices:
+                - [90, 30]
+                - [70, 30]
+                - [70, 25]
+                - [130, 25]
+                - [130, 30]
+                - [90, 30]
+            stroke:
+                color: [255, 255, 255]
+        shaft_horizontal:
+            type: polyline
+            vertices:
+                - [95, 25]
+                - [95, 5]
+                - [105, 5]
+                - [105, 25]
+            stroke:
+                color: [255, 255, 255]
+

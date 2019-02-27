@@ -3,6 +3,7 @@
 
 #include "objects/Point.h"
 #include "objects/LineSegment.h"
+#include "objects/Polyline.h"
 
 class DescVisitor {
 
@@ -17,6 +18,8 @@ class DescVisitor {
         virtual void visit_object(const Point<> & obj) const = 0;
 
         virtual void visit_object(const LineSegment<> & obj) const = 0;
+
+        virtual void visit_object(const Polyline<> & obj) const = 0;
 
 };
 

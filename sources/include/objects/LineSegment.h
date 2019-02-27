@@ -9,7 +9,7 @@ class LineSegment : public Object {
     private:
 
         Point2D<T> _p1, _p2;
-        ColorType _stroke_color;
+        ColorType & _stroke_color;
         int _thickness;
 
     public:

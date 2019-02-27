@@ -1,7 +1,11 @@
 #ifndef __BRESENHAM_LINE__
 #define __BRESENHAM_LINE__
 
+#include <tuple>
 #include <cmath>
+#include "canvas/Canvas.h"
+#include "drawers/Drawer.h"
+#include "common.h"
 
 class BresenhamLineDrawer : public Drawer<LineSegment<>> {
 

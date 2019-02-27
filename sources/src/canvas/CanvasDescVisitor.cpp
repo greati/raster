@@ -1,13 +1,24 @@
 #include "canvas/CanvasDescVisitor.h"
-#include "objects/Point.h"
-#include "objects/LineSegment.h"
 
 void CanvasDescVisitor::visit_scene_background(const std::string & background) const {
 }
 
 void CanvasDescVisitor::visit_object(const LineSegment<> & obj) const {
+
+    BresenhamLineDrawer bres_drawer {this->_canvas};
+    bres_drawer.draw(obj);
+
 }
 
 void CanvasDescVisitor::visit_object(const Point<> & obj) const {
+
+    PointDrawer point_drawer {this->_canvas};
+    point_drawer.draw(obj);
+}
+
+void CanvasDescVisitor::visit_object(const Polyline<> & obj) const {
+
+    PolylineDrawer poly_drawer {this->_canvas};
+    poly_drawer.draw(obj);
 }
 
