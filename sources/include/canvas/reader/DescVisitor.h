@@ -4,7 +4,10 @@
 #include "objects/Point.h"
 #include "objects/LineSegment.h"
 #include "objects/Polyline.h"
+#include "objects/Polygon.h"
 #include "objects/Circle.h"
+
+#include <map>
 
 class DescVisitor {
 
@@ -23,6 +26,10 @@ class DescVisitor {
         virtual void visit_object(const Polyline<> & obj) const = 0;
 
         virtual void visit_object(const Circle<> & obj) const = 0;
+
+        virtual void visit_object(const Polygon<> & obj) const = 0;
+
+        virtual void visit_fill(const std::map<std::string, Polygon<>> & objs) const = 0;
 
 };
 

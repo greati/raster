@@ -15,10 +15,21 @@ class Polyline : public Object {
     public:
 
         Polyline(std::vector<Point2D<T>> & vertices, ColorType stroke_color) 
-            : _vertices {vertices}, _stroke_color{stroke_color}, _thickness{1} {/*empty*/};
+            : _stroke_color{stroke_color}, _thickness{1} {
+            
+            if (vertices.size() < 2) 
+                throw std::invalid_argument("provide at least two points for a polyline");
+            _vertices = vertices;
+        };
 
         Polyline(std::vector<Point2D<T>> & vertices, ColorType stroke_color, int thickness) 
-            : _vertices {vertices}, _stroke_color{stroke_color}, _thickness{thickness} {/*empty*/};
+            : _stroke_color{stroke_color}, _thickness{thickness} {
+            
+            if (vertices.size() < 2) 
+                throw std::invalid_argument("provide at least two points for a polyline");
+            _vertices = vertices;
+
+        };
 
         std::vector<Point2D<T>> vertices() const { return _vertices; };
 
