@@ -50,7 +50,12 @@ void YAMLSceneDescReader::process_object(const YAML::Node & obj_node, const std:
         Polyline poly {vertices, stroke_color};
         this->_visitor->visit_object(poly);
     } else if (obj_type == "circle") {
-        //TODO 
+        auto stroke = obj_node["stroke"];
+        auto stroke_color = stroke["color"].as<RGBColor>();
+        auto radius = obj_node["radius"].as<double>();
+        auto center = obj_node["center"].as<Point2D<double>>();
+        Circle circle {center, radius, stroke_color};
+        this->_visitor->visit_object(circle);
     } else {
         throw new std::logic_error("invalid object type, " + obj_type);
     }

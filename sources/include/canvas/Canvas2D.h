@@ -28,6 +28,8 @@ class Canvas2D : public Canvas<Point2D<int>, N> {
 
         void set(Point2D<int> point, PixelValue<N> value) const override;
 
+        void set(Point2D<int> point, PixelValue<N> value, std::nothrow_t) const noexcept override;
+
         inline int channels() const noexcept { return N; }
 
         inline int width() const noexcept { return _width; }

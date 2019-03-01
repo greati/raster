@@ -1,0 +1,9 @@
+scene:
+    objects:
+        my_circle:
+            type: circle
+            center: [0, 0]
+            radius: 10
+            stroke:
+                color: [255, 255, 255]
+

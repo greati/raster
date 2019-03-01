@@ -19,6 +19,13 @@ void Canvas2D<N>::set(Point2D<int> point, PixelValue<N> value) const {
 }
 
 template<int N>
+void Canvas2D<N>::set(Point2D<int> point, PixelValue<N> value, std::nothrow_t) const noexcept {
+    try {
+        this->set(point, value);
+    } catch (std::exception& e) {/* empty */}
+}
+
+template<int N>
 std::pair<int, int> Canvas2D<N>::real_pos(const Point2D<int> & point) const {
     validate(point);
     auto [i, j] = point;

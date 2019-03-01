@@ -12,6 +12,9 @@ class Circle : public Object {
 
     public:
 
+        Circle(const Point2D<T> & center, double radius, const ColorType & stroke_color)
+            : _center {center}, _radius {radius}, _stroke_color {stroke_color} {/* empty */}
+
         inline double radius() const { return _radius; }
 
         inline Point2D<T> center() const { return _center; }
