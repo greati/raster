@@ -6,10 +6,12 @@
 #include "objects/Point.h"
 #include "objects/LineSegment.h"
 #include "objects/Polyline.h"
+#include "objects/Circle.h"
 #include "common.h"
 #include "drawers/BresenhamLineDrawer.h"
 #include "drawers/PointDrawer.h"
 #include "drawers/PolylineDrawer.h"
+#include "drawers/MidpointCircleDrawer.h"
 
 class CanvasDescVisitor : public DescVisitor {
 
@@ -30,6 +32,8 @@ class CanvasDescVisitor : public DescVisitor {
         void visit_object(const LineSegment<> & obj) const override;
 
         void visit_object(const Polyline<> & obj) const override;
+
+        void visit_object(const Circle<> & obj) const override;
 
 };
 

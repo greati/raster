@@ -22,3 +22,8 @@ void CanvasDescVisitor::visit_object(const Polyline<> & obj) const {
     poly_drawer.draw(obj);
 }
 
+void CanvasDescVisitor::visit_object(const Circle<> & obj) const {
+
+    MidpointCircleDrawer circle_drawer {this->_canvas};
+    circle_drawer.draw(obj);
+}
