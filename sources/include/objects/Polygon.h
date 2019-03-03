@@ -11,18 +11,12 @@ class Polygon : public Polyline<T, ColorType> {
 
         Polygon(std::vector<Point2D<T>> & vertices, ColorType stroke_color) :
             Polyline<T, ColorType>(vertices, stroke_color) {
-
-            if (vertices[0] != vertices[vertices.size()-1])
-                throw std::invalid_argument("last point must match first point to be a polygon");
-
+            this->_vertices.push_back(vertices[0]);
         };
 
         Polygon(std::vector<Point2D<T>> & vertices, ColorType stroke_color, int thickness) :
             Polyline<T, ColorType>(vertices, stroke_color, thickness) {
-            
-            if (vertices[0] != vertices[vertices.size()-1])
-                throw std::invalid_argument("last point must match first point to be a polygon");
-
+            this->_vertices.push_back(vertices[0]);
         };
 
 };

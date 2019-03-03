@@ -35,5 +35,6 @@ void CanvasDescVisitor::visit_object(const Circle<> & obj) const {
 }
 
 void CanvasDescVisitor::visit_fill(const std::map<std::string, Polygon<>> & objs) const {
-
+    PolygonScanLineFiller filler {this->_canvas};
+    filler.fill(objs); 
 }

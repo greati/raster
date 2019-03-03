@@ -6,7 +6,7 @@
 template<typename T=double, typename ColorType = RGBColor>
 class Polyline : public Object {
 
-    private:
+    protected:
 
         std::vector<Point2D<T>> _vertices;
         ColorType _stroke_color;

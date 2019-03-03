@@ -12,6 +12,7 @@
 #include "drawers/PointDrawer.h"
 #include "drawers/PolylineDrawer.h"
 #include "drawers/MidpointCircleDrawer.h"
+#include "fillers/PolygonScanLineFiller.h"
 
 class CanvasDescVisitor : public DescVisitor {
 

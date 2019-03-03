@@ -1,0 +1,10 @@
+scene:
+    objects:
+        my_poly:
+            type: polygon
+            vertices:
+                - [10, 10]
+                - [5, 30]
+                - [15, 50]
+            stroke:
+                color: [255, 255, 255]

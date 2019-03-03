@@ -12,6 +12,8 @@ class Canvas {
         virtual void set(CoordType point, PixelValue<NChannels> value) const = 0;
 
         virtual void set(CoordType point, PixelValue<NChannels> value, std::nothrow_t) const noexcept = 0;
+
+        virtual int height() const = 0;
 };
 
 #endif

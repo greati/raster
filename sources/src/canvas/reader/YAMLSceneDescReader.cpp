@@ -39,7 +39,7 @@ void YAMLSceneDescReader::process_object(const YAML::Node & obj_node, const std:
         auto stroke_color = stroke["color"].as<RGBColor>();
         LineSegment line {start, end, stroke_color};
         this->_visitor->visit_object(line);
-    } else if (obj_type == "polyline") {
+    } else if (obj_type == "polyline" || obj_type == "polygon") {
         auto stroke = obj_node["stroke"];
         auto stroke_color = stroke["color"].as<RGBColor>();
         auto node_vertices = obj_node["vertices"];
@@ -47,8 +47,14 @@ void YAMLSceneDescReader::process_object(const YAML::Node & obj_node, const std:
         for (auto it = node_vertices.begin(); it != node_vertices.end(); ++it) {
             vertices.push_back(it->as<Point2D<double>>());
         }
-        Polyline poly {vertices, stroke_color};
-        this->_visitor->visit_object(poly);
+        if (obj_type == "polyline") {
+            Polyline poly {vertices, stroke_color};
+            this->_visitor->visit_object(poly);
+        } else if (obj_type == "polygon") {
+            Polygon poly {vertices, stroke_color};
+            this->_visitor->visit_fill(std::map<std::string, Polygon<>> {{obj_label, poly}});
+            this->_visitor->visit_object(poly);
+        }
     } else if (obj_type == "circle") {
         auto stroke = obj_node["stroke"];
         auto stroke_color = stroke["color"].as<RGBColor>();

@@ -34,7 +34,7 @@ class Canvas2D : public Canvas<Point2D<int>, N> {
 
         inline int width() const noexcept { return _width; }
 
-        inline int height() const noexcept { return _height; }
+        inline int height() const noexcept override { return _height; }
 
         inline unsigned char* data() noexcept { return _data.get(); }
 
