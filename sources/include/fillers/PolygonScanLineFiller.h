@@ -100,7 +100,6 @@ class PolygonScanLineFiller {
                     for (int x = e1._col_intercept; x < e2._col_intercept; ++x) {
                         this->_canvas.set({i, x}, {255, 0, 0});
                     }}
-                    //it++;
                 }
                 // erase row_max edges 
                 for (auto it = active_edges.begin(); it != active_edges.end();) {
@@ -109,11 +108,9 @@ class PolygonScanLineFiller {
                         it = active_edges.erase(it);
                     } else it++;
                 }
-                for (auto e : active_edges) {
-                    std::cout << e._obj_name << " " << e._row_max << " " << e._col_intercept << std::endl;
-                }
+                // next line
                 i++;
-                // update
+                // update cols
                 for (auto edge = active_edges.begin(); edge != active_edges.end(); ++edge) {
                     if (edge->_delta_row != 0) { // non-horizontal
                         if (edge->_delta_row > 0) { // down
