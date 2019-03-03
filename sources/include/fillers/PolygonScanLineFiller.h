@@ -72,6 +72,10 @@ class PolygonScanLineFiller {
                 return a._row_max < b._row_max;
             };
 
+            auto sort_col_interc = [](const EdgeEntry & a, const EdgeEntry & b) { 
+                return a._col_intercept < b._col_intercept;
+            };
+
             // sorting
             for (int i = 0; i < _canvas.height(); ++i) {
                 std::sort(general_edges[i].begin(), general_edges[i].end(), sort_inc_rowmax);
@@ -88,6 +92,16 @@ class PolygonScanLineFiller {
                 for (auto & e : general_edges[i])
                    active_edges.push_back(e); 
                 // fill
+                active_edges.sort(sort_col_interc);
+                for (auto it = active_edges.begin(); it != active_edges.end();) {
+                    auto e1 = *it;
+                    if (++it != active_edges.end()) {
+                    auto e2 = *it;
+                    for (int x = e1._col_intercept; x < e2._col_intercept; ++x) {
+                        this->_canvas.set({i, x}, {255, 0, 0});
+                    }}
+                    //it++;
+                }
                 // erase row_max edges 
                 for (auto it = active_edges.begin(); it != active_edges.end();) {
                     std::cout << i << " | " << it->_row_max << std::endl;
