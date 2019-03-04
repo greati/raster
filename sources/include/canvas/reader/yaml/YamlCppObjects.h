@@ -76,6 +76,30 @@ namespace YAML {
             }
        };
 
+       template<>
+       struct convert<Object::Type> {
+            static Node encode(const Object::Type& rhs) {
+                Node node;
+                return node;
+            }
+            static bool decode(const Node& node, Object::Type & objtype) {
+                auto type = node["type"].as<std::string>();
+                if (type == "point")
+                    objtype = Object::Type::POINT;
+                else if (type == "line")
+                    objtype = Object::Type::LINE_SEGMENT;
+                else if (type == "circle")
+                    objtype = Object::Type::CIRCLE;
+                else if (type == "polyline")
+                    objtype = Object::Type::POLYLINE;
+                else if (type == "polygon")
+                    objtype = Object::Type::POLYGON;
+                else
+                    return false;
+                return true;
+            }
+       };
+
 }
 
 

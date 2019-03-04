@@ -28,15 +28,15 @@ class CanvasDescVisitor : public DescVisitor {
         
         void visit_scene_background(const std::string & background) const override;
 
-        void visit_object(const Point<> & obj) const override;
+        void visit_object_draw(const Point<> & obj) const override;
 
-        void visit_object(const LineSegment<> & obj) const override;
+        void visit_object_draw(const LineSegment<> & obj) const override;
 
-        void visit_object(const Polyline<> & obj) const override;
+        void visit_object_draw(const Polyline<> & obj) const override;
 
-        void visit_object(const Circle<> & obj) const override;
+        void visit_object_draw(const Circle<> & obj) const override;
 
-        void visit_object(const Polygon<> & obj) const override;
+        void visit_object_draw(const Polygon<> & obj) const override;
 
         void visit_fill(const std::map<std::string, Polygon<>> & objs) const override;
 

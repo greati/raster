@@ -12,13 +12,13 @@
 class SceneDescReader {
 
     public:
-        
+
        /**
         * Takes a file path for the description file.
         * 
         * @param filename The path to the description file.
         * */
-       virtual void read(const std::string & filename) const = 0; 
+       virtual void read(const std::string & filename) = 0; 
 
 };
 

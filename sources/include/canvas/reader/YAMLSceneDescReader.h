@@ -28,12 +28,12 @@ class YAMLSceneDescReader : public SceneDescReader {
 
        YAMLSceneDescReader(std::unique_ptr<DescVisitor> visitor) : _visitor {std::move(visitor)} {}
 
-       void read(const std::string & filename) const override;
+       void read(const std::string & filename) override;
 
     protected:
 
-       void process_scene(const YAML::Node & scene_node) const;
-       void process_object(const YAML::Node & obj_node, const std::string & obj_label) const;
+       void process_scene(const YAML::Node & scene_node);
+       void process_object(const YAML::Node & obj_node, const std::string & obj_label);
 };
 
 #endif

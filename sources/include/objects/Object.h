@@ -8,6 +8,14 @@ class Object {
 
     public:
 
+        enum class Type {
+            POINT,
+            LINE_SEGMENT,
+            CIRCLE,
+            POLYLINE,
+            POLYGON
+        };
+
         template<typename ColorType=RGBColor>
         struct Stroke {
             ColorType color;
