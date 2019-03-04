@@ -34,10 +34,17 @@ void CanvasDescVisitor::visit_object_draw(const Circle<> & obj) const {
     circle_drawer.draw(obj);
 }
 
-void CanvasDescVisitor::visit_fill(const Object & obj) const {
+void CanvasDescVisitor::visit_fill(const Polygon<> & obj) const {
     //FloodFiller filler {this->_canvas};
-    BoundaryFiller filler {this->_canvas};
-    filler.fill(obj, {255, 0, 0}, {255, 255, 255}, BoundaryFiller::Connectivity::CONNECTED4);
+    SquarePointSampler point_sampler {
+        Size<2>{this->_canvas.width(), this->_canvas.height()}
+    };
+    PolygonInteriorFinder interior_finder {point_sampler};
+    BoundaryFiller<Polygon<>> filler {
+        this->_canvas,
+        interior_finder
+    };
+    filler.fill(obj, obj.fill().value().color, obj.stroke().value().color, BoundaryFiller<Polygon<>>::Connectivity::CONNECTED4);
 }
 
 void CanvasDescVisitor::visit_fill(const std::map<std::string, Polygon<>> & objs) const {

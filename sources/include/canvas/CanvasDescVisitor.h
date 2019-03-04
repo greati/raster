@@ -15,6 +15,7 @@
 #include "fillers/PolygonScanLineFiller.h"
 #include "fillers/FloodFiller.h"
 #include "fillers/BoundaryFiller.h"
+#include "interior_finders/PolygonInteriorFinder.h"
 
 class CanvasDescVisitor : public DescVisitor {
 
@@ -42,7 +43,7 @@ class CanvasDescVisitor : public DescVisitor {
 
         void visit_fill(const std::map<std::string, Polygon<>> & objs) const override;
 
-        void visit_fill(const Object& obj) const override;
+        void visit_fill(const Polygon<>& obj) const override;
 
 };
 

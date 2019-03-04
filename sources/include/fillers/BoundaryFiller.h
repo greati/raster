@@ -1,11 +1,16 @@
 #ifndef __BOUNDARYFILLER__
 #define __BOUNDARYFILLER__
 
+#include "interior_finders/InteriorFinder.h"
+#include <vector>
+
+template<typename ObjType>
 class BoundaryFiller {
 
     private:
 
         Canvas<Point2D<int>> & _canvas;
+        InteriorFinder<ObjType> & _interior_finder;
 
     public:
 
@@ -14,10 +19,17 @@ class BoundaryFiller {
             CONNECTED8
         };
 
-        BoundaryFiller(Canvas<Point2D<int>> & canvas) : _canvas {canvas} {/* empty */}
+        BoundaryFiller(Canvas<Point2D<int>> & canvas, 
+                InteriorFinder<ObjType> & interior_finder) 
+            : _canvas {canvas}, _interior_finder {interior_finder} {/* empty */}
 
-        void fill(const Object& obj, const RGBColor & fill, const RGBColor & border_color, Connectivity conn) {
-            fill_interior({10, 30}, fill, border_color, conn);
+        void fill(const ObjType& obj, const RGBColor & fill, const RGBColor & border_color, Connectivity conn) {
+            std::vector<Point2D<int>> interiors = _interior_finder.find_many(obj);
+            std::for_each(interiors.begin(), interiors.end(),
+                    [&](const Point2D<int>& p) {
+                        fill_interior(p, fill, border_color, conn);
+                    }
+            );
         }
 
     private:

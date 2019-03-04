@@ -6,6 +6,9 @@
 template<typename T>
 using Point2D = std::pair<T, T>;
 
+template<int N>
+using Size = std::array<int, N>;
+
 using RGBColor = std::tuple<unsigned char, unsigned char, unsigned char>;
 
 template<int NChannels>
