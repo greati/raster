@@ -18,8 +18,8 @@ class DDALineDrawer : public Drawer<LineSegment<>> {
             auto [p2x, p2y] = p2;
             double slope = (p2y - p1y) / (p2x - p1x);
             double slope_inv = 1 / slope;
-            auto [r, g, b] = line.stroke_color();
-            int thickness = line.thickness();
+            auto [r, g, b] = line.stroke().color;
+            int thickness = line.stroke().thickness;
 
             if (slope >= -1 and slope <= 1) {
 

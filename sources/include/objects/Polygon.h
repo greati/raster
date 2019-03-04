@@ -3,21 +3,29 @@
 
 #include <vector>
 #include "objects/Polyline.h"
+#include <memory>
+#include <optional>
 
 template<typename T=double, typename ColorType = RGBColor>
 class Polygon : public Polyline<T, ColorType> {
 
+    private:
+
+        std::optional<Object::Fill<ColorType>> _fill;
+
     public:
 
-        Polygon(std::vector<Point2D<T>> & vertices, ColorType stroke_color) :
-            Polyline<T, ColorType>(vertices, stroke_color) {
+        Polygon(std::vector<Point2D<T>> & vertices, std::optional<Object::Stroke<RGBColor>> stroke,
+                std::optional<Object::Fill<ColorType>> fill = std::nullopt) :
+            Polyline<T, ColorType>(vertices, stroke), _fill {fill} {
+
+            if (stroke == std::nullopt && fill == std::nullopt)
+                throw std::invalid_argument("stroke or fill the polygon");
+
             this->_vertices.push_back(vertices[0]);
         };
 
-        Polygon(std::vector<Point2D<T>> & vertices, ColorType stroke_color, int thickness) :
-            Polyline<T, ColorType>(vertices, stroke_color, thickness) {
-            this->_vertices.push_back(vertices[0]);
-        };
+        auto fill() const { return _fill; }
 
 };
 

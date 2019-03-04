@@ -31,7 +31,7 @@ class BresenhamLineDrawer : public Drawer<LineSegment<>> {
         void draw_line_low(const LineSegment<> & line, bool reverse) const {
             auto [p1, p2] = line.points();
             if (reverse) std::swap(p1, p2);
-            auto [r, g, b] = line.stroke_color();
+            auto [r, g, b] = line.stroke().color;
             auto [p1x, p1y] = p1;
             auto [p2x, p2y] = p2;
             int Dx = p2x - p1x;
@@ -61,7 +61,7 @@ class BresenhamLineDrawer : public Drawer<LineSegment<>> {
         void draw_line_high(const LineSegment<> & line, bool reverse) const {
             auto [p1, p2] = line.points();
             if (reverse) std::swap(p1, p2);
-            auto [r, g, b] = line.stroke_color();
+            auto [r, g, b] = line.stroke().color;
             auto [p1x, p1y] = p1;
             auto [p2x, p2y] = p2;
             int Dx = p2x - p1x;

@@ -35,32 +35,32 @@ void YAMLSceneDescReader::process_object(const YAML::Node & obj_node, const std:
     } else if (obj_type == "line") {
         auto start = obj_node["start"].as<Point2D<double>>();    
         auto end = obj_node["end"].as<Point2D<double>>();    
-        auto stroke = obj_node["stroke"];
-        auto stroke_color = stroke["color"].as<RGBColor>();
-        LineSegment line {start, end, stroke_color};
+        auto stroke = obj_node["stroke"].as<Object::Stroke<RGBColor>>();
+        LineSegment line {start, end, stroke};
         this->_visitor->visit_object(line);
     } else if (obj_type == "polyline" || obj_type == "polygon") {
-        auto stroke = obj_node["stroke"];
-        auto stroke_color = stroke["color"].as<RGBColor>();
+        auto stroke = obj_node["stroke"] ? std::make_optional(obj_node["stroke"].as<Object::Stroke<RGBColor>>()) : std::nullopt;
         auto node_vertices = obj_node["vertices"];
         std::vector<Point2D<double>> vertices;
         for (auto it = node_vertices.begin(); it != node_vertices.end(); ++it) {
             vertices.push_back(it->as<Point2D<double>>());
         }
         if (obj_type == "polyline") {
-            Polyline poly {vertices, stroke_color};
+            Polyline<> poly {vertices, stroke};
             this->_visitor->visit_object(poly);
         } else if (obj_type == "polygon") {
-            Polygon poly {vertices, stroke_color};
+            auto fill = obj_node["fill"] ? std::make_optional(obj_node["fill"].as<Object::Fill<RGBColor>>()) 
+                : std::nullopt;
+            Polygon poly {vertices, stroke, fill};
             this->_visitor->visit_fill(std::map<std::string, Polygon<>> {{obj_label, poly}});
-            this->_visitor->visit_object(poly);
+            if (stroke != std::nullopt)
+                this->_visitor->visit_object(poly);
         }
     } else if (obj_type == "circle") {
-        auto stroke = obj_node["stroke"];
-        auto stroke_color = stroke["color"].as<RGBColor>();
+        auto stroke = obj_node["stroke"].as<Object::Stroke<RGBColor>>();
         auto radius = obj_node["radius"].as<double>();
         auto center = obj_node["center"].as<Point2D<double>>();
-        Circle circle {center, radius, stroke_color};
+        Circle circle {center, radius, stroke};
         this->_visitor->visit_object(circle);
     } else {
         throw new std::logic_error("invalid object type, " + obj_type);

@@ -45,7 +45,10 @@ class PolygonScanLineFiller {
             std::vector<EdgeEntry> general_edges[_canvas.height()];
 
             // create general table with all vertices (ET), ordered ascending col_intercept
-            for (auto [obj_name, polygon] : polygons) {
+            for (auto & [obj_name, polygon] : polygons) {
+
+                if (polygon.fill() == std::nullopt) continue;
+
                 // collect edges from polygons and annotate important info
                 auto vertices = polygon.vertices();
                 for (auto i = 0; i < vertices.size() - 1; ++i) {
@@ -79,9 +82,6 @@ class PolygonScanLineFiller {
             // sorting
             for (int i = 0; i < _canvas.height(); ++i) {
                 std::sort(general_edges[i].begin(), general_edges[i].end(), sort_inc_rowmax);
-                std::cout << i << ":" << std::endl;
-                for (auto & e : general_edges[i])
-                    std::cout << e._obj_name << " " << e._row_max << " " << e._col_intercept << std::endl;
             }
 
             // scanline
@@ -96,14 +96,15 @@ class PolygonScanLineFiller {
                 for (auto it = active_edges.begin(); it != active_edges.end();) {
                     auto e1 = *it;
                     if (++it != active_edges.end()) {
-                    auto e2 = *it;
-                    for (int x = e1._col_intercept; x < e2._col_intercept; ++x) {
-                        this->_canvas.set({i, x}, {255, 0, 0});
-                    }}
+                        auto e2 = *it;
+                        auto [r, g, b] = polygons.find(e1._obj_name)->second.fill().value().color;
+                        for (int x = e1._col_intercept; x < e2._col_intercept; ++x) {
+                            this->_canvas.set({i, x}, {r, g, b});
+                        }
+                    }
                 }
                 // erase row_max edges 
                 for (auto it = active_edges.begin(); it != active_edges.end();) {
-                    std::cout << i << " | " << it->_row_max << std::endl;
                     if (it->_row_max == i) {
                         it = active_edges.erase(it);
                     } else it++;

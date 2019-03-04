@@ -17,10 +17,10 @@ class PolylineDrawer : Drawer<Polyline<>> {
 
             BresenhamLineDrawer line_drawer {this->_canvas};
 
-            auto [r, g, b] = poly.stroke_color();
+            auto [r, g, b] = poly.stroke().value().color;
             auto vertices = poly.vertices();
             for (auto i = 0; i < vertices.size() - 1; ++i) {
-                line_drawer.draw(LineSegment<> {vertices[i], vertices[i+1], {r, g, b}}); 
+                line_drawer.draw(LineSegment<> {vertices[i], vertices[i+1], Object::Stroke<RGBColor>{{r, g, b}}}); 
             }
 
         }

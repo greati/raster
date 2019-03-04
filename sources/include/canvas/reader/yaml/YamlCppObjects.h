@@ -50,6 +50,32 @@ namespace YAML {
             }
        };
 
+       template<>
+       struct convert<Object::Stroke<RGBColor>> {
+            static Node encode(const Object::Stroke<RGBColor>& rhs) {
+                Node node;
+                return node;
+            }
+            static bool decode(const Node& node, Object::Stroke<RGBColor> & stroke) {
+                stroke.color = node["color"].as<RGBColor>();
+                if (node["thickness"])
+                    stroke.thickness = node["thickness"].as<int>();
+                return true;
+            }
+       };
+
+       template<>
+       struct convert<Object::Fill<RGBColor>> {
+            static Node encode(const Object::Fill<RGBColor>& rhs) {
+                Node node;
+                return node;
+            }
+            static bool decode(const Node& node, Object::Fill<RGBColor> & fill) {
+                fill.color = node["color"].as<RGBColor>();
+                return true;
+            }
+       };
+
 }
 
 

@@ -2,6 +2,7 @@
 #define __POLYLINE__
 
 #include <vector>
+#include <optional>
 
 template<typename T=double, typename ColorType = RGBColor>
 class Polyline : public Object {
@@ -9,22 +10,13 @@ class Polyline : public Object {
     protected:
 
         std::vector<Point2D<T>> _vertices;
-        ColorType _stroke_color;
-        int _thickness;
+        std::optional<Object::Stroke<ColorType>> _stroke;
 
     public:
 
-        Polyline(std::vector<Point2D<T>> & vertices, ColorType stroke_color) 
-            : _stroke_color{stroke_color}, _thickness{1} {
-            
-            if (vertices.size() < 2) 
-                throw std::invalid_argument("provide at least two points for a polyline");
-            _vertices = vertices;
-        };
+        Polyline(std::vector<Point2D<T>> & vertices, std::optional<Object::Stroke<ColorType>> stroke) 
+            : _stroke {stroke} {
 
-        Polyline(std::vector<Point2D<T>> & vertices, ColorType stroke_color, int thickness) 
-            : _stroke_color{stroke_color}, _thickness{thickness} {
-            
             if (vertices.size() < 2) 
                 throw std::invalid_argument("provide at least two points for a polyline");
             _vertices = vertices;
@@ -33,12 +25,7 @@ class Polyline : public Object {
 
         std::vector<Point2D<T>> vertices() const { return _vertices; };
 
-        int thickness() const { return _thickness; } 
-
-        ColorType stroke_color() const { return _stroke_color; } 
-
-
-
+        auto stroke() const { return _stroke; }
 };
 
 #endif

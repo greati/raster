@@ -35,7 +35,7 @@ class MidpointCircleDrawer : public Drawer<Circle<>> {
 
         void draw_symm_points(const Circle<> & circle, const Point2D<int> & point) const {
             auto [xc, yc] = circle.center();
-            auto [r, g, b] = circle.stroke_color();
+            auto [r, g, b] = circle.stroke().color;
             auto [x, y] = point;
             this->_canvas.set({xc + x, yc + y}, {r, g, b}, std::nothrow_t {});
             this->_canvas.set({xc - x, yc + y}, {r, g, b}, std::nothrow_t {});
