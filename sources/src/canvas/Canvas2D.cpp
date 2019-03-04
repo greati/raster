@@ -2,9 +2,9 @@
 #include <iostream>
 
 template<int N>
-typename Canvas2D<N>::Value Canvas2D<N>::at(Point2D<int> point) const {
+PixelValue<N> Canvas2D<N>::at(Point2D<int> point) const {
     auto [start, end] = real_pos(point);
-    Canvas2D<N>::Value v;
+    PixelValue<N> v;
     for (auto i = start, j = 0; i < end; ++i, ++j)
         v[j] = _data[i];
     return v;

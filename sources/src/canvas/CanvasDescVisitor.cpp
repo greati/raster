@@ -34,6 +34,12 @@ void CanvasDescVisitor::visit_object_draw(const Circle<> & obj) const {
     circle_drawer.draw(obj);
 }
 
+void CanvasDescVisitor::visit_fill(const Object & obj) const {
+    //FloodFiller filler {this->_canvas};
+    BoundaryFiller filler {this->_canvas};
+    filler.fill(obj, {255, 0, 0}, {255, 255, 255}, BoundaryFiller::Connectivity::CONNECTED4);
+}
+
 void CanvasDescVisitor::visit_fill(const std::map<std::string, Polygon<>> & objs) const {
     PolygonScanLineFiller filler {this->_canvas};
     filler.fill(objs); 

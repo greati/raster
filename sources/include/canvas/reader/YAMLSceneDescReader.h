@@ -9,6 +9,7 @@
 #include "common.h"
 #include "yaml/YamlCppObjects.h"
 #include "objects/Polygon.h"
+#include <algorithm>
 
 /**
  * Reader for scenes described in YAML.
@@ -17,6 +18,8 @@ class YAMLSceneDescReader : public SceneDescReader {
 
     private:
        std::unique_ptr<DescVisitor> _visitor;
+
+       std::map<std::string, Object&> objects;
 
        std::map<std::string, Point<>> points;
        std::map<std::string, Polygon<>> polygons;

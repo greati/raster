@@ -22,7 +22,19 @@ void YAMLSceneDescReader::read(const std::string & filename) {
         this->process_object(obj_node, obj_label);
     }
 
-    this->_visitor->visit_fill(this->polygons);
+
+    std::for_each(
+            polygons.begin(),
+            polygons.end(), 
+            [this](std::pair<std::string, Polygon<>> entry){
+                this->_visitor->visit_object_draw(entry.second);         
+            }
+    );
+    
+    // JUST TESTING
+    this->_visitor->visit_fill(this->polygons.find("my_poly")->second);
+
+    //this->_visitor->visit_fill(this->polygons);
 }
 
 void YAMLSceneDescReader::process_object(const YAML::Node & obj_node, const std::string & obj_label) {
@@ -75,8 +87,8 @@ void YAMLSceneDescReader::process_object(const YAML::Node & obj_node, const std:
                         : std::nullopt;
                     Polygon poly {vertices, stroke, fill};
                     this->polygons.insert({obj_label, poly});
-                    if (stroke != std::nullopt)
-                        this->_visitor->visit_object_draw(poly);
+                    //if (stroke != std::nullopt)
+                    //    this->_visitor->visit_object_draw(poly);
                 }
                 break;
             }

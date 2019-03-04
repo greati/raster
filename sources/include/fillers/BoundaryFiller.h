@@ -1,0 +1,55 @@
+#ifndef __BOUNDARYFILLER__
+#define __BOUNDARYFILLER__
+
+class BoundaryFiller {
+
+    private:
+
+        Canvas<Point2D<int>> & _canvas;
+
+    public:
+
+        enum class Connectivity {
+            CONNECTED4,
+            CONNECTED8
+        };
+
+        BoundaryFiller(Canvas<Point2D<int>> & canvas) : _canvas {canvas} {/* empty */}
+
+        void fill(const Object& obj, const RGBColor & fill, const RGBColor & border_color, Connectivity conn) {
+            fill_interior({10, 30}, fill, border_color, conn);
+        }
+
+    private:
+
+        void fill_interior(const Point2D<int> & interior, 
+                const RGBColor & fill, const RGBColor & border_color, Connectivity conn) {
+
+            auto [x, y] = interior;
+            if (y < 0 || y >= _canvas.width()) return;
+            if (x < 0 || x >= _canvas.height()) return;
+
+            auto [fr, fg, fb] = fill;
+            auto [r, g, b] = _canvas.at({x, y});
+            auto current = RGBColor{r, g, b};
+
+            if (current != border_color && current != fill) {
+                _canvas.set({x, y}, {fr, fg, fb});
+                fill_interior({x+1, y}, fill, border_color, conn);
+                fill_interior({x-1, y}, fill, border_color, conn);
+                fill_interior({x, y+1}, fill, border_color, conn);
+                fill_interior({x, y-1}, fill, border_color, conn);
+                if (conn == Connectivity::CONNECTED8) {
+                    fill_interior({x+1, y+1}, fill, border_color, conn);
+                    fill_interior({x-1, y-1}, fill, border_color, conn);
+                    fill_interior({x+1, y-1}, fill, border_color, conn);
+                    fill_interior({x-1, y+1}, fill, border_color, conn);
+                }
+            }
+            
+        }
+
+};
+
+#endif
+

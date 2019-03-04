@@ -31,6 +31,8 @@ class DescVisitor {
 
         virtual void visit_fill(const std::map<std::string, Polygon<>> & objs) const = 0;
 
+        virtual void visit_fill(const Object & obj) const = 0;
+
 };
 
 #endif

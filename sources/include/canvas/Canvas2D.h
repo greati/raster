@@ -22,9 +22,7 @@ class Canvas2D : public Canvas<Point2D<int>, N> {
         
         Canvas2D(int width, int height);
 
-        using Value = std::array<unsigned char, N>; 
-
-        Value at(Point2D<int> point) const;
+        PixelValue<N> at(Point2D<int> point) const override;
 
         void set(Point2D<int> point, PixelValue<N> value) const override;
 
@@ -32,7 +30,7 @@ class Canvas2D : public Canvas<Point2D<int>, N> {
 
         inline int channels() const noexcept { return N; }
 
-        inline int width() const noexcept { return _width; }
+        inline int width() const noexcept override { return _width; }
 
         inline int height() const noexcept override { return _height; }
 
