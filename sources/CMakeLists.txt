@@ -56,7 +56,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 # libraries
 # --------------------------------------- #
 add_library(yamlscenedescreader src/canvas/reader/YAMLSceneDescReader.cpp)
-target_link_libraries(yamlscenedescreader PUBLIC yaml-cpp)
+target_link_libraries(yamlscenedescreader PUBLIC yaml-cpp PRIVATE geometry_utils)
 target_include_directories(yamlscenedescreader PRIVATE include)
 target_include_directories(yamlscenedescreader PUBLIC ${yamlcpp_SOURCE_DIR}/include)
 
@@ -65,6 +65,9 @@ target_include_directories(canvas2d PRIVATE include)
 
 add_library(printer src/printer/NetpbmPrinter.cpp)
 target_include_directories(printer PRIVATE include)
+
+add_library(geometry_utils src/utils/geometry_utils.cpp)
+target_include_directories(geometry_utils PRIVATE include)
 
 # executables
 # --------------------------------------- #
@@ -80,6 +83,8 @@ include(GoogleTest)
 set(test_sources ${test_sources}
     tests/main.cpp
     tests/yamlsd_reader_tests.cpp
+    tests/geometry_utils_tests.cpp
+    tests/polygon_interior_finder_tests.cpp
 )
 
 add_executable(maintest ${test_sources})

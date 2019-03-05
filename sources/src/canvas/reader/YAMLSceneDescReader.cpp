@@ -22,7 +22,6 @@ void YAMLSceneDescReader::read(const std::string & filename) {
         this->process_object(obj_node, obj_label);
     }
 
-
     std::for_each(
             polygons.begin(),
             polygons.end(), 

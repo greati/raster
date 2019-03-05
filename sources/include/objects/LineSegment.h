@@ -20,6 +20,10 @@ class LineSegment : public Object {
         
         Object::Stroke<ColorType> stroke() const { return _stroke; }
 
+        int max_horizontal() const override {
+            return std::max(_p1.second, _p2.second);
+        }
+
 };
 
 #endif

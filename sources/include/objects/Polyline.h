@@ -2,6 +2,7 @@
 #define __POLYLINE__
 
 #include <vector>
+#include <cmath>
 #include <optional>
 
 template<typename T=double, typename ColorType = RGBColor>
@@ -26,6 +27,14 @@ class Polyline : public Object {
         std::vector<Point2D<T>> vertices() const { return _vertices; };
 
         auto stroke() const { return _stroke; }
+
+        int max_horizontal() const override {
+            long int max = 0;
+            for (auto & v : _vertices) {
+                max = std::max(max, std::lround(v.second));
+            } 
+            return max;
+        }
 };
 
 #endif

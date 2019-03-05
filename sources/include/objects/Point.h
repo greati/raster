@@ -27,6 +27,11 @@ class Point : public Object {
 
         ColorType color() const { return _color; }
 
+        int max_horizontal() const override {
+            return _coords.second;
+        }
+
+
 };
 
 #endif

@@ -36,6 +36,8 @@ class Object {
 
         std::string name;
 
+        virtual int max_horizontal() const = 0;
+
 };
 
 #endif

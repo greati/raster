@@ -27,6 +27,7 @@ class BoundaryFiller {
             std::vector<Point2D<int>> interiors = _interior_finder.find_many(obj);
             std::for_each(interiors.begin(), interiors.end(),
                     [&](const Point2D<int>& p) {
+                        std::cout << p.first << " " << p.second << std::endl;
                         fill_interior(p, fill, border_color, conn);
                     }
             );

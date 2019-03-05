@@ -21,6 +21,10 @@ class Circle : public Object {
 
         inline auto stroke() const { return _stroke; } 
 
+        int max_horizontal() const override {
+            return _radius; //TODO improve this for cutted circles
+        }
+
 };
 
 #endif

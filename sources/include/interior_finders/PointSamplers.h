@@ -15,6 +15,18 @@ class PointSampler {
 
 };
 
+class DummyPointSampler : public PointSampler<Point2D<int>> {
+    public:
+
+        Point2D<int> one(const Point2D<int> & point) override {
+            return point;
+        }
+
+        std::vector<Point2D<int>> many(const Point2D<int> & point) override {
+            return std::vector<Point2D<int>>{point}; 
+        }
+};
+
 class SquarePointSampler : public PointSampler<Point2D<int>> {
 
     private:
