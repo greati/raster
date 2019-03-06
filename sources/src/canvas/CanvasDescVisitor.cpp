@@ -31,7 +31,8 @@ void CanvasDescVisitor::visit_object_draw(const Polygon<> & obj) const {
 
 void CanvasDescVisitor::visit_object_draw(const Circle<> & obj) const {
 
-    MidpointCircleDrawer circle_drawer {this->_canvas};
+    XiaolinWuCircleDrawer circle_drawer {this->_canvas};
+    ///MidpointCircleDrawer circle_drawer {this->_canvas};
     circle_drawer.draw(obj);
 }
 
