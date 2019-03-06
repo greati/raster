@@ -1,11 +1,15 @@
 #ifndef __FLOODFILLER__
 #define __FLOODFILLER__
 
+#include "interior_finders/InteriorFinder.h"
+
+template<typename ObjType>
 class FloodFiller {
 
     private:
 
         Canvas<Point2D<int>> & _canvas;
+        InteriorFinder<ObjType> & _interior_finder;
 
     public:
 
@@ -14,10 +18,14 @@ class FloodFiller {
             CONNECTED8
         };
 
-        FloodFiller(Canvas<Point2D<int>> & canvas) : _canvas {canvas} {/* empty */}
+        FloodFiller(Canvas<Point2D<int>> & canvas, 
+                InteriorFinder<ObjType> & interior_finder) 
+            : _canvas {canvas}, _interior_finder {interior_finder} {/* empty */}
 
-        void fill(const Object& obj, const RGBColor & fill, const RGBColor & old, Connectivity conn) {
-            fill_interior({10, 30}, fill, old, conn);
+        void fill(const ObjType& obj, const RGBColor & fill, const RGBColor & old, Connectivity conn) {
+            Point2D<int> interior = _interior_finder.find_one(obj);
+            auto [r, g, b] = this->_canvas.at(interior);
+            fill_interior(interior, fill, {r, g, b}, conn);
         }
 
     private:

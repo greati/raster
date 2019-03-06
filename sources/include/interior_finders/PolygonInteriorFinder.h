@@ -18,13 +18,16 @@ class PolygonInteriorFinder : public InteriorFinder<Polygon<>, PointType> {
         PolygonInteriorFinder(PointSampler<> & _sampler) : sampler {_sampler} {/* empty */}
 
         Point2D<int> find_one(const Polygon<> & polygon) const override {
-           
-            auto p = sampler.one(polygon.vertices()[0]);
-
-            while (not is_interior(polygon, p)) {
-                p = sampler.one(polygon.vertices()[0]);
+            auto ps = sampler.many(polygon.vertices()[0]);
+            while (true) {
+                for (Point2D<int> & p : ps) {
+                    if (is_interior(polygon, p)) {
+                        sampler.reset();
+                        return p;
+                    }
+                }
+                sampler.expand();
             }
-            return p;
         };
 
         std::vector<Point2D<int>> find_many(const Polygon<> & polygon) const override {
