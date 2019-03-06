@@ -1,0 +1,9 @@
+scene:
+    objects:
+        my_line:
+            type: line
+            start: [10, 10]
+            end: [13, 100]
+            stroke:
+                color: [255, 255, 255]
+                thickness: 1

@@ -5,6 +5,7 @@
 #include "objects/LineSegment.h"
 #include "drawers/Drawer.h"
 #include "drawers/BresenhamLineDrawer.h"
+#include "drawers/XiaolinWuLineDrawer.h"
 #include <iostream>
 
 class PolylineDrawer : Drawer<Polyline<>> {
@@ -15,7 +16,7 @@ class PolylineDrawer : Drawer<Polyline<>> {
 
         void draw(const Polyline<>& poly) const {
 
-            BresenhamLineDrawer line_drawer {this->_canvas};
+            XiaolinWuLineDrawer line_drawer {this->_canvas};
 
             auto [r, g, b] = poly.stroke().value().color;
             auto vertices = poly.vertices();

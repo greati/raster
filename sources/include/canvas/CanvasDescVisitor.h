@@ -9,6 +9,7 @@
 #include "objects/Circle.h"
 #include "common.h"
 #include "drawers/BresenhamLineDrawer.h"
+#include "drawers/XiaolinWuLineDrawer.h"
 #include "drawers/PointDrawer.h"
 #include "drawers/PolylineDrawer.h"
 #include "drawers/MidpointCircleDrawer.h"

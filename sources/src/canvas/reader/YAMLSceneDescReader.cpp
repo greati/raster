@@ -31,9 +31,9 @@ void YAMLSceneDescReader::read(const std::string & filename) {
     );
     
     // JUST TESTING
-    this->_visitor->visit_fill(this->polygons.find("my_poly")->second);
+    //this->_visitor->visit_fill(this->polygons.find("my_poly")->second);
 
-    //this->_visitor->visit_fill(this->polygons);
+    ///this->_visitor->visit_fill(this->polygons);
 }
 
 void YAMLSceneDescReader::process_object(const YAML::Node & obj_node, const std::string & obj_label) {
