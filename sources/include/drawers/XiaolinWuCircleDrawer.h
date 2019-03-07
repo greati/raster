@@ -14,6 +14,7 @@ class XiaolinWuCircleDrawer : public Drawer<Circle<>> {
 
             auto radius = circle.radius();
             auto [r, g, b] = circle.stroke().color;
+            auto [xc, yc] = circle.center();
 
             auto i = 0;
             auto j = radius;
