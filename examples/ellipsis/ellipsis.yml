@@ -1,0 +1,9 @@
+scene:
+    objects:
+        my_ell:
+            type: ellipsis
+            radius_v: 20
+            radius_h: 20
+            center: [60, 60]
+            stroke:
+                color: [255, 255, 255]

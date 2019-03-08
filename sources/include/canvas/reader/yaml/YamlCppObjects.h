@@ -94,6 +94,8 @@ namespace YAML {
                     objtype = Object::Type::POLYLINE;
                 else if (type == "polygon")
                     objtype = Object::Type::POLYGON;
+                else if (type == "ellipsis")
+                    objtype = Object::Type::ELLIPSIS;
                 else
                     return false;
                 return true;

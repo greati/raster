@@ -9,6 +9,7 @@
 #include "common.h"
 #include "yaml/YamlCppObjects.h"
 #include "objects/Polygon.h"
+#include "objects/Ellipsis.h"
 #include <algorithm>
 
 /**
@@ -26,6 +27,7 @@ class YAMLSceneDescReader : public SceneDescReader {
        std::map<std::string, Circle<>> circles;
        std::map<std::string, LineSegment<>> line_segments;
        std::map<std::string, Polyline<>> polylines;
+       std::map<std::string, Ellipsis<>> ellipsis;
 
     public:
 

@@ -13,7 +13,8 @@ class Object {
             LINE_SEGMENT,
             CIRCLE,
             POLYLINE,
-            POLYGON
+            POLYGON,
+            ELLIPSIS
         };
 
         template<typename ColorType=RGBColor>

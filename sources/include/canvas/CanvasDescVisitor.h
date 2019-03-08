@@ -7,6 +7,7 @@
 #include "objects/LineSegment.h"
 #include "objects/Polyline.h"
 #include "objects/Circle.h"
+#include "objects/Ellipsis.h"
 #include "common.h"
 #include "drawers/BresenhamLineDrawer.h"
 #include "drawers/XiaolinWuLineDrawer.h"
@@ -14,6 +15,7 @@
 #include "drawers/PolylineDrawer.h"
 #include "drawers/MidpointCircleDrawer.h"
 #include "drawers/XiaolinWuCircleDrawer.h"
+#include "drawers/XiaolinWuEllipsisDrawer.h"
 #include "fillers/PolygonScanLineFiller.h"
 #include "fillers/FloodFiller.h"
 #include "fillers/BoundaryFiller.h"
@@ -40,6 +42,8 @@ class CanvasDescVisitor : public DescVisitor {
         void visit_object_draw(const Polyline<> & obj) const override;
 
         void visit_object_draw(const Circle<> & obj) const override;
+
+        void visit_object_draw(const Ellipsis<> & obj) const override;
 
         void visit_object_draw(const Polygon<> & obj) const override;
 

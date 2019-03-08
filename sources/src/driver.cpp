@@ -15,7 +15,7 @@ int main(void) {
     Canvas2D<3> canvas {200,200};
 
     YAMLSceneDescReader reader {std::make_unique<CanvasDescVisitor>(canvas)};
-    reader.read("/home/vitorgreati/git-repos/raster/examples/lines/lines.yml");
+    reader.read("/home/vitorgreati/git-repos/raster/examples/ellipsis/ellipsis.yml");
 
     NetpbmPrinter<unsigned char> printer;
 

@@ -6,6 +6,7 @@
 #include "objects/Polyline.h"
 #include "objects/Polygon.h"
 #include "objects/Circle.h"
+#include "objects/Ellipsis.h"
 
 #include <map>
 
@@ -28,6 +29,8 @@ class DescVisitor {
         virtual void visit_object_draw(const Circle<> & obj) const = 0;
 
         virtual void visit_object_draw(const Polygon<> & obj) const = 0;
+
+        virtual void visit_object_draw(const Ellipsis<> & obj) const = 0;
 
         virtual void visit_fill(const std::map<std::string, Polygon<>> & objs) const = 0;
 

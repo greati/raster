@@ -36,6 +36,13 @@ void CanvasDescVisitor::visit_object_draw(const Circle<> & obj) const {
     circle_drawer.draw(obj);
 }
 
+void CanvasDescVisitor::visit_object_draw(const Ellipsis<> & obj) const {
+
+    XiaolinWuEllipsisDrawer ellipsis_drawer {this->_canvas};
+    ///MidpointCircleDrawer circle_drawer {this->_canvas};
+    ellipsis_drawer.draw(obj);
+}
+
 void CanvasDescVisitor::visit_fill(const Polygon<> & obj) const {
     SquarePointSampler point_sampler {
         Size<2>{this->_canvas.width(), this->_canvas.height()}

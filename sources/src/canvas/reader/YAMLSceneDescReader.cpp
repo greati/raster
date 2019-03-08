@@ -66,6 +66,16 @@ void YAMLSceneDescReader::process_object(const YAML::Node & obj_node, const std:
                 this->_visitor->visit_object_draw(circle);
                 break;
             }
+        case Object::Type::ELLIPSIS: {
+                auto stroke = obj_node["stroke"].as<Object::Stroke<RGBColor>>();
+                auto radiusX = obj_node["radius_v"].as<double>();
+                auto radiusY = obj_node["radius_h"].as<double>();
+                auto center = obj_node["center"].as<Point2D<double>>();
+                Ellipsis<> ellipsis {center, {radiusX, radiusY}, stroke};
+                this->ellipsis.insert({obj_label, ellipsis});
+                this->_visitor->visit_object_draw(ellipsis);
+                break;
+            }
         case Object::Type::POLYLINE:
         case Object::Type::POLYGON: {
                 auto stroke = obj_node["stroke"] 
