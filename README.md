@@ -23,7 +23,7 @@ Objects:
     * [x] Wu (thickness 1)
     * [ ] Wu (thickness N)
 * [ ] Fills
-    * [x] Scan-line 
+    * [ ] Scan-line 
     * [x] Flood fill
     * [x] Boundary fill 
 * [ ] Antialiasing
