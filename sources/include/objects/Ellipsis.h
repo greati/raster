@@ -4,7 +4,7 @@
 template<typename T=double, typename ColorType = RGBColor>
 class Ellipsis : public Object {
 
-    private:
+    protected:
 
         std::pair<double, double> _radius;
         Point2D<T> _center;

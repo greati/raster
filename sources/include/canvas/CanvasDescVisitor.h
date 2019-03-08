@@ -14,7 +14,6 @@
 #include "drawers/PointDrawer.h"
 #include "drawers/PolylineDrawer.h"
 #include "drawers/MidpointCircleDrawer.h"
-#include "drawers/XiaolinWuCircleDrawer.h"
 #include "drawers/XiaolinWuEllipsisDrawer.h"
 #include "fillers/PolygonScanLineFiller.h"
 #include "fillers/FloodFiller.h"
