@@ -10,7 +10,7 @@ Objects:
     * [x] DDA (thickness 1)
     * [x] Bresenham (thickness 1)
     * [x] Wu (thickness 1)
-    * [ ] DDA (thickness N)
+    * [x] DDA (thickness N)
     * [ ] Bresenham (thickness N)
     * [ ] Wu (thickness N)
 * [ ] Circles
@@ -23,6 +23,9 @@ Objects:
     * [x] Wu (thickness 1)
     * [ ] Wu (thickness N)
 * [ ] Fills
+    * [x] Polygon interior finder
+    * [ ] Circle interior finder
+    * [ ] Ellipsis interior finder
     * [ ] Scan-line 
     * [x] Flood fill
     * [x] Boundary fill 
