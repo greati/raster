@@ -15,7 +15,7 @@ Objects:
     * [ ] Wu (thickness N)
 * [ ] Circles
     * [x] Midpoint (thickness 1)
-    * [ ] Midpoint (thickness N)
+    * [x] Midpoint (thickness N)
     * [x] Wu (thickness 1)
     * [ ] Wu (thickness N)
 * [ ] Arcs
