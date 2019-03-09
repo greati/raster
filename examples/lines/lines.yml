@@ -3,7 +3,15 @@ scene:
         my_line:
             type: line
             start: [10, 10]
-            end: [13, 100]
+            end: [50, 30]
             stroke:
                 color: [255, 255, 255]
-                thickness: 1
+                thickness: 2
+        another_line:
+            type: line
+            start: [50, 50]
+            end: [60, 100]
+            stroke:
+                color: [255, 255, 255]
+                thickness: 6
+

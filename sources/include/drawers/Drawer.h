@@ -26,6 +26,22 @@ class Drawer {
          * */
         virtual void draw(const ObjType & obj) const = 0;
 
+    protected:
+        void draw_line(int x, int y1, int y2, const RGBColor & color) const {
+            auto [r, g, b] = color;
+            while (y1 <= y2) {
+                this->_canvas.set({x, y1}, {r, g, b}, std::nothrow_t {});
+                y1++;
+            }
+        }
+
+        void draw_column(int x1, int x2, int y, const RGBColor & color) const {
+            auto [r, g, b] = color;
+            while (x1 <= x2) {
+                this->_canvas.set({x1, y}, {r, g, b}, std::nothrow_t {});
+                x1++;
+            }
+        }
 };
 
 #endif

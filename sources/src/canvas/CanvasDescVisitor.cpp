@@ -5,8 +5,9 @@ void CanvasDescVisitor::visit_scene_background(const std::string & background) c
 
 void CanvasDescVisitor::visit_object_draw(const LineSegment<> & obj) const {
 
+    DDALineDrawer bres_drawer {this->_canvas};
     //BresenhamLineDrawer bres_drawer {this->_canvas};
-    XiaolinWuLineDrawer bres_drawer {this->_canvas};
+    ///XiaolinWuLineDrawer bres_drawer {this->_canvas};
     bres_drawer.draw(obj);
 
 }

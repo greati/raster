@@ -10,6 +10,7 @@
 #include "objects/Ellipsis.h"
 #include "common.h"
 #include "drawers/BresenhamLineDrawer.h"
+#include "drawers/DDALineDrawer.h"
 #include "drawers/XiaolinWuLineDrawer.h"
 #include "drawers/PointDrawer.h"
 #include "drawers/PolylineDrawer.h"
