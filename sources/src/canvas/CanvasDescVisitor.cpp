@@ -88,6 +88,15 @@ void CanvasDescVisitor::visit_object_draw(const Circle<> & obj) const {
 void CanvasDescVisitor::visit_object_draw(const Ellipsis<> & obj) const {
     XiaolinWuEllipsisDrawer ellipsis_drawer {this->canvas()};
     ellipsis_drawer.draw(obj);
+
+    auto stroke = obj.stroke();
+    auto fill = obj.fill();
+    if (fill != std::nullopt) {
+        get_single_filler_ellipsis(fill.value().filler)->
+            fill(obj, fill.value().color, stroke.color, 
+                    SingleFiller<Ellipsis<>>::Connectivity::CONNECTED4, obj.center()
+            );
+    }
 }
 
 void CanvasDescVisitor::visit_scanline_fill(const std::map<std::string, Polygon<>> & objs) {
@@ -111,6 +120,16 @@ std::unique_ptr<Drawer<LineSegment<>>> CanvasDescVisitor::get_line_drawer(Object
             return std::move(std::make_unique<DDALineDrawer>(this->_canvas));
         case Object::StrokeDrawer::WU:
             return std::move(std::make_unique<XiaolinWuLineDrawer>(this->_canvas));
+    }
+    return nullptr;
+}
+
+std::unique_ptr<SingleFiller<Ellipsis<>>> CanvasDescVisitor::get_single_filler_ellipsis(Object::Filler filler) const {
+    switch(filler) {
+        case Object::Filler::BOUNDARY:
+            return std::move(std::make_unique<BoundaryFiller<Ellipsis<>>>(this->_canvas));
+        case Object::Filler::FLOOD:
+            return std::move(std::make_unique<FloodFiller<Ellipsis<>>>(this->_canvas));
     }
     return nullptr;
 }

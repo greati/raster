@@ -66,6 +66,8 @@ class CanvasDescVisitor : public DescVisitor {
 
         std::unique_ptr<SingleFiller<Circle<>>> get_single_filler_circle(Object::Filler filler) const;
 
+        std::unique_ptr<SingleFiller<Ellipsis<>>> get_single_filler_ellipsis(Object::Filler filler) const;
+
         std::unique_ptr<SingleFiller<Polygon<>>> get_single_filler_poly(Object::Filler filler) const;
 
         void visit_post_processing();

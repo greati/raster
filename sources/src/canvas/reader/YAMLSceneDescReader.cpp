@@ -83,7 +83,10 @@ void YAMLSceneDescReader::process_object(const YAML::Node & obj_node, const std:
                 auto radiusX = obj_node["radius_v"].as<double>();
                 auto radiusY = obj_node["radius_h"].as<double>();
                 auto center = obj_node["center"].as<Point2D<double>>();
-                Ellipsis<> ellipsis {center, {radiusX, radiusY}, stroke};
+                auto fill = obj_node["fill"]
+                    ? std::make_optional(obj_node["fill"].as<Object::Fill<RGBColor>>()) 
+                    : std::nullopt;
+                Ellipsis<> ellipsis {center, {radiusX, radiusY}, stroke, fill};
                 this->ellipsis.insert({obj_label, ellipsis});
                 this->_visitor->visit_object_draw(ellipsis);
                 break;

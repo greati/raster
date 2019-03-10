@@ -71,3 +71,14 @@ scene:
             fill:
                 color: [255, 0, 0]
                 filler: flood
+        my_ellipsis:
+            type: ellipsis
+            center: [500, 500]
+            radius_h: 60
+            radius_v: 30
+            stroke:
+                color: [255, 255, 255]
+                thickness: 2
+            fill:
+                color: [255, 0, 0]
+                filler: flood
