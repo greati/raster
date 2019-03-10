@@ -1,6 +1,10 @@
 #include "canvas/CanvasDescVisitor.h"
 
 void CanvasDescVisitor::visit_scene_background(const std::string & background) const {
+
+}
+
+void CanvasDescVisitor::visit_scene_size(const Size<2> & size) const {
 }
 
 void CanvasDescVisitor::visit_object_draw(const LineSegment<> & obj) const {
@@ -8,8 +12,10 @@ void CanvasDescVisitor::visit_object_draw(const LineSegment<> & obj) const {
     DDALineDrawer bres_drawer {this->_canvas};
     //BresenhamLineDrawer bres_drawer {this->_canvas};
     ///XiaolinWuLineDrawer bres_drawer {this->_canvas};
+    XiaolinWuLineDrawer wu_line_drawer {this->_canvas};
+    wu_line_drawer.draw(obj);
+    wu_line_drawer.draw(obj.parallel(obj.stroke().thickness));
     bres_drawer.draw(obj);
-
 }
 
 void CanvasDescVisitor::visit_object_draw(const Point<> & obj) const {

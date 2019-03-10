@@ -1,17 +1,25 @@
 scene:
     objects:
-        my_line:
-            type: line
-            start: [10, 10]
-            end: [50, 30]
-            stroke:
-                color: [255, 255, 255]
-                thickness: 2
-        another_line:
-            type: line
-            start: [50, 50]
-            end: [60, 100]
-            stroke:
-                color: [255, 255, 255]
-                thickness: 6
-
+        #my_line:
+        #    type: line
+        #    start: [10, 10]
+        #    end: [50, 16]
+        #    stroke:
+        #        color: [255, 255, 255]
+        #        thickness: 10
+       my_poly:
+           type: polygon
+           vertices:
+               - [10, 10]
+               - [15, 30]
+               - [40, 50]
+           stroke:
+               color: [255, 255, 255]
+               thickness: 1
+               #another_line:
+               #    type: line
+               #    start: [40, 10]
+               #    end: [10, 10]
+               #    stroke:
+               #        color: [255, 255, 255]
+               #        thickness: 2

@@ -11,8 +11,13 @@ void YAMLSceneDescReader::read(const std::string & filename) {
 
     auto scene = root_node["scene"];
 
-    if (scene["background"])
+    if (scene["width"] && scene["height"]) {
+        this->_visitor->visit_scene_size(Size<2>{scene["height"].as<int>(), scene["width"].as<int>()});
+    } else throw std::logic_error("provide the scene size in terms of height and width");
+
+    if (scene["background"]) {
         this->_visitor->visit_scene_background(scene["background"].as<std::string>());
+    } else throw std::logic_error("provide a background color for the scene");
 
     auto objects = scene["objects"];
 

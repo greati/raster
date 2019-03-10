@@ -6,6 +6,7 @@
 #include "drawers/Drawer.h"
 #include "drawers/BresenhamLineDrawer.h"
 #include "drawers/XiaolinWuLineDrawer.h"
+#include "drawers/DDALineDrawer.h"
 #include <iostream>
 
 class PolylineDrawer : Drawer<Polyline<>> {
@@ -16,12 +17,14 @@ class PolylineDrawer : Drawer<Polyline<>> {
 
         void draw(const Polyline<>& poly) const {
 
-            XiaolinWuLineDrawer line_drawer {this->_canvas};
+            //XiaolinWuLineDrawer line_drawer {this->_canvas};
+            DDALineDrawer line_drawer {this->_canvas};
 
             auto [r, g, b] = poly.stroke().value().color;
+            auto thickness = poly.stroke().value().thickness;
             auto vertices = poly.vertices();
             for (auto i = 0; i < vertices.size() - 1; ++i) {
-                line_drawer.draw(LineSegment<> {vertices[i], vertices[i+1], Object::Stroke<RGBColor>{{r, g, b}}}); 
+                line_drawer.draw(LineSegment<> {vertices[i], vertices[i+1], Object::Stroke<RGBColor>{{r, g, b}, thickness}}); 
             }
 
         }

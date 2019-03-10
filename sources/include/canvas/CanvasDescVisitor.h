@@ -35,6 +35,8 @@ class CanvasDescVisitor : public DescVisitor {
         
         void visit_scene_background(const std::string & background) const override;
 
+        void visit_scene_size(const Size<2> &) const override;
+
         void visit_object_draw(const Point<> & obj) const override;
 
         void visit_object_draw(const LineSegment<> & obj) const override;

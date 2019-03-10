@@ -21,7 +21,25 @@ class DDALineDrawer : public Drawer<LineSegment<>> {
             auto [r, g, b] = line.stroke().color;
             int thickness = line.stroke().thickness;
 
-            if (slope >= -1 and slope <= 1) {
+            // horizontal
+            if (p2x - p1x == 0) {
+                if (p2y < p1y) std::swap(p1, p2);
+                auto [p1x, p1y] = p1;
+                auto [p2x, p2y] = p2;
+                for (int y = p1y; y <= p2y+thickness-1; ++y) {
+                    draw_column(p1x, p1x+thickness-1, y, {r, g, b});
+                }             
+            }
+            //vertical
+            else if (p2y - p1y == 0) {
+                if (p2x < p1x) std::swap(p1, p2);
+                auto [p1x, p1y] = p1;
+                auto [p2x, p2y] = p2;
+                for (int x = p1x; x <= p2x+thickness-1; ++x) {
+                    draw_line(x, p1y, p1y + thickness-1, {r, g, b});
+                }
+            }
+            else if (slope >= -1 and slope <= 1) {
 
                 if (p2x < p1x) std::swap(p1, p2);
                 auto [p1x, p1y] = p1;
@@ -32,7 +50,6 @@ class DDALineDrawer : public Drawer<LineSegment<>> {
                     draw_column(x, x+thickness-1, std::round(y), {r, g, b});
                     y += slope;
                 }
-
             } else {
 
                 if (p2y < p1y) std::swap(p1, p2);
