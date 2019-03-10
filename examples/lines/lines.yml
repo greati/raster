@@ -59,5 +59,15 @@ scene:
                 filler: scanline
                 seed: [35, 50]
                 connectivity: 4
-
-
+        my_circle:
+            type: circle
+            center: [400, 400]
+            radius: 20
+            stroke:
+                color: [255, 255, 255]
+                thickness: 2
+                drawer: midpoint
+                antialiased: False
+            fill:
+                color: [255, 0, 0]
+                filler: flood

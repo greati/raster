@@ -58,9 +58,15 @@ class CanvasDescVisitor : public DescVisitor {
 
         void visit_scanline_fill(const std::map<std::string, Polygon<>> & objs) override;
 
+        std::unique_ptr<Drawer<Ellipsis<>>> get_ellipsis_drawer(Object::StrokeDrawer) const;
+
+        std::unique_ptr<Drawer<Circle<>>> get_circle_drawer(Object::StrokeDrawer) const;
+
         std::unique_ptr<Drawer<LineSegment<>>> get_line_drawer(Object::StrokeDrawer) const;
 
-        std::unique_ptr<SingleFiller<Polygon<>>> get_single_filler(Object::Filler filler) const;
+        std::unique_ptr<SingleFiller<Circle<>>> get_single_filler_circle(Object::Filler filler) const;
+
+        std::unique_ptr<SingleFiller<Polygon<>>> get_single_filler_poly(Object::Filler filler) const;
 
         void visit_post_processing();
 };

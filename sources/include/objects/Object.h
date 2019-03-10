@@ -20,7 +20,8 @@ class Object {
         enum class StrokeDrawer {
             BRESENHAM,
             DDA,
-            WU  
+            WU,
+            MIDPOINT
         };
 
         enum class Filler {

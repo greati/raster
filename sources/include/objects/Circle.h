@@ -8,8 +8,9 @@ class Circle : public Ellipsis<T, ColorType> {
 
     public:
 
-        Circle(const Point2D<T> & center, double radius, Object::Stroke<ColorType> stroke)
-            : Ellipsis<T, ColorType>(center, {radius, radius}, stroke) {/* empty */}
+        Circle(const Point2D<T> & center, double radius, Object::Stroke<ColorType> stroke,
+                std::optional<Object::Fill<ColorType>> fill)
+            : Ellipsis<T, ColorType>(center, {radius, radius}, stroke, fill) {/* empty */}
 
         inline double radius() const { return this->_radius.first; }
 

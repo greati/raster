@@ -5,8 +5,9 @@ template<int N>
 PixelValue<N> Canvas2D<N>::at(Point2D<int> point) const {
     auto [start, end] = real_pos(point);
     PixelValue<N> v;
-    for (auto i = start, j = 0; i < end; ++i, ++j)
+    for (auto i = start, j = 0; i < end; ++i, ++j) {
         v[j] = _data[i];
+    }
     return v;
 }
 

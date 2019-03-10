@@ -70,7 +70,10 @@ void YAMLSceneDescReader::process_object(const YAML::Node & obj_node, const std:
                 auto stroke = obj_node["stroke"].as<Object::Stroke<RGBColor>>();
                 auto radius = obj_node["radius"].as<double>();
                 auto center = obj_node["center"].as<Point2D<double>>();
-                Circle circle {center, radius, stroke};
+                auto fill = obj_node["fill"]
+                    ? std::make_optional(obj_node["fill"].as<Object::Fill<RGBColor>>()) 
+                    : std::nullopt;
+                Circle circle {center, radius, stroke, fill};
                 this->circles.insert({obj_label, circle});
                 this->_visitor->visit_object_draw(circle);
                 break;

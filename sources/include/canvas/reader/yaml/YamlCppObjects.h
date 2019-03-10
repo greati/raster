@@ -144,6 +144,8 @@ namespace YAML {
                     objtype = Object::StrokeDrawer::DDA;
                 else if (type == "wu")
                     objtype = Object::StrokeDrawer::WU;
+                else if (type == "midpoint")
+                    objtype = Object::StrokeDrawer::MIDPOINT;
                 else 
                     return false;
                 return true;
