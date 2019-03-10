@@ -2,7 +2,7 @@
 
 Raster in C++.
 
-Features:
+## Features:
 
 Objects:
 * [x] Points
