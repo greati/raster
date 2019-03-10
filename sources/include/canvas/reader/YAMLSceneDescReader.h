@@ -29,6 +29,8 @@ class YAMLSceneDescReader : public SceneDescReader {
        std::map<std::string, Polyline<>> polylines;
        std::map<std::string, Ellipsis<>> ellipsis;
 
+       std::map<std::string, Polygon<>> polygons_scanline;
+
     public:
 
        YAMLSceneDescReader(std::unique_ptr<DescVisitor> visitor) : _visitor {std::move(visitor)} {}

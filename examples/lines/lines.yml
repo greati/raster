@@ -19,9 +19,9 @@ scene:
         my_poly:
             type: polyline
             vertices:
-                - [30, 30]
-                - [30, 100]
-                - [40, 30]
+                - [300, 300]
+                - [305, 400]
+                - [500, 300]
             stroke:
                 color: [255, 255, 255]
                 thickness: 1
@@ -31,7 +31,7 @@ scene:
             type: polygon
             vertices:
                 - [30, 30]
-                - [30, 100]
+                - [20, 100]
                 - [40, 30]
             stroke:
                 color: [255, 255, 255]
@@ -40,7 +40,23 @@ scene:
                 antialiased: False
             fill:
                 color: [255, 0, 0]
-                filler: flood
+                filler: scanline
+                seed: [35, 50]
+                connectivity: 4
+        my_polygon2:
+            type: polygon
+            vertices:
+                - [200, 210]
+                - [220, 100]
+                - [230, 300]
+            stroke:
+                color: [255, 255, 255]
+                thickness: 1
+                drawer: bresenham
+                antialiased: False
+            fill:
+                color: [255, 0, 0]
+                filler: scanline
                 seed: [35, 50]
                 connectivity: 4
 

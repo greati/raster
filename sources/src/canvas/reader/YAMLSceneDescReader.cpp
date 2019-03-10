@@ -27,6 +27,10 @@ void YAMLSceneDescReader::read(const std::string & filename) {
         this->process_object(obj_node, obj_label);
     }
 
+    this->_visitor->visit_scanline_fill(polygons_scanline);
+
+    this->_visitor->visit_post_processing();
+
     //std::for_each(
     //        polygons.begin(),
     //        polygons.end(), 
@@ -100,6 +104,9 @@ void YAMLSceneDescReader::process_object(const YAML::Node & obj_node, const std:
                         ? std::make_optional(obj_node["fill"].as<Object::Fill<RGBColor>>()) 
                         : std::nullopt;
                     Polygon poly {vertices, stroke, fill};
+                    if (fill != std::nullopt and fill.value().filler == Object::Filler::SCANLINE) {
+                        polygons_scanline.insert({obj_label, poly}); 
+                    }
                     this->polygons.insert({obj_label, poly});
                     this->_visitor->visit_object_draw(poly);
                 }

@@ -9,7 +9,7 @@ void CanvasDescVisitor::visit_scene_size(const Size<2> & size) {
     this->_canvas.reset(size);
 }
 
-void CanvasDescVisitor::visit_object_draw(const LineSegment<> & obj) const {
+void CanvasDescVisitor::visit_object_draw(const LineSegment<> & obj) {
 
     auto stroke = obj.stroke();
     auto drawer = get_line_drawer(stroke.drawer);
@@ -35,7 +35,7 @@ void CanvasDescVisitor::visit_object_draw(const Point<> & obj) const {
     point_drawer.draw(obj);
 }
 
-void CanvasDescVisitor::visit_object_draw(const Polyline<> & obj) const {
+void CanvasDescVisitor::visit_object_draw(const Polyline<> & obj) {
     auto vertices = obj.vertices();
     auto stroke = obj.stroke().value();
     for (auto i = 0; i < vertices.size() - 1; ++i) {
@@ -43,7 +43,7 @@ void CanvasDescVisitor::visit_object_draw(const Polyline<> & obj) const {
     }
 }
 
-void CanvasDescVisitor::visit_object_draw(const Polygon<> & obj) const {
+void CanvasDescVisitor::visit_object_draw(const Polygon<> & obj) {
 
     auto vertices = obj.vertices();
     auto fill = obj.fill();
@@ -56,9 +56,7 @@ void CanvasDescVisitor::visit_object_draw(const Polygon<> & obj) const {
     };
 
     if (fill != std::nullopt) {
-        if (fill.value().filler == Object::Filler::SCANLINE) {
-            // just add 
-        } else {
+        if (fill.value().filler != Object::Filler::SCANLINE) {
             if (stroke != std::nullopt) {
                 draw_stroke();
                 get_single_filler(fill.value().filler)->fill(obj, fill.value().color, stroke.value().color,
@@ -85,22 +83,17 @@ void CanvasDescVisitor::visit_object_draw(const Ellipsis<> & obj) const {
     ellipsis_drawer.draw(obj);
 }
 
-void CanvasDescVisitor::visit_fill(const Polygon<> & obj) const {
-    //SquarePointSampler point_sampler {
-    //    Size<2>{this->canvas().width(), this->canvas().height()}
-    //};
-    //PolygonInteriorFinder interior_finder {point_sampler};
-    //FloodFiller<Polygon<>> filler {
-    //BoundaryFiller<Polygon<>> filler {
-    //    this->canvas(),
-    //    interior_finder
-    //};
-    //filler.fill(obj, obj.fill().value().color, obj.stroke().value().color, FloodFiller<Polygon<>>::Connectivity::CONNECTED4);
-}
-
-void CanvasDescVisitor::visit_fill(const std::map<std::string, Polygon<>> & objs) const {
+void CanvasDescVisitor::visit_scanline_fill(const std::map<std::string, Polygon<>> & objs) {
     PolygonScanLineFiller filler {this->canvas()};
     filler.fill(objs); 
+
+    for (auto [name, pol] : objs) {
+        auto vertices = pol.vertices();
+        auto stroke = pol.stroke();
+        for (auto i = 0; i < vertices.size() - 1; ++i) {
+            this->visit_object_draw(LineSegment<> {vertices[i], vertices[i+1], stroke.value()}); 
+        }
+    }
 }
 
 std::unique_ptr<Drawer<LineSegment<>>> CanvasDescVisitor::get_line_drawer(Object::StrokeDrawer drawer) const {
@@ -124,4 +117,8 @@ std::unique_ptr<SingleFiller<Polygon<>>> CanvasDescVisitor::get_single_filler(Ob
             return std::move(std::make_unique<FloodFiller<Polygon<>>>(this->_canvas));
     }
     return nullptr;
+}
+
+void CanvasDescVisitor::visit_post_processing() {
+
 }
