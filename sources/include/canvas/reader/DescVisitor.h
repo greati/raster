@@ -18,9 +18,9 @@ class DescVisitor {
 
         ~DescVisitor() {};
 
-        virtual void visit_scene_background(const std::string & background) const = 0;
+        virtual void visit_scene_background(const RGBColor & background) const = 0;
 
-        virtual void visit_scene_size(const Size<2> &) const = 0;
+        virtual void visit_scene_size(const Size<2> &) = 0;
 
         virtual void visit_object_draw(const Point<> & obj) const = 0;
 

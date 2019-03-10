@@ -60,6 +60,10 @@ namespace YAML {
                 stroke.color = node["color"].as<RGBColor>();
                 if (node["thickness"])
                     stroke.thickness = node["thickness"].as<int>();
+                if (node["drawer"])
+                    stroke.drawer = node["drawer"].as<Object::StrokeDrawer>();
+                if (node["antialiased"])
+                    stroke.antialiased = node["antialiased"].as<bool>();
                 return true;
             }
        };
@@ -72,6 +76,10 @@ namespace YAML {
             }
             static bool decode(const Node& node, Object::Fill<RGBColor> & fill) {
                 fill.color = node["color"].as<RGBColor>();
+                if (node["filler"])
+                    fill.filler = node["filler"].as<Object::Filler>();
+                if (node["seed"])
+                    fill.seed = node["seed"].as<Point2D<int>>();
                 return true;
             }
        };
@@ -97,6 +105,46 @@ namespace YAML {
                 else if (type == "ellipsis")
                     objtype = Object::Type::ELLIPSIS;
                 else
+                    return false;
+                return true;
+            }
+       };
+
+       template<>
+       struct convert<Object::Filler> {
+            static Node encode(const Object::Filler& rhs) {
+                Node node;
+                return node;
+            }
+            static bool decode(const Node& node, Object::Filler & objtype) {
+                auto type = node.as<std::string>();
+                if (type == "scanline")
+                    objtype = Object::Filler::SCANLINE;
+                else if (type == "flood")
+                    objtype = Object::Filler::FLOOD;
+                else if (type == "boundary")
+                    objtype = Object::Filler::BOUNDARY;
+                else 
+                    return false;
+                return true;
+            }
+       };
+
+       template<>
+       struct convert<Object::StrokeDrawer> {
+            static Node encode(const Object::StrokeDrawer& rhs) {
+                Node node;
+                return node;
+            }
+            static bool decode(const Node& node, Object::StrokeDrawer & objtype) {
+                auto type = node.as<std::string>();
+                if (type == "bresenham")
+                    objtype = Object::StrokeDrawer::BRESENHAM;
+                else if (type == "dda")
+                    objtype = Object::StrokeDrawer::DDA;
+                else if (type == "wu")
+                    objtype = Object::StrokeDrawer::WU;
+                else 
                     return false;
                 return true;
             }

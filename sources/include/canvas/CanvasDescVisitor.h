@@ -1,8 +1,10 @@
 #ifndef __CANVASDESCVISITOR__
 #define __CANVASDESCVISITOR__
 
+#include <functional>
 #include "canvas/reader/DescVisitor.h"
 #include "canvas/Canvas.h"
+#include "canvas/Canvas2D.h"
 #include "objects/Point.h"
 #include "objects/LineSegment.h"
 #include "objects/Polyline.h"
@@ -20,6 +22,7 @@
 #include "fillers/FloodFiller.h"
 #include "fillers/BoundaryFiller.h"
 #include "interior_finders/PolygonInteriorFinder.h"
+#include <memory>
 
 class CanvasDescVisitor : public DescVisitor {
 
@@ -33,9 +36,13 @@ class CanvasDescVisitor : public DescVisitor {
 
         ~CanvasDescVisitor() {}
         
-        void visit_scene_background(const std::string & background) const override;
+        auto & canvas() const {
+            return this->_canvas;
+        }
 
-        void visit_scene_size(const Size<2> &) const override;
+        void visit_scene_background(const RGBColor & background) const override;
+
+        void visit_scene_size(const Size<2> &) override;
 
         void visit_object_draw(const Point<> & obj) const override;
 
@@ -53,6 +60,9 @@ class CanvasDescVisitor : public DescVisitor {
 
         void visit_fill(const Polygon<>& obj) const override;
 
+        std::unique_ptr<Drawer<LineSegment<>>> get_line_drawer(Object::StrokeDrawer) const;
+
+        std::unique_ptr<SingleFiller<Polygon<>>> get_single_filler(Object::Filler filler) const;
 };
 
 #endif

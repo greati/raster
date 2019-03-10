@@ -16,7 +16,7 @@ void YAMLSceneDescReader::read(const std::string & filename) {
     } else throw std::logic_error("provide the scene size in terms of height and width");
 
     if (scene["background"]) {
-        this->_visitor->visit_scene_background(scene["background"].as<std::string>());
+        this->_visitor->visit_scene_background(scene["background"].as<RGBColor>());
     } else throw std::logic_error("provide a background color for the scene");
 
     auto objects = scene["objects"];
@@ -27,13 +27,13 @@ void YAMLSceneDescReader::read(const std::string & filename) {
         this->process_object(obj_node, obj_label);
     }
 
-    std::for_each(
-            polygons.begin(),
-            polygons.end(), 
-            [this](std::pair<std::string, Polygon<>> entry){
-                this->_visitor->visit_object_draw(entry.second);         
-            }
-    );
+    //std::for_each(
+    //        polygons.begin(),
+    //        polygons.end(), 
+    //        [this](std::pair<std::string, Polygon<>> entry){
+    //            this->_visitor->visit_object_draw(entry.second);         
+    //        }
+    //);
     
     // JUST TESTING
     //this->_visitor->visit_fill(this->polygons.find("my_poly")->second);
@@ -101,8 +101,7 @@ void YAMLSceneDescReader::process_object(const YAML::Node & obj_node, const std:
                         : std::nullopt;
                     Polygon poly {vertices, stroke, fill};
                     this->polygons.insert({obj_label, poly});
-                    //if (stroke != std::nullopt)
-                    //    this->_visitor->visit_object_draw(poly);
+                    this->_visitor->visit_object_draw(poly);
                 }
                 break;
             }
