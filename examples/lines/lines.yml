@@ -31,13 +31,15 @@ scene:
             type: polygon
             vertices:
                 - [30, 30]
-                - [20, 100]
-                - [40, 30]
+                - [50, 70]
+                - [30, 80]
+                - [100, 80]
+                - [100, 30]
             stroke:
                 color: [255, 255, 255]
                 thickness: 1
                 drawer: bresenham
-                antialiased: False
+                antialiased: True
             fill:
                 color: [255, 0, 0]
                 filler: scanline
@@ -53,7 +55,24 @@ scene:
                 color: [255, 255, 255]
                 thickness: 1
                 drawer: bresenham
-                antialiased: False
+                antialiased: True
+            fill:
+                color: [255, 0, 0]
+                filler: scanline
+                seed: [35, 50]
+                connectivity: 4
+        my_rect:
+            type: polygon
+            vertices:
+                - [150, 160]
+                - [150, 200]
+                - [170, 200]
+                - [160, 150]
+            stroke:
+                color: [255, 255, 255]
+                thickness: 1
+                drawer: bresenham
+                antialiased: True
             fill:
                 color: [255, 0, 0]
                 filler: scanline
