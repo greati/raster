@@ -91,7 +91,7 @@ namespace YAML {
                 return node;
             }
             static bool decode(const Node& node, Object::Type & objtype) {
-                auto type = node["type"].as<std::string>();
+                auto type = node.as<std::string>();
                 if (type == "point")
                     objtype = Object::Type::POINT;
                 else if (type == "line")

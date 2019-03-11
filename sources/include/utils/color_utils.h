@@ -23,6 +23,8 @@ namespace raster {
      * */
     RGBColor apply_brightness_rgb(const RGBColor & rgb, float brightness);
 
+    RGBColor blend_rgbs(const RGBColor & rgb1, const RGBColor & rgb2);
+
 };
 
 #endif

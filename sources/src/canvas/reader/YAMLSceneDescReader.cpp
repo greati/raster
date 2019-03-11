@@ -19,6 +19,10 @@ void YAMLSceneDescReader::read(const std::string & filename) {
         this->_visitor->visit_scene_background(scene["background"].as<RGBColor>());
     } else throw std::logic_error("provide a background color for the scene");
 
+    if (scene["global_aa"]) {
+        this->_visitor->visit_scene_global_aa(scene["global_aa"].as<bool>()); 
+    }
+
     auto objects = scene["objects"];
 
     for (auto it = objects.begin(); it != objects.end(); ++it) {
@@ -31,22 +35,14 @@ void YAMLSceneDescReader::read(const std::string & filename) {
 
     this->_visitor->visit_post_processing();
 
-    //std::for_each(
-    //        polygons.begin(),
-    //        polygons.end(), 
-    //        [this](std::pair<std::string, Polygon<>> entry){
-    //            this->_visitor->visit_object_draw(entry.second);         
-    //        }
-    //);
-    
-    // JUST TESTING
-    //this->_visitor->visit_fill(this->polygons.find("my_poly")->second);
-
-    ///this->_visitor->visit_fill(this->polygons);
 }
 
 void YAMLSceneDescReader::process_object(const YAML::Node & obj_node, const std::string & obj_label) {
-    Object::Type obj_type = obj_node.as<Object::Type>();
+    
+    if (!obj_node["type"])
+        throw std::logic_error("every object must have a type");
+
+    Object::Type obj_type = obj_node["type"].as<Object::Type>();
 
     switch (obj_type) {
         case Object::Type::POINT: {

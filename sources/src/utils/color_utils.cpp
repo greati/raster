@@ -1,6 +1,7 @@
 #include "utils/color_utils.h"
 #include <cmath>
 #include <algorithm>
+#include <iostream>
 
 /**
  * Convert from RGB to HSV.
@@ -17,8 +18,18 @@ HSVColor raster::rgb_to_hsv(const RGBColor & rgb) {
     float max = std::max({rf, gf, bf});
     float min = std::min({rf, gf, bf});
 
-    // compute H
     float h = 0;
+    float s = 0;
+    float v = 0;
+    if (max > 0) {
+        s = (max - min) / max;
+    } else {
+        s = 0;
+        h = NAN;
+        return HSVColor{h, s, max};
+    }
+
+    // compute H
     if (rf == max and gf >= bf)
         h = 60 * (gf - bf) / (max - min) + 0;
     else if (rf == max and gf < bf)
@@ -27,10 +38,9 @@ HSVColor raster::rgb_to_hsv(const RGBColor & rgb) {
         h = 60 * (bf - rf) / (max - min) + 120; 
     else if (bf == max)
         h = 60 * (rf - gf) / (max - min) + 240;
-    // compute S
-    float s = (max - min) / max;
+
     // compute V
-    float v = max;
+    v = max;
 
     return HSVColor{h, s, v};
 }
@@ -47,7 +57,7 @@ RGBColor raster::hsv_to_rgb(const HSVColor & hsv) {
         return RGBColor{rf*255, gf*255, bf*255}; 
     };
 
-    if (s == 0)
+    if (s <= 0)
         return to255(v, v, v);
 
     auto Hi = static_cast<int>(std::floor(h / 60.0)) % 6;
@@ -76,5 +86,11 @@ RGBColor raster::apply_brightness_rgb(const RGBColor & rgb, float brightness) {
         throw std::invalid_argument("brightness must be in the [0.0, 1.0] range");
     }
     auto [h, s, v] = rgb_to_hsv(rgb);
-    return hsv_to_rgb({h, s, brightness});
+    return hsv_to_rgb({h, s, brightness*v});
+}
+
+RGBColor raster::blend_rgbs(const RGBColor & rgb1, const RGBColor & rgb2) {
+    auto [r1, g1, b1] = rgb1;
+    auto [r2, g2, b2] = rgb2;
+    return RGBColor {(r1+r2)/ 2, (g1+g2)/ 2, (b1+b2)/2};
 }

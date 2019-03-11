@@ -10,12 +10,20 @@
 #include "objects/Point.h"
 #include "canvas/CanvasDescVisitor.h"
 
-int main(void) {
+int main(int argn, char* args[]) {
 
     Canvas2D<3> canvas {200,200};
 
+    std::string file_path;
+    if (argn < 2) {
+        std::cout << "provide a description file path";
+        return 0;
+    }
+
+    file_path = std::string(args[1]);
+
     YAMLSceneDescReader reader {std::make_unique<CanvasDescVisitor>(canvas)};
-    reader.read("/home/vitorgreati/git-repos/raster/examples/lines/lines.yml");
+    reader.read(file_path);
 
     NetpbmPrinter<unsigned char> printer;
 

@@ -1,0 +1,26 @@
+scene:
+    width: 800
+    height: 600
+    background: [255, 255, 255]
+    global_aa: True
+    objects:
+        1:
+             type: polygon
+             vertices: [[100, 100], [20, 160], [100, 150]]
+             stroke:
+                 color: [0, 0, 0]
+                 thickness: 1
+                 drawer: bresenham
+             fill:
+                 color: [153, 204, 255]
+                 filler: scanline
+        2:
+             type: polygon
+             vertices: [[20, 160],[100, 220],[100, 150]]
+             stroke:
+                 color: [0, 0, 0]
+                 thickness: 1
+                 drawer: bresenham
+             fill:
+                 color: [153, 204, 255]
+                 filler: scanline

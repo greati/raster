@@ -5,6 +5,10 @@ void CanvasDescVisitor::visit_scene_background(const RGBColor & background) cons
     this->_canvas.clear({r, g, b});
 }
 
+void CanvasDescVisitor::visit_scene_global_aa(bool aa) {
+    this->global_aa = aa;
+}
+
 void CanvasDescVisitor::visit_scene_size(const Size<2> & size) {
     this->_canvas.reset(size);
 }
@@ -174,5 +178,10 @@ std::unique_ptr<Drawer<Ellipsis<>>> CanvasDescVisitor::get_ellipsis_drawer(Objec
 }
 
 void CanvasDescVisitor::visit_post_processing() {
-
+    if (this->global_aa)
+        raster::convolve(this->_canvas, 
+                {{1./16, 2./16, 1./16},
+                 {2./16, 4./16, 2./16},
+                 {1./16, 2./16, 1./16}
+                }, {0, 0}, {this->_canvas.height()-1, this->_canvas.width()-1});
 }

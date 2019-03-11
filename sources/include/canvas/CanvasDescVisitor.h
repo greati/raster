@@ -2,6 +2,7 @@
 #define __CANVASDESCVISITOR__
 
 #include <functional>
+#include "utils/imgproc_utils.h"
 #include "canvas/reader/DescVisitor.h"
 #include "canvas/Canvas.h"
 #include "canvas/Canvas2D.h"
@@ -29,6 +30,8 @@ class CanvasDescVisitor : public DescVisitor {
     private:
 
         Canvas<Point2D<int>> & _canvas;
+
+        bool global_aa;
        
     public:
 
@@ -40,7 +43,10 @@ class CanvasDescVisitor : public DescVisitor {
             return this->_canvas;
         }
 
+
         void visit_scene_background(const RGBColor & background) const override;
+
+        void visit_scene_global_aa(bool aa) override;
 
         void visit_scene_size(const Size<2> &) override;
 

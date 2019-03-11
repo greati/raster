@@ -69,7 +69,7 @@ target_include_directories(printer PRIVATE include)
 add_library(geometry_utils src/utils/geometry_utils.cpp)
 target_include_directories(geometry_utils PRIVATE include)
 
-add_library(color_utils src/utils/color_utils.cpp)
+add_library(color_utils src/utils/color_utils.cpp src/utils/imgproc_utils.cpp)
 target_include_directories(color_utils PUBLIC include)
 
 # executables

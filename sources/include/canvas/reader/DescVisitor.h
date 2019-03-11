@@ -20,6 +20,8 @@ class DescVisitor {
 
         virtual void visit_scene_background(const RGBColor & background) const = 0;
 
+        virtual void visit_scene_global_aa(bool aa) = 0;
+
         virtual void visit_scene_size(const Size<2> &) = 0;
 
         virtual void visit_object_draw(const Point<> & obj) const = 0;
