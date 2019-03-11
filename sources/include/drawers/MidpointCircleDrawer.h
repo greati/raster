@@ -21,16 +21,44 @@ class MidpointCircleDrawer : public Drawer<Circle<>> {
             int y_inner = y_outer - thickness + 1;
             int p_inner = 1 - y_inner;
 
-            while (x <= y_outer) {
+            float start_angle = 0.0, end_angle = 360.0;
+            if (circle.angle_limits() != std::nullopt) {
+                start_angle = circle.angle_limits().value().first; 
+                end_angle = circle.angle_limits().value().second; 
+            }
 
-                draw_column(xc + y_inner, xc + y_outer, yc + x,  color);
-                draw_line(xc + x,  yc + y_inner, yc + y_outer, color);
-                draw_column(xc - y_outer, xc - y_inner, yc + x,  color);
-                draw_line(xc - x,  yc + y_inner, yc + y_outer, color);
-                draw_column(xc - y_outer, xc - y_inner, yc - x,  color);
-                draw_line(xc - x,  yc - y_outer, yc - y_inner, color);
+            auto angle_between = [start_angle, end_angle](const float& angle) {
+                return angle >= start_angle and angle <= end_angle;
+            };
+
+            while (x <= y_outer) {
+                // discover the angle
+                float angle_1 = std::floor(std::acos(static_cast<float>(y_outer)/radius) * (180.0 / M_PI));
+                float angle_2 = 90.0 - angle_1; 
+                float angle_3 = 90.0 + angle_1; 
+                float angle_4 = 180.0 - angle_1;
+                float angle_5 = 180.0 + angle_1;
+                float angle_6 = 270.0 - angle_1;
+                float angle_7 = 270.0 + angle_1;
+                float angle_8 = 360.0 - angle_1;
+
+            if (angle_between(angle_2)) {// 2 
+                draw_column(xc + y_inner, xc + y_outer, yc + x,  color); // yc+x (1)
+            }
+            if (angle_between(angle_1)) // 1
+                  draw_line(xc + x,  yc + y_inner, yc + y_outer, color); // yc + y_inner
+            if (angle_between(angle_7)) // 7
+                draw_column(xc - y_outer, xc - y_inner, yc + x,  color); 
+            if (angle_between(angle_8)) // 8
+                draw_line(xc - x,  yc + y_inner, yc + y_outer, color); // yc + y_inner
+            if (angle_between(angle_6)) // 6
+                draw_column(xc - y_outer, xc - y_inner, yc - x,  color); // yc-x(2)
+            if (angle_between(angle_5)) // 5
+                draw_line(xc - x,  yc - y_outer, yc - y_inner, color); // yc - y_outer
+            if (angle_between(angle_3)) // 3
                 draw_column(xc + y_inner, xc + y_outer, yc - x,  color);
-                draw_line(xc + x,  yc - y_outer, yc - y_inner, color);
+            if (angle_between(angle_4)) // 4
+                 draw_line(xc + x,  yc - y_outer, yc - y_inner, color); // yc - y_outer
 
                 x++;
                 if (p_outer < 0)

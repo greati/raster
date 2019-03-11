@@ -114,10 +114,13 @@ void YAMLSceneDescReader::process_object(const YAML::Node & obj_node, const std:
                 auto stroke = get_stroke(obj_node["stroke"]).value();
                 auto radius = obj_node["radius"].as<double>();
                 auto center = find_point(obj_node["center"]).value();
+                std::optional<std::pair<float, float>> arc = std::nullopt;
+                if (obj_node["arc"])
+                     arc = {obj_node["arc"][0].as<double>(), obj_node["arc"][1].as<double>()};  
                 std::optional<Object::Fill<>> fill = std::nullopt;
                 if (obj_node["fill"])
                     fill = get_fill(obj_node["fill"]);
-                Circle circle {center, radius, stroke, fill};
+                Circle circle {center, radius, stroke, fill, arc};
                 this->circles.insert({obj_label, circle});
                 this->_visitor->visit_object_draw(circle);
                 break;
@@ -128,7 +131,10 @@ void YAMLSceneDescReader::process_object(const YAML::Node & obj_node, const std:
                 auto radiusY = obj_node["radius_h"].as<double>();
                 auto center = find_point(obj_node["center"]).value();
                 auto fill = get_fill(obj_node["fill"]);
-                Ellipsis<> ellipsis {center, {radiusX, radiusY}, stroke, fill};
+                std::optional<std::pair<float, float>> arc = std::nullopt;
+                if (obj_node["arc"])
+                     arc = {obj_node["arc"][0].as<double>(), obj_node["arc"][1].as<double>()};  
+                Ellipsis<> ellipsis {center, {radiusX, radiusY}, stroke, fill, arc};
                 this->ellipsis.insert({obj_label, ellipsis});
                 this->_visitor->visit_object_draw(ellipsis);
                 break;
