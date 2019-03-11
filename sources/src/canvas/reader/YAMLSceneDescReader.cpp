@@ -1,4 +1,5 @@
 #include <iostream>
+#include "lodepng.h"
 #include "canvas/reader/YAMLSceneDescReader.h"
 #include "canvas/reader/yaml/YamlCppObjects.h"
 
@@ -56,8 +57,14 @@ void YAMLSceneDescReader::read(const std::string & filename) {
     } else throw std::logic_error("provide the scene size in terms of height and width");
 
     if (scene["background"]) {
-        this->_visitor->visit_scene_background(scene["background"].as<RGBColor>());
-    } else throw std::logic_error("provide a background color for the scene");
+        auto bgcolor = get_color(scene["background"]);
+        if (bgcolor == std::nullopt) {
+            std::string file_path = scene["background"].as<std::string>();
+            this->_visitor->visit_scene_background(file_path);
+        } else {
+            this->_visitor->visit_scene_background(bgcolor.value());
+        }
+    }
 
     if (scene["global_aa"]) {
         this->_visitor->visit_scene_global_aa(scene["global_aa"].as<bool>()); 

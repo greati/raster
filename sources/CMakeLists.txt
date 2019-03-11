@@ -56,7 +56,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 # libraries
 # --------------------------------------- #
 add_library(yamlscenedescreader src/canvas/reader/YAMLSceneDescReader.cpp)
-target_link_libraries(yamlscenedescreader PUBLIC yaml-cpp PRIVATE geometry_utils PRIVATE color_utils)
+target_link_libraries(yamlscenedescreader PUBLIC yaml-cpp PRIVATE geometry_utils PRIVATE color_utils PRIVATE lodepng)
 target_include_directories(yamlscenedescreader PRIVATE include)
 target_include_directories(yamlscenedescreader PUBLIC ${yamlcpp_SOURCE_DIR}/include)
 
@@ -71,6 +71,9 @@ target_include_directories(geometry_utils PRIVATE include)
 
 add_library(color_utils src/utils/color_utils.cpp src/utils/imgproc_utils.cpp)
 target_include_directories(color_utils PUBLIC include)
+
+add_library(lodepng src/lodepng.cpp)
+target_include_directories(lodepng PUBLIC include)
 
 # executables
 # --------------------------------------- #

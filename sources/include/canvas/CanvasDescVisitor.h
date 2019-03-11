@@ -46,6 +46,8 @@ class CanvasDescVisitor : public DescVisitor {
 
         void visit_scene_background(const RGBColor & background) const override;
 
+        void visit_scene_background(const std::string & filepath) const override;
+
         void visit_scene_global_aa(bool aa) override;
 
         void visit_scene_size(const Size<2> &) override;

@@ -1,8 +1,29 @@
 #include "canvas/CanvasDescVisitor.h"
+#include "lodepng.h"
 
 void CanvasDescVisitor::visit_scene_background(const RGBColor & background) const {
     auto [r, g, b] = background;
     this->_canvas.clear({r, g, b});
+}
+
+void CanvasDescVisitor::visit_scene_background(const std::string & filepath) const {
+     std::vector<unsigned char> image; //the raw pixels
+     unsigned width, height;
+     unsigned error = lodepng::decode(image, width, height, filepath);
+     if (error) {
+         std::cout << "error when loading the background image...";
+         return;
+     }
+
+     int row, col;
+     for (int i = 0; i < this->_canvas.width() * this->_canvas.height(); i += 4) {
+         auto r = image[i]; 
+         auto g = image[i + 1]; 
+         auto b = image[i + 2];
+         row = i / (4*width);
+         col = (i/4) - row*width;
+         this->_canvas.set({row, col}, {r, g, b});
+     }
 }
 
 void CanvasDescVisitor::visit_scene_global_aa(bool aa) {
