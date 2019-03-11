@@ -2,6 +2,7 @@
 #define __YAMLCPPOBJS__
 
 #include "yaml-cpp/yaml.h"
+#include "canvas/reader/SceneSettings.h"
 
 namespace YAML {
        template<>
@@ -57,7 +58,13 @@ namespace YAML {
                 return node;
             }
             static bool decode(const Node& node, Object::Stroke<RGBColor> & stroke) {
-                stroke.color = node["color"].as<RGBColor>();
+                if (!node.IsMap())
+                    return false;
+                try {
+                    stroke.color = node["color"].as<RGBColor>();
+                } catch (const YAML::BadConversion & e) {
+                    stroke.color = SceneSettings::get_color(node["color"].as<std::string>()); 
+                }
                 if (node["thickness"])
                     stroke.thickness = node["thickness"].as<int>();
                 if (node["drawer"])
@@ -75,7 +82,13 @@ namespace YAML {
                 return node;
             }
             static bool decode(const Node& node, Object::Fill<RGBColor> & fill) {
-                fill.color = node["color"].as<RGBColor>();
+                if (!node.IsMap())
+                    return false;
+                try {
+                    fill.color = node["color"].as<RGBColor>();
+                } catch (const YAML::BadConversion & e) {
+                    fill.color = SceneSettings::get_color(node["color"].as<std::string>()); 
+                }
                 if (node["filler"])
                     fill.filler = node["filler"].as<Object::Filler>();
                 if (node["seed"])

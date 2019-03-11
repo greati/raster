@@ -1,38 +1,40 @@
+settings:
+    colors:
+        darker_blue: [153, 204, 255]
+    points:
+        a: [20, 20]
+        b: [30, 30]
+    strokes:
+        dark_face:
+            color: black
+            thickness: 1
+            drawer: bresenham
+    fills:
+        dark_face:
+            color: darker_blue
+            filler: scanline
 scene:
     width: 800
     height: 600
     background: [255, 255, 255]
-    global_aa: False
-    points:
-        a: [20, 20]
-        b: [30, 30]
+    global_aa: True
     objects:
+        00:
+            type: point
+            coords: a
+            color: red
         3:
             type: circle
             radius: 30
             center: a
-            stroke:
-                color: [255, 255, 255]
-                thickness: 1
-                drawer: wu
-
+            stroke: dark_face
         1:
-             type: polygon
-             vertices: [b, [20, 160], [100, 150]]
-             stroke:
-                 color: [0, 0, 0]
-                 thickness: 1
-                 drawer: bresenham
-             fill:
-                 color: [153, 204, 255]
-                 filler: scanline
+            type: polygon
+            vertices: [b, [20, 160], [100, 150]]
+            stroke: dark_face
+            fill: dark_face
         2:
-             type: polygon
-             vertices: [[20, 160],[100, 220],[100, 150]]
-             stroke:
-                 color: [0, 0, 0]
-                 thickness: 1
-                 drawer: bresenham
-             fill:
-                 color: [153, 204, 255]
-                 filler: scanline
+            type: polygon
+            vertices: [[20, 160],[100, 220],[100, 150]]
+            stroke: dark_face
+            fill: dark_face
