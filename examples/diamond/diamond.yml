@@ -16,7 +16,7 @@ settings:
 scene:
     width: 800
     height: 600
-    background: "/home/vitorgreati/git-repos/raster/examples/penguin_background.png" #[255, 255, 255]
+    background: "/home/vitorgreati/git-repos/raster/examples/penguin_background.png"
     global_aa: True
     objects:
         00:
