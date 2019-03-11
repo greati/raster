@@ -105,14 +105,11 @@ void YAMLSceneDescReader::process_object(const YAML::Node & obj_node, const std:
             }
         case Object::Type::CIRCLE: {
                 auto stroke = get_stroke(obj_node["stroke"]).value();
-                //auto stroke = obj_node["stroke"].as<Object::Stroke<RGBColor>>();
                 auto radius = obj_node["radius"].as<double>();
-                auto center = find_point(obj_node["center"]).value();//obj_node["center"].as<Point2D<double>>();
+                auto center = find_point(obj_node["center"]).value();
                 std::optional<Object::Fill<>> fill = std::nullopt;
                 if (obj_node["fill"])
-                    fill = get_fill(obj_node["fill"]);//obj_node["fill"]
-                    //? std::make_optional(obj_node["fill"].as<Object::Fill<RGBColor>>()) 
-                    //: std::nullopt;
+                    fill = get_fill(obj_node["fill"]);
                 Circle circle {center, radius, stroke, fill};
                 this->circles.insert({obj_label, circle});
                 this->_visitor->visit_object_draw(circle);
@@ -120,14 +117,10 @@ void YAMLSceneDescReader::process_object(const YAML::Node & obj_node, const std:
             }
         case Object::Type::ELLIPSIS: {
                 auto stroke = get_stroke(obj_node["stroke"]).value();
-                //auto stroke = obj_node["stroke"].as<Object::Stroke<RGBColor>>();
                 auto radiusX = obj_node["radius_v"].as<double>();
                 auto radiusY = obj_node["radius_h"].as<double>();
-                auto center = find_point(obj_node["center"]).value();//obj_node["center"].as<Point2D<double>>();
-                auto fill = get_fill(obj_node["fill"]);//obj_node["fill"]
-                //auto fill = obj_node["fill"]
-                //    ? std::make_optional(obj_node["fill"].as<Object::Fill<RGBColor>>()) 
-                //    : std::nullopt;
+                auto center = find_point(obj_node["center"]).value();
+                auto fill = get_fill(obj_node["fill"]);
                 Ellipsis<> ellipsis {center, {radiusX, radiusY}, stroke, fill};
                 this->ellipsis.insert({obj_label, ellipsis});
                 this->_visitor->visit_object_draw(ellipsis);
@@ -136,9 +129,6 @@ void YAMLSceneDescReader::process_object(const YAML::Node & obj_node, const std:
         case Object::Type::POLYLINE:
         case Object::Type::POLYGON: {
                 auto stroke = get_stroke(obj_node["stroke"]);
-                //auto stroke = obj_node["stroke"] 
-                //    ? std::make_optional(obj_node["stroke"].as<Object::Stroke<RGBColor>>()) 
-                //    : std::nullopt;
                 auto node_vertices = obj_node["vertices"];
                 std::vector<Point2D<double>> vertices;
                 for (auto it = node_vertices.begin(); it != node_vertices.end(); ++it) {
@@ -156,10 +146,7 @@ void YAMLSceneDescReader::process_object(const YAML::Node & obj_node, const std:
                     this->polylines.insert({obj_label, poly});
                     this->_visitor->visit_object_draw(poly);
                 } else if (obj_type == Object::Type::POLYGON) {
-                    auto fill = get_fill(obj_node["fill"]);//obj_node["fill"]
-                    //auto fill = obj_node["fill"]
-                    //    ? std::make_optional(obj_node["fill"].as<Object::Fill<RGBColor>>()) 
-                    //    : std::nullopt;
+                    auto fill = get_fill(obj_node["fill"]);
                     Polygon poly {vertices, stroke, fill};
                     if (fill != std::nullopt and fill.value().filler == Object::Filler::SCANLINE) {
                         polygons_scanline.insert({obj_label, poly}); 
