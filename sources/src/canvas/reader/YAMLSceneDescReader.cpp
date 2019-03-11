@@ -23,6 +23,16 @@ void YAMLSceneDescReader::read(const std::string & filename) {
         this->_visitor->visit_scene_global_aa(scene["global_aa"].as<bool>()); 
     }
 
+    if (scene["points"]) {
+        auto points = scene["points"];
+        for (auto it = points.begin(); it != points.end(); ++it) {
+            auto label = it->first.as<std::string>();
+            auto coords = it->second.as<Point2D<double>>();
+            Point<> p {coords, {0, 0, 0}};
+            this->points.insert({label, p});
+        }
+    }
+
     auto objects = scene["objects"];
 
     for (auto it = objects.begin(); it != objects.end(); ++it) {
@@ -46,7 +56,7 @@ void YAMLSceneDescReader::process_object(const YAML::Node & obj_node, const std:
 
     switch (obj_type) {
         case Object::Type::POINT: {
-                auto coords = obj_node["coords"].as<Point2D<double>>();    
+                auto coords = find_point(obj_node["coords"]).value();//obj_node["coords"].as<Point2D<double>>();    
                 auto color = obj_node["color"].as<RGBColor>();    
                 Point<> p {coords, color};
                 this->points.insert({obj_label, p});
@@ -54,8 +64,8 @@ void YAMLSceneDescReader::process_object(const YAML::Node & obj_node, const std:
                 break;
             }
         case Object::Type::LINE_SEGMENT: {
-                auto start = obj_node["start"].as<Point2D<double>>();    
-                auto end = obj_node["end"].as<Point2D<double>>();    
+                Point2D<double> start = find_point(obj_node["start"]).value();
+                Point2D<double> end = find_point(obj_node["end"]).value();
                 auto stroke = obj_node["stroke"].as<Object::Stroke<RGBColor>>();
                 LineSegment line {start, end, stroke};
                 this->line_segments.insert({obj_label, line});
@@ -65,7 +75,7 @@ void YAMLSceneDescReader::process_object(const YAML::Node & obj_node, const std:
         case Object::Type::CIRCLE: {
                 auto stroke = obj_node["stroke"].as<Object::Stroke<RGBColor>>();
                 auto radius = obj_node["radius"].as<double>();
-                auto center = obj_node["center"].as<Point2D<double>>();
+                auto center = find_point(obj_node["center"]).value();//obj_node["center"].as<Point2D<double>>();
                 auto fill = obj_node["fill"]
                     ? std::make_optional(obj_node["fill"].as<Object::Fill<RGBColor>>()) 
                     : std::nullopt;
@@ -78,7 +88,7 @@ void YAMLSceneDescReader::process_object(const YAML::Node & obj_node, const std:
                 auto stroke = obj_node["stroke"].as<Object::Stroke<RGBColor>>();
                 auto radiusX = obj_node["radius_v"].as<double>();
                 auto radiusY = obj_node["radius_h"].as<double>();
-                auto center = obj_node["center"].as<Point2D<double>>();
+                auto center = find_point(obj_node["center"]).value();//obj_node["center"].as<Point2D<double>>();
                 auto fill = obj_node["fill"]
                     ? std::make_optional(obj_node["fill"].as<Object::Fill<RGBColor>>()) 
                     : std::nullopt;
@@ -95,7 +105,14 @@ void YAMLSceneDescReader::process_object(const YAML::Node & obj_node, const std:
                 auto node_vertices = obj_node["vertices"];
                 std::vector<Point2D<double>> vertices;
                 for (auto it = node_vertices.begin(); it != node_vertices.end(); ++it) {
-                    vertices.push_back(it->as<Point2D<double>>());
+                    try {
+                        vertices.push_back(it->as<Point2D<double>>());
+                    } catch(const YAML::BadConversion& e) {
+                        std::string pointname = it->as<std::string>();
+                        if (auto point_it = points.find(pointname); point_it != points.end()) {
+                            vertices.push_back(point_it->second.coords()); 
+                        }
+                    }
                 }
                 if (obj_type == Object::Type::POLYLINE) {
                     Polyline<> poly {vertices, stroke};
@@ -116,5 +133,16 @@ void YAMLSceneDescReader::process_object(const YAML::Node & obj_node, const std:
             }
         default:
             throw new std::logic_error("invalid object type");
+    }
+}
+
+std::optional<Point2D<double>> YAMLSceneDescReader::find_point(const YAML::Node& node) {
+    Point2D<double> p;
+    try {
+        return node.as<Point2D<double>>();
+    } catch (const YAML::BadConversion& e) {
+        if (auto point_it = points.find(node.as<std::string>()); point_it != points.end())
+            return point_it->second.coords();
+        return std::nullopt;
     }
 }

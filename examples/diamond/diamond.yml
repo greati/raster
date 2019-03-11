@@ -2,11 +2,23 @@ scene:
     width: 800
     height: 600
     background: [255, 255, 255]
-    global_aa: True
+    global_aa: False
+    points:
+        a: [20, 20]
+        b: [30, 30]
     objects:
+        3:
+            type: circle
+            radius: 30
+            center: a
+            stroke:
+                color: [255, 255, 255]
+                thickness: 1
+                drawer: wu
+
         1:
              type: polygon
-             vertices: [[100, 100], [20, 160], [100, 150]]
+             vertices: [b, [20, 160], [100, 150]]
              stroke:
                  color: [0, 0, 0]
                  thickness: 1

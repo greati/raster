@@ -41,6 +41,7 @@ class YAMLSceneDescReader : public SceneDescReader {
 
        void process_scene(const YAML::Node & scene_node);
        void process_object(const YAML::Node & obj_node, const std::string & obj_label);
+       std::optional<Point2D<double>> find_point(const YAML::Node&);
 };
 
 #endif
