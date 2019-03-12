@@ -33,9 +33,9 @@ class Object {
         template<typename ColorType=RGBColor>
         struct Stroke {
             ColorType color;
-            int thickness;
+            int thickness {1};
             StrokeDrawer drawer;
-            bool antialiased;
+            bool antialiased {false};
 
             Stroke() {}
 

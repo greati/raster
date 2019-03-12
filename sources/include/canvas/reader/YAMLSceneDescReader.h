@@ -53,6 +53,9 @@ class YAMLSceneDescReader : public SceneDescReader {
        std::optional<RGBColor> get_color(const YAML::Node&);
        std::optional<Object::Fill<>> get_fill(const YAML::Node&);
        std::optional<Object::Stroke<>> get_stroke(const YAML::Node&);
+       void assert_node(const YAML::Node & node, const std::string& node_name) const {
+           if (!node) throw std::logic_error("missing " + node_name);
+       }
 };
 
 #endif

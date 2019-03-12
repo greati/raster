@@ -93,6 +93,8 @@ void YAMLSceneDescReader::process_object(const YAML::Node & obj_node, const std:
 
     switch (obj_type) {
         case Object::Type::POINT: {
+                assert_node(obj_node["coords"], "coords");
+                assert_node(obj_node["color"], "color");
                 auto coords = find_point(obj_node["coords"]).value();
                 auto color = get_color(obj_node["color"]).value();
                 Point<> p {coords, color};
@@ -101,16 +103,21 @@ void YAMLSceneDescReader::process_object(const YAML::Node & obj_node, const std:
                 break;
             }
         case Object::Type::LINE_SEGMENT: {
+                assert_node(obj_node["start"], "start");
+                assert_node(obj_node["end"], "end");
+                assert_node(obj_node["stroke"], "stroke");
                 Point2D<double> start = find_point(obj_node["start"]).value();
                 Point2D<double> end = find_point(obj_node["end"]).value();
                 auto stroke = get_stroke(obj_node["stroke"]).value();
-                //obj_node["stroke"].as<Object::Stroke<RGBColor>>();
                 LineSegment line {start, end, stroke};
                 this->line_segments.insert({obj_label, line});
                 this->_visitor->visit_object_draw(line);
                 break;
             }
         case Object::Type::CIRCLE: {
+                assert_node(obj_node["stroke"], "stroke");
+                assert_node(obj_node["radius"], "radius");
+                assert_node(obj_node["center"], "center");
                 auto stroke = get_stroke(obj_node["stroke"]).value();
                 auto radius = obj_node["radius"].as<double>();
                 auto center = find_point(obj_node["center"]).value();
@@ -126,6 +133,10 @@ void YAMLSceneDescReader::process_object(const YAML::Node & obj_node, const std:
                 break;
             }
         case Object::Type::ELLIPSIS: {
+                assert_node(obj_node["stroke"], "stroke");
+                assert_node(obj_node["radius_v"], "radius_v");
+                assert_node(obj_node["radius_h"], "radius_h");
+                assert_node(obj_node["center"], "center");
                 auto stroke = get_stroke(obj_node["stroke"]).value();
                 auto radiusX = obj_node["radius_v"].as<double>();
                 auto radiusY = obj_node["radius_h"].as<double>();
@@ -141,6 +152,8 @@ void YAMLSceneDescReader::process_object(const YAML::Node & obj_node, const std:
             }
         case Object::Type::POLYLINE:
         case Object::Type::POLYGON: {
+                assert_node(obj_node["stroke"], "stroke");
+                assert_node(obj_node["vertices"], "vertices");
                 auto stroke = get_stroke(obj_node["stroke"]);
                 auto node_vertices = obj_node["vertices"];
                 std::vector<Point2D<double>> vertices;
@@ -196,6 +209,7 @@ std::optional<RGBColor> YAMLSceneDescReader::get_color(const YAML::Node& node) {
 }
 
 std::optional<Object::Fill<>> YAMLSceneDescReader::get_fill(const YAML::Node& node) {
+    if (!node) return std::nullopt;
     try {
         return node.as<Object::Fill<>>();
     } catch (const YAML::BadConversion& e) {
