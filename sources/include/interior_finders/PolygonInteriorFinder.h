@@ -19,7 +19,7 @@ class PolygonInteriorFinder : public InteriorFinder<Polygon<>, PointType> {
 
         Point2D<int> find_one(const Polygon<> & polygon) const override {
             auto ps = sampler.many(polygon.vertices()[0]);
-            while (true) {
+            while (!sampler.end()) {
                 for (Point2D<int> & p : ps) {
                     if (is_interior(polygon, p)) {
                         sampler.reset();
@@ -27,7 +27,10 @@ class PolygonInteriorFinder : public InteriorFinder<Polygon<>, PointType> {
                     }
                 }
                 sampler.expand();
+                ps = sampler.many(polygon.vertices()[0]);
             }
+            sampler.reset();
+            return {0, 0};
         };
 
         std::vector<Point2D<int>> find_many(const Polygon<> & polygon) const override {

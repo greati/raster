@@ -45,7 +45,7 @@ class FloodFiller : public SingleFiller<ObjType> {
             auto [r, g, b] = this->_canvas.at({x, y});
 
             if (RGBColor{r, g, b} == old) {
-                this->_canvas.set({x, y}, {fr, fg, fb});
+                this->_canvas.set({x, y}, {fr, fg, fb}, std::nothrow_t{});
                 fill_interior({x+1, y}, fill, old, conn);
                 fill_interior({x-1, y}, fill, old, conn);
                 fill_interior({x, y+1}, fill, old, conn);

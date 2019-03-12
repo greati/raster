@@ -19,8 +19,15 @@ int main(int argn, char* args[]) {
         std::cout << "provide a description file path";
         return 0;
     }
-
     file_path = std::string(args[1]);
+
+    std::string destination;
+    if (argn < 3) {
+        std::cout << "provide the destination path";
+        return 0;
+    }
+    destination = std::string(args[2]);
+
 
     YAMLSceneDescReader reader {std::make_unique<CanvasDescVisitor>(canvas)};
     reader.read(file_path);
@@ -36,7 +43,7 @@ int main(int argn, char* args[]) {
         {NetpbmParams::MAX_INTENSITY, 255}
     }};
 
-    printer.print(canvas.data(), configs, "../build/testimage.ppm"); 
+    printer.print(canvas.data(), configs, destination); 
 
     return 0;
 }

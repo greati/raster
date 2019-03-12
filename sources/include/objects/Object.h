@@ -2,6 +2,7 @@
 #define __OBJECT__
 
 #include <string>
+#include <optional>
 #include "common.h"
 
 class Object {
@@ -47,7 +48,7 @@ class Object {
         struct Fill {
             ColorType color;
             Filler filler;
-            Point2D<int> seed;
+            std::optional<Point2D<int>> seed {std::nullopt};
 
             Fill() {}
             Fill(ColorType _color, Filler _filler = Filler::SCANLINE) : color {_color}, filler {_filler} {/*empty*/} 

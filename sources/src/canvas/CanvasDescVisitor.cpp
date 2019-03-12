@@ -172,11 +172,14 @@ std::unique_ptr<SingleFiller<Circle<>>> CanvasDescVisitor::get_single_filler_cir
 
 std::unique_ptr<SingleFiller<Polygon<>>> CanvasDescVisitor::get_single_filler_poly(Object::Filler filler) const {
  
+    SquarePointSampler sampler{{this->_canvas.height(), this->_canvas.width()}};
+    auto interior_finder = std::make_shared<PolygonInteriorFinder<>>(sampler);
+
     switch(filler) {
         case Object::Filler::BOUNDARY:
-            return std::move(std::make_unique<BoundaryFiller<Polygon<>>>(this->_canvas));
+            return std::move(std::make_unique<BoundaryFiller<Polygon<>>>(this->_canvas, interior_finder));
         case Object::Filler::FLOOD:
-            return std::move(std::make_unique<FloodFiller<Polygon<>>>(this->_canvas));
+            return std::move(std::make_unique<FloodFiller<Polygon<>>>(this->_canvas, interior_finder));
     }
     return nullptr;
 }

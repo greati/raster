@@ -15,6 +15,7 @@ class PointSampler {
         virtual std::vector<PointType> many(const PointType & obj) = 0;
         virtual void expand() = 0;
         virtual void reset() = 0;
+        virtual bool end() = 0;
 
 };
 
@@ -35,6 +36,11 @@ class DummyPointSampler : public PointSampler<Point2D<int>> {
 
         void reset() override {
             /* do nothing */
+        }
+
+        bool end() override {
+            /* do nothing */
+            return false;
         }
 };
 
@@ -66,8 +72,13 @@ class SquarePointSampler : public PointSampler<Point2D<int>> {
         }
 
         void reset() override {
-            padding = 0;
+            padding = 2;
         }
+
+        bool end() override {
+            return (padding >= frame_size[0] || padding >= frame_size[1]);
+        }
+
 
     private:
 
