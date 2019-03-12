@@ -48,10 +48,13 @@ settings:
         basic_flood:
             color: dark_blue
             filler: flood
+        basic_boundary:
+            color: dark_blue
+            filler: boundary
 scene:
     width: 800
     height: 600
-    background: blue_cute
+    background: blue_cute #"/home/vitorgreati/git-repos/raster/examples/penguin_background.png"
     global_aa: True
     objects:
         my_point:
@@ -77,7 +80,7 @@ scene:
             center: [500, 500]
             radius: 30
             stroke: thick
-            fill: basic_flood
+            fill: basic_boundary
         my_ellipse:
             type: ellipsis
             center: [500, 200]
