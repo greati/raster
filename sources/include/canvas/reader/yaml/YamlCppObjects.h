@@ -2,6 +2,7 @@
 #define __YAMLCPPOBJS__
 
 #include "yaml-cpp/yaml.h"
+#include "canvas/reader/SceneSettings.h"
 
 namespace YAML {
        template<>
@@ -57,9 +58,19 @@ namespace YAML {
                 return node;
             }
             static bool decode(const Node& node, Object::Stroke<RGBColor> & stroke) {
-                stroke.color = node["color"].as<RGBColor>();
+                if (!node.IsMap())
+                    return false;
+                try {
+                    stroke.color = node["color"].as<RGBColor>();
+                } catch (const YAML::BadConversion & e) {
+                    stroke.color = SceneSettings::get_color(node["color"].as<std::string>()); 
+                }
                 if (node["thickness"])
                     stroke.thickness = node["thickness"].as<int>();
+                if (node["drawer"])
+                    stroke.drawer = node["drawer"].as<Object::StrokeDrawer>();
+                if (node["antialiased"])
+                    stroke.antialiased = node["antialiased"].as<bool>();
                 return true;
             }
        };
@@ -71,7 +82,17 @@ namespace YAML {
                 return node;
             }
             static bool decode(const Node& node, Object::Fill<RGBColor> & fill) {
-                fill.color = node["color"].as<RGBColor>();
+                if (!node.IsMap())
+                    return false;
+                try {
+                    fill.color = node["color"].as<RGBColor>();
+                } catch (const YAML::BadConversion & e) {
+                    fill.color = SceneSettings::get_color(node["color"].as<std::string>()); 
+                }
+                if (node["filler"])
+                    fill.filler = node["filler"].as<Object::Filler>();
+                if (node["seed"])
+                    fill.seed = node["seed"].as<Point2D<int>>();
                 return true;
             }
        };
@@ -83,7 +104,7 @@ namespace YAML {
                 return node;
             }
             static bool decode(const Node& node, Object::Type & objtype) {
-                auto type = node["type"].as<std::string>();
+                auto type = node.as<std::string>();
                 if (type == "point")
                     objtype = Object::Type::POINT;
                 else if (type == "line")
@@ -97,6 +118,48 @@ namespace YAML {
                 else if (type == "ellipsis")
                     objtype = Object::Type::ELLIPSIS;
                 else
+                    return false;
+                return true;
+            }
+       };
+
+       template<>
+       struct convert<Object::Filler> {
+            static Node encode(const Object::Filler& rhs) {
+                Node node;
+                return node;
+            }
+            static bool decode(const Node& node, Object::Filler & objtype) {
+                auto type = node.as<std::string>();
+                if (type == "scanline")
+                    objtype = Object::Filler::SCANLINE;
+                else if (type == "flood")
+                    objtype = Object::Filler::FLOOD;
+                else if (type == "boundary")
+                    objtype = Object::Filler::BOUNDARY;
+                else 
+                    return false;
+                return true;
+            }
+       };
+
+       template<>
+       struct convert<Object::StrokeDrawer> {
+            static Node encode(const Object::StrokeDrawer& rhs) {
+                Node node;
+                return node;
+            }
+            static bool decode(const Node& node, Object::StrokeDrawer & objtype) {
+                auto type = node.as<std::string>();
+                if (type == "bresenham")
+                    objtype = Object::StrokeDrawer::BRESENHAM;
+                else if (type == "dda")
+                    objtype = Object::StrokeDrawer::DDA;
+                else if (type == "wu")
+                    objtype = Object::StrokeDrawer::WU;
+                else if (type == "midpoint")
+                    objtype = Object::StrokeDrawer::MIDPOINT;
+                else 
                     return false;
                 return true;
             }

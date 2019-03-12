@@ -5,8 +5,9 @@ template<int N>
 PixelValue<N> Canvas2D<N>::at(Point2D<int> point) const {
     auto [start, end] = real_pos(point);
     PixelValue<N> v;
-    for (auto i = start, j = 0; i < end; ++i, ++j)
+    for (auto i = start, j = 0; i < end; ++i, ++j) {
         v[j] = _data[i];
+    }
     return v;
 }
 
@@ -42,10 +43,25 @@ template<int N>
 void Canvas2D<N>::validate(const Point2D<int> & point) const {
     auto [x, y] = point;
 
-    if (x < 0 || x >= _width)
+    if (y < 0 || y >= _width)
         throw std::invalid_argument("point outsite the width range, " + std::to_string(x));
-    if (y < 0 || y >= _height)
+    if (x < 0 || x >= _height)
         throw std::invalid_argument("point outsite the height range, " + std::to_string(y));
+}
+
+template<int N>
+void Canvas2D<N>::clear(const PixelValue<N> & value) {
+    for (int i = 0; i < _height; ++i)
+        for (int j = 0; j < _width; ++j)
+            this->set({i, j}, value);
+}
+
+template<int N>
+void Canvas2D<N>::reset(Size<2> size) {
+    auto [_height, _width] = size;
+    this->_data.reset(new unsigned char[_width * _height * N]);
+    this->_width = _width;
+    this->_height = _height;
 }
 
 template class Canvas2D<3>;

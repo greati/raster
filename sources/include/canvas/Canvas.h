@@ -4,7 +4,7 @@
 #include "common.h"
 #include <new>
 
-template<typename CoordType, int NChannels = 3>
+template<typename CoordType, int NChannels = 3, int NDim=2>
 class Canvas {
 
     public:
@@ -16,6 +16,10 @@ class Canvas {
         virtual int height() const = 0;
 
         virtual int width() const = 0;
+
+        virtual void reset(Size<NDim> size) = 0;
+
+        virtual void clear(const PixelValue<NChannels> & value) = 0;
 
         virtual PixelValue<NChannels> at(CoordType point) const = 0;
 };

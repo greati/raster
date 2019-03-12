@@ -1,8 +1,11 @@
 #ifndef __CANVASDESCVISITOR__
 #define __CANVASDESCVISITOR__
 
+#include <functional>
+#include "utils/imgproc_utils.h"
 #include "canvas/reader/DescVisitor.h"
 #include "canvas/Canvas.h"
+#include "canvas/Canvas2D.h"
 #include "objects/Point.h"
 #include "objects/LineSegment.h"
 #include "objects/Polyline.h"
@@ -20,12 +23,15 @@
 #include "fillers/FloodFiller.h"
 #include "fillers/BoundaryFiller.h"
 #include "interior_finders/PolygonInteriorFinder.h"
+#include <memory>
 
 class CanvasDescVisitor : public DescVisitor {
 
     private:
 
         Canvas<Point2D<int>> & _canvas;
+
+        bool global_aa;
        
     public:
 
@@ -33,26 +39,46 @@ class CanvasDescVisitor : public DescVisitor {
 
         ~CanvasDescVisitor() {}
         
-        void visit_scene_background(const std::string & background) const override;
+        auto & canvas() const {
+            return this->_canvas;
+        }
 
-        void visit_scene_size(const Size<2> &) const override;
+
+        void visit_scene_background(const RGBColor & background) const override;
+
+        void visit_scene_background(const std::string & filepath) const override;
+
+        void visit_scene_global_aa(bool aa) override;
+
+        void visit_scene_size(const Size<2> &) override;
 
         void visit_object_draw(const Point<> & obj) const override;
 
-        void visit_object_draw(const LineSegment<> & obj) const override;
+        void visit_object_draw(const LineSegment<> & obj) override;
 
-        void visit_object_draw(const Polyline<> & obj) const override;
+        void visit_object_draw(const Polyline<> & obj) override;
 
         void visit_object_draw(const Circle<> & obj) const override;
 
         void visit_object_draw(const Ellipsis<> & obj) const override;
 
-        void visit_object_draw(const Polygon<> & obj) const override;
+        void visit_object_draw(const Polygon<> & obj) override;
 
-        void visit_fill(const std::map<std::string, Polygon<>> & objs) const override;
+        void visit_scanline_fill(const std::map<std::string, Polygon<>> & objs) override;
 
-        void visit_fill(const Polygon<>& obj) const override;
+        std::unique_ptr<Drawer<Ellipsis<>>> get_ellipsis_drawer(Object::StrokeDrawer) const;
 
+        std::unique_ptr<Drawer<Circle<>>> get_circle_drawer(Object::StrokeDrawer) const;
+
+        std::unique_ptr<Drawer<LineSegment<>>> get_line_drawer(Object::StrokeDrawer) const;
+
+        std::unique_ptr<SingleFiller<Circle<>>> get_single_filler_circle(Object::Filler filler) const;
+
+        std::unique_ptr<SingleFiller<Ellipsis<>>> get_single_filler_ellipsis(Object::Filler filler) const;
+
+        std::unique_ptr<SingleFiller<Polygon<>>> get_single_filler_poly(Object::Filler filler) const;
+
+        void visit_post_processing();
 };
 
 #endif

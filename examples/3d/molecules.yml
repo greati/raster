@@ -1,0 +1,36 @@
+scene:
+    width: 800
+    height: 600
+    global_aa: True
+    background: [255, 255, 255]
+    objects:
+        left_face:
+            type: polygon
+            z-index: 0
+            vertices:
+                - [200, 100]
+                - [150, 200]
+                - [400, 170]
+            stroke:
+                color: [0, 0, 0]
+                drawer: wu
+                thickness: 1
+                antialiased: True
+            fill:
+                color: [255, 170, 0]
+                filler: scanline
+        right_face:
+            type: polygon
+            z-index: 0
+            vertices:
+                - [150, 200]
+                - [170, 280]
+                - [400, 170]
+            stroke:
+                color: [0, 0, 0]
+                thickness: 1
+                drawer: wu
+                antialiased: True
+            fill:
+                color: [255, 200, 0]
+                filler: scanline

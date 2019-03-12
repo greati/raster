@@ -60,6 +60,8 @@ class PolygonScanLineFiller {
                     }
                     auto min_x = std::lround(std::min(p1x, p2x)); // when it has appeared
                     auto max_x = std::lround(std::max(p1x, p2x)); // when will it disappear
+                    // ignore horizontal
+                    if (std::lround(p2x-p1x) == 0) continue;
                     EdgeEntry edge {
                         obj_name, 
                         max_x,
@@ -97,11 +99,21 @@ class PolygonScanLineFiller {
                     auto e1 = *it;
                     if (++it != active_edges.end()) {
                         auto e2 = *it;
+                        if (e1._col_intercept == e2._col_intercept) {
+                            if (i == e1._row_max) continue;
+                            else if(i == e2._row_max) {
+                                if (++it != active_edges.end())
+                                    e2 = *it;
+                                else break;
+                            }
+                        }
                         auto [r, g, b] = polygons.find(e1._obj_name)->second.fill().value().color;
                         for (int x = e1._col_intercept; x < e2._col_intercept; ++x) {
                             this->_canvas.set({i, x}, {r, g, b});
                         }
-                    }
+                        if (++it != active_edges.end()) ; 
+                        else break;
+                    } else break;
                 }
                 // erase row_max edges 
                 for (auto it = active_edges.begin(); it != active_edges.end();) {

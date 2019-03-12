@@ -88,8 +88,10 @@ class XiaolinWuLineDrawer : public Drawer<LineSegment<>>{
         
             if (!steep) {
                 for (int i = y0p + 1; i < y1p; ++i) {
-                    auto [ru, gu, bu] = raster::apply_brightness_rgb({r, g, b}, overfpart(D));
-                    auto [rb, gb, bb] = raster::apply_brightness_rgb({r, g, b}, fpart(D));
+                    auto [rbg, gbg, bbg] = this->_canvas.at({ipart(D), i});
+                    auto [ru, gu, bu] = raster::blend_rgbs({rbg, gbg, bbg}, raster::apply_brightness_rgb({r, g, b}, overfpart(D)));
+                    auto [rbg1, gbg1, bbg1] = this->_canvas.at({ipart(D)+1, i});
+                    auto [rb, gb, bb] = raster::blend_rgbs({rbg1, gbg1, bbg1}, raster::apply_brightness_rgb({r, g, b}, fpart(D)));
                     this->_canvas.set({ipart(D), i}, {ru, gu, bu});
                     this->_canvas.set({ipart(D) + 1, i}, {rb, gb, bb});
                     D += k;
@@ -97,8 +99,10 @@ class XiaolinWuLineDrawer : public Drawer<LineSegment<>>{
             } 
             else {
                 for (int i = y0p + 1; i < y1p; ++i) {
-                    auto [ru, gu, bu] = raster::apply_brightness_rgb({r, g, b}, overfpart(D));
-                    auto [rb, gb, bb] = raster::apply_brightness_rgb({r, g, b}, fpart(D));
+                    auto [rbg, gbg, bbg] = this->_canvas.at({i, ipart(D)});
+                    auto [ru, gu, bu] = raster::blend_rgbs({rbg, gbg, bbg}, raster::apply_brightness_rgb({r, g, b}, overfpart(D)));
+                    auto [rbg1, gbg1, bbg1] = this->_canvas.at({i, ipart(D)+1});
+                    auto [rb, gb, bb] = raster::blend_rgbs({rbg1, gbg1, bbg1}, raster::apply_brightness_rgb({r, g, b}, fpart(D)));
                     this->_canvas.set({i, ipart(D)}, {ru, gu, bu});
                     this->_canvas.set({i, ipart(D) + 1}, {rb, gb, bb});
                     D += k;

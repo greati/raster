@@ -34,6 +34,10 @@ class Canvas2D : public Canvas<Point2D<int>, N> {
 
         inline int height() const noexcept override { return _height; }
 
+        void reset(Size<2> size) override;
+
+        void clear(const PixelValue<N> & value) override;
+
         inline unsigned char* data() noexcept { return _data.get(); }
 
     private:

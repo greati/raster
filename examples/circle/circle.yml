@@ -1,10 +1,21 @@
 scene:
+    width: 800
+    height: 600
+    background: black
     objects:
         my_circle:
             type: circle
-            center: [50, 50]
-            radius: 10
+            center: [100, 100]
+            radius: 40
+            arc: [0.0, 300.0]
             stroke:
                 color: [255, 255, 255]
-                thickness: 2
+                thickness: 4
+                antialiased: False
+                drawer: midpoint
+        my_point:
+            type: point
+            coords: [100, 100]
+            color: white
+
 
