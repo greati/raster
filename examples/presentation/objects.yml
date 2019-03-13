@@ -54,7 +54,7 @@ settings:
 scene:
     width: 800
     height: 600
-    background: blue_cute #"/home/vitorgreati/git-repos/raster/examples/penguin_background.png"
+    background: "/home/vitorgreati/git-repos/raster/examples/penguin_background.png"
     global_aa: False
     objects:
         my_point:
