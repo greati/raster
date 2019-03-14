@@ -1,4 +1,7 @@
 var searchData=
 [
-  ['draw',['draw',['../class_bresenham_line_drawer.html#afb4daab296843114731d1e93fa70e090',1,'BresenhamLineDrawer::draw()'],['../class_d_d_a_line_drawer.html#a429ce4dbc94009b811c419007ba4db02',1,'DDALineDrawer::draw()'],['../class_drawer.html#a95f2efa6c0e865980d9d978c2cc8bf68',1,'Drawer::draw()'],['../class_midpoint_circle_drawer.html#a96b8cc5488cfdee50c1e36fe70d31429',1,'MidpointCircleDrawer::draw()'],['../class_point_drawer.html#ae80afcd640fa6e2bdca7d68769856666',1,'PointDrawer::draw()'],['../class_polyline_drawer.html#a2a91268f9d2503a1d72d9b264c6e86d1',1,'PolylineDrawer::draw()'],['../class_xiaolin_wu_ellipsis_drawer.html#a29e8e7b610c6f7e65df2fea9605f7094',1,'XiaolinWuEllipsisDrawer::draw()'],['../class_xiaolin_wu_line_drawer.html#a8387d1615e3d8e3e5ff88b3ae583c5fe',1,'XiaolinWuLineDrawer::draw()']]]
+  ['canvas2d',['Canvas2D',['../classCanvas2D.html#a43042a1edec2014e69fd788a7c8758dc',1,'Canvas2D']]],
+  ['channels',['channels',['../classCanvas2D.html#ae384a3d0402fd71cc11cb6f7103c6d13',1,'Canvas2D']]],
+  ['clear',['clear',['../classCanvas.html#ad5430de51ec7bd9a626d03f9a3a3fef9',1,'Canvas']]],
+  ['convert',['convert',['../classLodePngPrinter.html#a7af2807a66880002f8080dae47a638d4',1,'LodePngPrinter::convert()'],['../classNetpbmPrinter.html#a7a361fc4d114a12cb5c2311744dc3d3d',1,'NetpbmPrinter::convert()'],['../classPrinter.html#a76931150a7fb3d4a69c3483bd08eed17',1,'Printer::convert()']]]
 ];

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['netpbmprinter',['NetpbmPrinter',['../class_netpbm_printer.html',1,'']]]
+  ['netpbmprinter',['NetpbmPrinter',['../classNetpbmPrinter.html',1,'']]]
 ];

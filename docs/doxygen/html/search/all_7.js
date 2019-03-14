@@ -1,14 +1,4 @@
 var searchData=
 [
-  ['linesegment',['LineSegment',['../class_line_segment.html',1,'']]],
-  ['lodepngcolormode',['LodePNGColorMode',['../struct_lode_p_n_g_color_mode.html',1,'']]],
-  ['lodepngcolorprofile',['LodePNGColorProfile',['../struct_lode_p_n_g_color_profile.html',1,'']]],
-  ['lodepngcompresssettings',['LodePNGCompressSettings',['../struct_lode_p_n_g_compress_settings.html',1,'']]],
-  ['lodepngdecodersettings',['LodePNGDecoderSettings',['../struct_lode_p_n_g_decoder_settings.html',1,'']]],
-  ['lodepngdecompresssettings',['LodePNGDecompressSettings',['../struct_lode_p_n_g_decompress_settings.html',1,'']]],
-  ['lodepngencodersettings',['LodePNGEncoderSettings',['../struct_lode_p_n_g_encoder_settings.html',1,'']]],
-  ['lodepnginfo',['LodePNGInfo',['../struct_lode_p_n_g_info.html',1,'']]],
-  ['lodepngprinter',['LodePngPrinter',['../class_lode_png_printer.html',1,'']]],
-  ['lodepngstate',['LodePNGState',['../struct_lode_p_n_g_state.html',1,'']]],
-  ['lodepngtime',['LodePNGTime',['../struct_lode_p_n_g_time.html',1,'']]]
+  ['height',['height',['../classCanvas.html#af4e7efe29b8cf674716061d34d54b6da',1,'Canvas::height()'],['../classCanvas2D.html#a97dd96caa21e685c734191a495b6fdab',1,'Canvas2D::height()']]]
 ];
