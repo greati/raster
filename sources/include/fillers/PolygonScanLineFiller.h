@@ -29,14 +29,15 @@ class PolygonScanLineFiller {
         struct EdgeEntry {
             std::string _obj_name;
             long _row_max;
+            long _row_min;
             long _col_intercept;
             long _delta_row, _delta_col;
             long _slope_int, _slope_frac;
             long _remainder_col = 0;
 
-            EdgeEntry(std::string obj_name, long row_max, long col_intercept,
+            EdgeEntry(std::string obj_name, long row_max, long row_min, long col_intercept,
                     long delta_row, long delta_col)
-                : _obj_name {obj_name}, _row_max {row_max}, _col_intercept {col_intercept},
+                : _obj_name {obj_name}, _row_max {row_max}, _row_min {row_min}, _col_intercept {col_intercept},
                   _delta_row {delta_row}, _delta_col {delta_col} {
                 
                 _slope_int = _delta_col / _delta_row;
@@ -79,6 +80,7 @@ class PolygonScanLineFiller {
                     EdgeEntry edge {
                         obj_name, 
                         max_x,
+                        min_x,
                         std::lround(p1y),
                         std::lround(p2x-p1x),
                         std::lround(p2y-p1y)
@@ -97,38 +99,55 @@ class PolygonScanLineFiller {
 
             // sorting
             for (int i = 0; i < _canvas.height(); ++i) {
-                std::sort(general_edges[i].begin(), general_edges[i].end(), sort_inc_rowmax);
+                std::sort(general_edges[i].begin(), general_edges[i].end(), sort_col_interc);
             }
 
             // scanline
-            std::list<EdgeEntry> active_edges;
+            std::vector<EdgeEntry> active_edges;
             int i = 0; // TODO should be min
             while (i < _canvas.height()) {
                 // new edges
                 for (auto & e : general_edges[i])
                    active_edges.push_back(e); 
-                // fill
-                active_edges.sort(sort_col_interc);
-                for (auto it = active_edges.begin(); it != active_edges.end();) {
-                    auto e1 = *it;
-                    if (++it != active_edges.end()) {
-                        auto e2 = *it;
-                        if (e1._col_intercept == e2._col_intercept) {
-                            if (i == e1._row_max) continue;
-                            else if(i == e2._row_max) {
-                                if (++it != active_edges.end())
-                                    e2 = *it;
-                                else break;
-                            }
+
+                std::sort(active_edges.begin(), active_edges.end(), sort_col_interc);
+
+                int j = 0;
+                int k = 0, l = 1;
+                
+                while (true) {
+
+                    if (l >= active_edges.size())
+                        break;
+
+                    auto e1 = active_edges[k];
+                    auto e2 = active_edges[l]; 
+
+                    if ((i == e1._row_max && i == e2._row_min)) {
+                        l++;
+                        continue;
+                    } else if ((i == e2._row_max && i == e1._row_min)) {
+                        k = l;
+                        l++;
+                        continue;
+                    }
+
+                    auto [r, g, b] = polygons.find(e1._obj_name)->second.fill().value().color;
+                    for (int x = e1._col_intercept; x < e2._col_intercept; ++x) {
+                        this->_canvas.set({i, x}, {r, g, b});
+                    }
+                    // special: local max or min
+                    if (e1._col_intercept == e2._col_intercept) {
+                        if ((i == e1._row_min && i == e2._row_min)
+                                || (i == e1._row_max && i == e2._row_max)) {
+                            k = l;
+                            l++;
+                            continue;
                         }
-                        auto [r, g, b] = polygons.find(e1._obj_name)->second.fill().value().color;
-                        for (int x = e1._col_intercept; x < e2._col_intercept; ++x) {
-                            this->_canvas.set({i, x}, {r, g, b});
-                        }
-                        if (++it != active_edges.end()) ; 
-                        else break;
-                    } else break;
+                    }
+                    l+=2; k+=2;
                 }
+
                 // erase row_max edges 
                 for (auto it = active_edges.begin(); it != active_edges.end();) {
                     if (it->_row_max == i) {

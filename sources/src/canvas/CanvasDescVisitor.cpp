@@ -16,13 +16,13 @@ void CanvasDescVisitor::visit_scene_background(const std::string & filepath) con
      }
 
      int row, col;
-     for (int i = 0; i < this->_canvas.width() * this->_canvas.height(); i += 4) {
+     for (int i = 0; i < width*height*4; i += 4) {
          auto r = image[i]; 
          auto g = image[i + 1]; 
          auto b = image[i + 2];
          row = i / (4*width);
          col = (i/4) - row*width;
-         this->_canvas.set({row, col}, {r, g, b});
+         this->_canvas.set({row, col}, {r, g, b}, std::nothrow_t{});
      }
 }
 

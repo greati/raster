@@ -1,0 +1,36 @@
+settings:
+    colors:
+        yellow: [255, 153, 0]
+    points:
+        A: [150, 300]
+        B: [300, 400]
+        C: [300, 550]
+        D: [400, 400]
+        E: [600, 500]
+        F: [480, 300]
+        G: [600, 100]
+        H: [400, 200]
+        I: [300, 50]
+        J: [300, 200]
+    strokes:
+        basic:
+            color: white
+            drawer: dda
+            thickness: 1
+    fills:
+        star:
+            color: yellow
+            filler: scanline
+scene:
+    width: 600
+    height: 600
+    background: black
+    global_aa: False
+    objects:
+        star:
+            type: polygon
+            vertices: [A, B, C, D, E, F, G, H, I, J]
+            stroke: basic
+            fill: star
+
+

@@ -81,9 +81,9 @@ target_include_directories(lodepng PUBLIC include)
 
 # executables
 # --------------------------------------- #
-add_executable(driver src/driver.cpp)
-target_include_directories(driver PRIVATE include)
-target_link_libraries(driver PRIVATE yamlscenedescreader canvas2d printer png_printer)
+add_executable(raster src/driver.cpp)
+target_include_directories(raster PRIVATE include)
+target_link_libraries(raster PRIVATE yamlscenedescreader canvas2d printer png_printer)
 
 # test definitions
 # use googletest framework
