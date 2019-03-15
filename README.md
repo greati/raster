@@ -26,15 +26,21 @@ A simple 2D Raster in C++ ([read the docs](https://greati.github.io/raster/doxyg
     * [x] Wu (thickness 1)
     * [ ] Wu (thickness N)
 * [ ] Fills
-    * [x] Polygon interior finder (architecture done, but still not working)
-    * [x] Circle interior finder - takes the center
-    * [x] Ellipsis interior finder - takes the center
+    * [ ] Polygon interior finder (architecture done, but still not working)
+    * [x] Circle interior finder - only takes the center
+    * [x] Ellipsis interior finder - only takes the center
     * [x] Polygon scan-line
     * [x] Flood fill
     * [x] Boundary fill
 * [ ] Antialiasing
-    * [x] Xialing-Wu - experimental, only for black backgrounds
+    * [x] Xiaolin-Wu - experimental, only for black backgrounds
     * [x] Convolution with gamma correction
+* [x] Pallets
+    * [x] Colors
+    * [x] Fills
+    * [x] Strokes
+* [x] Points declaration
+* [x] Image background load
 
 ## Build
 
@@ -47,9 +53,11 @@ cmake --build .
 
 ## Run
 
+Raster currently outputs a PPM P3 image.
+
 ```
 cd build
-./raster <your yml description> <path to destination>
+./raster <your yml description> <path to .ppm destination>
 ```
 
 ## Test
