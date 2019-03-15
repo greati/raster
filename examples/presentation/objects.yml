@@ -55,7 +55,7 @@ scene:
     width: 800
     height: 600
     background: white
-    global_aa: False
+    global_aa: True
     objects:
         my_point:
             type: point

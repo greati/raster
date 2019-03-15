@@ -1,4 +1,19 @@
 #include "utils/imgproc_utils.h"
+#include <cmath>
+
+
+void raster::gamma_correction(const Canvas<Point2D<int>, 3> & canvas, int level) {
+    auto gamma = [level](double val) {
+        return std::pow(val / 255, 1.0/level) * 255.0;
+    };
+    
+    for (int i = 0; i < canvas.height(); ++i) {
+        for (int j = 0; j < canvas.height(); ++j) {
+            auto [r, g, b] = canvas.at({i, j});
+            canvas.set({i, j}, {(unsigned char) gamma(r), (unsigned char) gamma(g), (unsigned char) gamma(b)}); 
+        }
+    }
+}
 
 void raster::convolve(const Canvas<Point2D<int>, 3> & canvas, const Matrix<float> kernel, 
             Point2D<int> from, Point2D<int> to) {

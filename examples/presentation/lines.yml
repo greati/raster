@@ -26,7 +26,7 @@ scene:
     width: 600
     height: 600
     background: black
-    global_aa: False
+    global_aa: True
     objects:
         line_dda:
             type: line

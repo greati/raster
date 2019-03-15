@@ -18,6 +18,14 @@ namespace raster {
     void convolve(const Canvas<Point2D<int>, 3> & canvas, const Matrix<float> convmatrix, 
             Point2D<int> from, Point2D<int> to);
 
+    /**
+     * Gamma correction.
+     *
+     * @param canvas
+     * @param level
+     * */
+    void gamma_correction(const Canvas<Point2D<int>, 3> & canvas, int level);
+
 };
 
 #endif

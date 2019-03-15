@@ -134,7 +134,7 @@ class PolygonScanLineFiller {
                     }
 
                     auto [r, g, b] = polygons.find(e1._obj_name)->second.fill().value().color;
-                    for (int x = e1._col_intercept; x <= e2._col_intercept; ++x) {
+                    for (int x = std::ceil(e1._col_intercept); x <= std::floor(e2._col_intercept); ++x) {
                         this->_canvas.set({i, x}, {r, g, b}, std::nothrow_t{});
                     }
                     // special: local max or min

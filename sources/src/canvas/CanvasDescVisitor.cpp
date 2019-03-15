@@ -205,10 +205,12 @@ std::unique_ptr<Drawer<Ellipsis<>>> CanvasDescVisitor::get_ellipsis_drawer(Objec
 }
 
 void CanvasDescVisitor::visit_post_processing() {
-    if (this->global_aa)
+    if (this->global_aa) {
         raster::convolve(this->_canvas, 
                 {{1./16, 2./16, 1./16},
                  {2./16, 4./16, 2./16},
                  {1./16, 2./16, 1./16}
                 }, {0, 0}, {this->_canvas.height()-1, this->_canvas.width()-1});
+        raster::gamma_correction(this->_canvas, 2);
+    }
 }
