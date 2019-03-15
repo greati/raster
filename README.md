@@ -40,7 +40,7 @@ A simple 2D Raster in C++ ([read the docs](https://greati.github.io/raster/doxyg
     * [x] Fills
     * [x] Strokes
 * [x] Points declaration
-* [x] Image background load
+* [x] PNG image background load
 
 ## Build
 
