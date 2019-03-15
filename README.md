@@ -2,6 +2,8 @@
 
 A simple 2D Raster in C++.
 
+<img src="https://cdn1.imggmi.com/uploads/2019/3/16/8a52b068ecc89daceaf9b1a2a69ece6a-full.png"/>
+
 ## Features:
 
 Objects:
