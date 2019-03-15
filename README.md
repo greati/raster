@@ -6,7 +6,6 @@ A simple 2D Raster in C++.
 
 ## Features:
 
-Objects:
 * [x] Points
 * [ ] Lines
     * [x] DDA (thickness 1)
