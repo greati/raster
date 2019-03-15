@@ -52,9 +52,9 @@ cmake --build .
 make test
 ```
 
-This page describes the YAML description of a scene accepted by Raster.
-
 # YAML description
+
+You describe the scenes using YAML. Below is a guide about doing that for raster.
 
 ## General structure
 
