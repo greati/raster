@@ -10,7 +10,7 @@ Objects:
     * [x] DDA (thickness 1)
     * [x] Bresenham (thickness 1)
     * [x] Wu (thickness 1) - experimental, working only for black backgrounds
-    * [x] DDA (thickness N)
+    * [x] DDA (thickness N) - experimental, problems with vertical and horizontal
     * [ ] Bresenham (thickness N)
     * [ ] Wu (thickness N)
 * [ ] Circles
@@ -25,7 +25,7 @@ Objects:
     * [x] Wu (thickness 1)
     * [ ] Wu (thickness N)
 * [ ] Fills
-    * [ ] Polygon interior finder (architecture, but still not working)
+    * [ ] Polygon interior finder (architecture done, but still not working)
     * [x] Circle interior finder - takes the center
     * [x] Ellipsis interior finder - takes the center
     * [x] Polygon scan-line
