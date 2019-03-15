@@ -10,8 +10,8 @@ A simple 2D Raster in C++ ([read the docs](https://greati.github.io/raster/doxyg
 * [ ] Lines
     * [x] DDA (thickness 1)
     * [x] Bresenham (thickness 1)
-    * [x] Wu (thickness 1) - experimental, working only for black backgrounds
-    * [x] DDA (thickness N) - experimental, problems with vertical and horizontal
+    * [-] Wu (thickness 1) - experimental, working only for black backgrounds
+    * [-] DDA (thickness N) - experimental, problems with vertical and horizontal
     * [ ] Bresenham (thickness N)
     * [ ] Wu (thickness N)
 * [ ] Circles
@@ -20,21 +20,21 @@ A simple 2D Raster in C++ ([read the docs](https://greati.github.io/raster/doxyg
     * [x] Wu (thickness 1) - experimental, working only for black backgrounds
     * [ ] Wu (thickness N)
 * [x] Circle arcs
-    * [x] DDA (thickness 1)
-    * [x] DDA (thickness N)
+    * [x] Midpoint (thickness 1)
+    * [x] Midpoint (thickness N)
 * [ ] Ellipsis
     * [x] Wu (thickness 1)
     * [ ] Wu (thickness N)
 * [ ] Fills
-    * [ ] Polygon interior finder (architecture done, but still not working)
+    * [-] Polygon interior finder (architecture done, but still not working)
     * [x] Circle interior finder - takes the center
     * [x] Ellipsis interior finder - takes the center
     * [x] Polygon scan-line
     * [x] Flood fill
     * [x] Boundary fill
 * [ ] Antialiasing
-    * [x] Xialing-Wu - experimental, only for black backgrounds
-    * [x] Convolution
+    * [-] Xialing-Wu - experimental, only for black backgrounds
+    * [x] Convolution with gamma correction
 
 ## Build
 
