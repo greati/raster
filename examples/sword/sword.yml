@@ -10,6 +10,9 @@
 # @author Vitor Greati
 # ---------------------------------------------
 scene:
+    width: 400
+    height: 400
+    background: black
     objects:
         zigzag:
             type: polyline
@@ -25,6 +28,7 @@ scene:
                 - [199, 199]
             stroke:
                 color: [80, 80, 80]
+                drawer: bresenham
         blade_power:
             type: polyline
             vertices:
@@ -33,6 +37,7 @@ scene:
                 - [129, 0]
             stroke:
                 color: [150, 0, 255]
+                drawer: bresenham
         blade:
             type: polyline
             vertices:
@@ -44,6 +49,7 @@ scene:
                 - [90, 30]
             stroke:
                 color: [255, 255, 255]
+                drawer: bresenham
         shaft_vertical:
             type: polyline
             vertices:
@@ -55,6 +61,7 @@ scene:
                 - [90, 30]
             stroke:
                 color: [255, 255, 255]
+                drawer: bresenham
         shaft_horizontal:
             type: polyline
             vertices:
@@ -64,4 +71,5 @@ scene:
                 - [105, 25]
             stroke:
                 color: [255, 255, 255]
+                drawer: bresenham
 
