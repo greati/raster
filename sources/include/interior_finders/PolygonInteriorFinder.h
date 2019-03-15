@@ -41,13 +41,14 @@ class PolygonInteriorFinder : public InteriorFinder<Polygon<>, PointType> {
 
         std::vector<Point2D<int>> find_many(const Polygon<> & polygon) const override {
             std::vector<Point2D<int>> int_points;
-            for (auto & v : polygon.vertices()) {
-                auto ps = sampler.many(v);
-                for (auto & p : ps)
+            for (auto v : polygon.vertices()) {
+                std::vector<Point2D<int>> ps = sampler.many(v);
+                for (auto & p : ps) {
                     if (is_interior(polygon,p)) {
                         int_points.push_back(p);
                         break;
                     }
+                }
             }
             return int_points;
         };

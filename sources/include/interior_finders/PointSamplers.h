@@ -105,7 +105,7 @@ class SquarePointSampler : public PointSampler<Point2D<int>> {
         }
 
         std::vector<Point2D<int>> many(const Point2D<int> & point) override {
-            return square_sample(point); 
+            return this->square_sample(point); 
         }
 
         void expand() override {
@@ -130,9 +130,12 @@ class SquarePointSampler : public PointSampler<Point2D<int>> {
          * @point the base point
          * @return a list of points
          * */
-        std::vector<Point2D<int>> square_sample(const Point2D<int> & point) {
+        inline std::vector<Point2D<int>> square_sample(const Point2D<int> & point) {
+
+            std::cout << "sampling..." << std::endl;
+
             auto [x, y] = point;
-            auto [width, height] = frame_size;
+            auto [height, width] = frame_size;
             std::vector<Point2D<int>> points;
 
             for (int j = std::max(0, x - padding); j < std::min(x + padding, height); ++j) {
@@ -140,8 +143,8 @@ class SquarePointSampler : public PointSampler<Point2D<int>> {
                 points.push_back({j, std::min(width, y+padding)});
             }
             for (int i = std::max(0, y - padding); i < std::min(y + padding, width); ++i) {
-                points.push_back({std::max(0, x-padding), y});
-                points.push_back({std::min(height, x+padding), y});
+                points.push_back({std::max(0, x-padding), i});
+                points.push_back({std::min(height, x+padding), i});
             }
             return points;
         }

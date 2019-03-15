@@ -35,6 +35,7 @@ class BoundaryFiller : public SingleFiller<ObjType> {
                         });
             } else if (this->_interior_finder != nullptr) {
                 std::vector<Point2D<int>> interiors = this->_interior_finder->find_many(obj);
+                if (interiors.size() == 0) std::cout << "[warning] no interior point found\n";
                 std::for_each(interiors.begin(), interiors.end(),
                         [&](const Point2D<int>& p) {
                             fill_interior(p, fill, border_color, conn);
