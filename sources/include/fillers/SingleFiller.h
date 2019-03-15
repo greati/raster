@@ -45,7 +45,7 @@ class SingleFiller {
                 const RGBColor & fill, 
                 const RGBColor & aux_color, 
                 Connectivity conn,
-                std::optional<Point2D<int>> seed = std::nullopt) = 0;
+                std::optional<std::vector<Point2D<int>>> seed = std::nullopt) = 0;
 
 };
 

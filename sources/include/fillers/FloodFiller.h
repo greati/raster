@@ -25,10 +25,14 @@ class FloodFiller : public SingleFiller<ObjType> {
             : SingleFiller<ObjType>{canvas, interior_finder} {/* empty */}
 
         void fill(const ObjType& obj, const RGBColor & fill, const RGBColor & old, 
-                typename SingleFiller<ObjType>::Connectivity conn, std::optional<Point2D<int>> seed = std::nullopt) {
-            if (seed != std::nullopt) {
-                auto [r, g, b] = this->_canvas.at(seed.value());
-                fill_interior(seed.value(), fill, {r, g, b}, conn);
+                typename SingleFiller<ObjType>::Connectivity conn, 
+                std::optional<std::vector<Point2D<int>>> seeds = std::nullopt) {
+            if (seeds != std::nullopt) {
+                std::for_each(seeds.value().begin(), seeds.value().end(),
+                        [&](const Point2D<int> p){
+                            auto [r, g, b] = this->_canvas.at(p);
+                            fill_interior(p, fill, {r, g, b}, conn);
+                        });
             } else if (this->_interior_finder != nullptr) {
                 Point2D<int> interior = this->_interior_finder->find_one(obj);
                 auto [r, g, b] = this->_canvas.at(interior);

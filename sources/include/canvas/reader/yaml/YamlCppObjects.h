@@ -91,8 +91,7 @@ namespace YAML {
                 }
                 if (node["filler"])
                     fill.filler = node["filler"].as<Object::Filler>();
-                if (node["seed"])
-                    fill.seed = node["seed"].as<Point2D<int>>();
+
                 return true;
             }
        };

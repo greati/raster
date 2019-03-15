@@ -84,8 +84,11 @@ void CanvasDescVisitor::visit_object_draw(const Polygon<> & obj) {
         if (fill.value().filler != Object::Filler::SCANLINE) {
             if (stroke != std::nullopt) {
                 draw_stroke();
+                if (obj.interior_points() == std::nullopt) {
+                    std::cout << "[warning] raster will try to find interior points"  << std::endl;
+                }
                 get_single_filler_poly(fill.value().filler)->fill(obj, fill.value().color, stroke.value().color,
-                        SingleFiller<>::Connectivity::CONNECTED4, fill.value().seed);
+                        SingleFiller<>::Connectivity::CONNECTED4, obj.interior_points());
             }
         }
     } else {
@@ -105,7 +108,7 @@ void CanvasDescVisitor::visit_object_draw(const Circle<> & obj) const {
     if (fill != std::nullopt) {
         get_single_filler_circle(fill.value().filler)->
             fill(obj, fill.value().color, stroke.color, 
-                    SingleFiller<Circle<>>::Connectivity::CONNECTED4, obj.center()
+                    SingleFiller<Circle<>>::Connectivity::CONNECTED4, std::vector<Point2D<int>>{obj.center()}
             );
     }
 }
@@ -119,7 +122,7 @@ void CanvasDescVisitor::visit_object_draw(const Ellipsis<> & obj) const {
     if (fill != std::nullopt) {
         get_single_filler_ellipsis(fill.value().filler)->
             fill(obj, fill.value().color, stroke.color, 
-                    SingleFiller<Ellipsis<>>::Connectivity::CONNECTED4, obj.center()
+                    SingleFiller<Ellipsis<>>::Connectivity::CONNECTED4, std::vector<Point2D<int>>{obj.center()}
             );
     }
 }

@@ -172,8 +172,15 @@ void YAMLSceneDescReader::process_object(const YAML::Node & obj_node, const std:
                     this->polylines.insert({obj_label, poly});
                     this->_visitor->visit_object_draw(poly);
                 } else if (obj_type == Object::Type::POLYGON) {
+                    auto interior_points = 
+                        obj_node["interior"] ? std::make_optional<std::vector<Point2D<int>>>() : std::nullopt;
+                    if (interior_points != std::nullopt) {
+                        for (auto it = obj_node["interior"].begin(); it != obj_node["interior"].end(); ++it) {
+                            interior_points.value().push_back(it->as<Point2D<int>>());
+                        }
+                    }
                     auto fill = get_fill(obj_node["fill"]);
-                    Polygon poly {vertices, stroke, fill};
+                    Polygon poly {vertices, stroke, fill, interior_points};
                     if (fill != std::nullopt and fill.value().filler == Object::Filler::SCANLINE) {
                         polygons_scanline.insert({obj_label, poly}); 
                     }

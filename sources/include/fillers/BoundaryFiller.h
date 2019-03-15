@@ -26,9 +26,13 @@ class BoundaryFiller : public SingleFiller<ObjType> {
             : SingleFiller<ObjType>{canvas, interior_finder} {/* empty */}
 
         void fill(const ObjType& obj, const RGBColor & fill, const RGBColor & border_color, 
-                typename SingleFiller<ObjType>::Connectivity conn, std::optional<Point2D<int>> seed = std::nullopt) {
-            if (seed != std::nullopt) {
-                fill_interior(seed.value(), fill, border_color, conn);
+                typename SingleFiller<ObjType>::Connectivity conn, 
+                std::optional<std::vector<Point2D<int>>> seeds = std::nullopt) {
+            if (seeds != std::nullopt) {
+                std::for_each(seeds.value().begin(), seeds.value().end(),
+                        [&](const Point2D<int> p){
+                            fill_interior(p, fill, border_color, conn);
+                        });
             } else if (this->_interior_finder != nullptr) {
                 std::vector<Point2D<int>> interiors = this->_interior_finder->find_many(obj);
                 std::for_each(interiors.begin(), interiors.end(),

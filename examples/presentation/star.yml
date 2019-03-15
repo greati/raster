@@ -24,7 +24,7 @@ settings:
 scene:
     width: 600
     height: 600
-    background: black
+    background: "/home/vitorgreati/git-repos/raster/examples/presentation/universe.png"
     global_aa: False
     objects:
         star:
