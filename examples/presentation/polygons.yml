@@ -1,0 +1,28 @@
+settings:
+    points:
+        A: [100, 100]
+        B: [100, 120]
+        C: [70, 120]
+        D: [70, 150]
+        E: [55, 160]
+        G: [20, 140]
+        H: [20, 120]
+        I: [50, 120]
+        J: [50, 70]
+        K: [80, 70]
+    strokes:
+        blue_dda:
+            color: red
+            drawer: bresenham
+scene:
+    width: 800
+    height: 600
+    background: black
+    objects:
+        poly_1:
+            type: polygon
+            vertices: [A, B, C, D, E, F, G, H, I, J, K]
+            stroke: blue_dda
+            fill:
+                color: [255, 255, 255]
+                filler: scanline

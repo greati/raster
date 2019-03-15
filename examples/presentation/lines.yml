@@ -1,0 +1,50 @@
+settings:
+    points:
+        A1: [10, 10]
+        B1: [500, 500]
+        A2: [40, 10]
+        B2: [540, 540]
+        A3: [80, 10]
+        B3: [580, 580]
+        A4: [100, 10]
+        B4: [599, 599]
+    strokes:
+        dda_red:
+            color: red
+            drawer: dda
+        dda_red_thick:
+            color: red
+            drawer: dda
+            thickness: 10
+        bresenham_blue:
+            color: red
+            drawer: bresenham
+        wu_green:
+            color: green
+            drawer: wu
+scene:
+    width: 600
+    height: 600
+    background: black
+    global_aa: False
+    objects:
+        line_dda:
+            type: line
+            start: A1
+            end: B1
+            stroke: dda_red
+        line_dda_thick:
+            type: line
+            start: A4
+            end: B4
+            stroke: dda_red_thick
+        line_bresenham:
+            type: line
+            start: A2
+            end: B2
+            stroke: bresenham_blue 
+        line_wu:
+            type: line
+            start: A3
+            end: B3
+            stroke: wu_green 

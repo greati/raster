@@ -74,7 +74,7 @@ scene:
             type: polygon
             vertices: [ulc, urc, llc, lrc]
             stroke: thick
-            fill: basic_flood
+            fill: basic
             interior: [[45, 350]]
         my_circle:
             type: circle
