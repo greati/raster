@@ -94,13 +94,18 @@ $(document).ready(function(){initNavTree('classFloodFiller.html','');});
 <div class="title">FloodFiller&lt; ObjType &gt; Class Template Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Implement flood fill algorithm.  
+ <a href="classFloodFiller.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="FloodFiller_8h_source.html">FloodFiller.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for FloodFiller&lt; ObjType &gt;:</div>
 <div class="dyncontent">
  <div class="center">
   <img src="classFloodFiller.png" usemap="#FloodFiller_3C_20ObjType_20_3E_map" alt=""/>
   <map id="FloodFiller_3C_20ObjType_20_3E_map" name="FloodFiller_3C_20ObjType_20_3E_map">
-<area href="classSingleFiller.html" alt="SingleFiller&lt; ObjType &gt;" shape="rect" coords="0,0,148,24"/>
+<area href="classSingleFiller.html" title="A filler for single objects." alt="SingleFiller&lt; ObjType &gt;" shape="rect" coords="0,0,148,24"/>
   </map>
 </div></div>
 <table class="memberdecls">
@@ -122,9 +127,9 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>fill</b> (const ObjTy
 <tr class="memitem:a716e8efd12c57a70794b3cda2bd98765 inherit pub_methods_classSingleFiller"><td class="memItemLeft" align="right" valign="top"><a id="a716e8efd12c57a70794b3cda2bd98765"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>SingleFiller</b> (<a class="el" href="classCanvas.html">Canvas</a>&lt; Point2D&lt; int &gt;&gt; &amp;canvas)</td></tr>
 <tr class="separator:a716e8efd12c57a70794b3cda2bd98765 inherit pub_methods_classSingleFiller"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac115444a3fb0f88b5a3c414ec67e1c16 inherit pub_methods_classSingleFiller"><td class="memItemLeft" align="right" valign="top"><a id="ac115444a3fb0f88b5a3c414ec67e1c16"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>fill</b> (const ObjType &amp;obj, const RGBColor &amp;fill, const RGBColor &amp;border_color, Connectivity conn, std::optional&lt; Point2D&lt; int &gt;&gt; seed=std::nullopt)=0</td></tr>
-<tr class="separator:ac115444a3fb0f88b5a3c414ec67e1c16 inherit pub_methods_classSingleFiller"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1521246c95ceb26dc76ebdc98ee5e671 inherit pub_methods_classSingleFiller"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSingleFiller.html#a1521246c95ceb26dc76ebdc98ee5e671">fill</a> (const ObjType &amp;obj, const RGBColor &amp;fill, const RGBColor &amp;aux_color, Connectivity conn, std::optional&lt; Point2D&lt; int &gt;&gt; seed=std::nullopt)=0</td></tr>
+<tr class="memdesc:a1521246c95ceb26dc76ebdc98ee5e671 inherit pub_methods_classSingleFiller"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fill an object.  <a href="classSingleFiller.html#a1521246c95ceb26dc76ebdc98ee5e671">More...</a><br /></td></tr>
+<tr class="separator:a1521246c95ceb26dc76ebdc98ee5e671 inherit pub_methods_classSingleFiller"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
@@ -141,7 +146,13 @@ std::shared_ptr&lt; <a class="el" href="classInteriorFinder.html">InteriorFinder
 <a class="el" href="classCanvas.html">Canvas</a>&lt; Point2D&lt; int &gt; &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>_canvas</b></td></tr>
 <tr class="separator:ab4a18beb4db2da3384f6c49e73bc54a4 inherit pro_attribs_classSingleFiller"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<hr/>The documentation for this class was generated from the following file:<ul>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><h3>template&lt;typename ObjType&gt;<br />
+class FloodFiller&lt; ObjType &gt;</h3>
+
+<p>Implement flood fill algorithm. </p>
+<dl class="section author"><dt>Author</dt><dd>Vitor Greati </dd></dl>
+</div><hr/>The documentation for this class was generated from the following file:<ul>
 <li>/home/vitorgreati/git-repos/raster/sources/include/fillers/<a class="el" href="FloodFiller_8h_source.html">FloodFiller.h</a></li>
 </ul>
 </div><!-- contents -->

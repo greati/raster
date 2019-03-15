@@ -104,8 +104,8 @@ $(document).ready(function(){initNavTree('classDrawer.html','');});
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a3d79285db98b4a1207f7255c8b819ade"><td class="memItemLeft" align="right" valign="top"><a id="a3d79285db98b4a1207f7255c8b819ade"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>Drawer</b> (<a class="el" href="classCanvas.html">Canvas</a>&lt; Point2D&lt; int &gt;&gt; &amp;canvas)</td></tr>
+<tr class="memitem:a3d79285db98b4a1207f7255c8b819ade"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDrawer.html#a3d79285db98b4a1207f7255c8b819ade">Drawer</a> (<a class="el" href="classCanvas.html">Canvas</a>&lt; Point2D&lt; int &gt;&gt; &amp;canvas)</td></tr>
+<tr class="memdesc:a3d79285db98b4a1207f7255c8b819ade"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor which takes a canvas reference.  <a href="#a3d79285db98b4a1207f7255c8b819ade">More...</a><br /></td></tr>
 <tr class="separator:a3d79285db98b4a1207f7255c8b819ade"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a95f2efa6c0e865980d9d978c2cc8bf68"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDrawer.html#a95f2efa6c0e865980d9d978c2cc8bf68">draw</a> (const ObjType &amp;obj) const =0</td></tr>
 <tr class="memdesc:a95f2efa6c0e865980d9d978c2cc8bf68"><td class="mdescLeft">&#160;</td><td class="mdescRight">Algorithm to draw the object in the canvas.  <a href="#a95f2efa6c0e865980d9d978c2cc8bf68">More...</a><br /></td></tr>
@@ -113,17 +113,18 @@ Public Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
-<tr class="memitem:a9a76f6d5614046e0a10981a78bb1b43f"><td class="memItemLeft" align="right" valign="top"><a id="a9a76f6d5614046e0a10981a78bb1b43f"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>draw_line</b> (int x, int y1, int y2, const RGBColor &amp;color) const</td></tr>
+<tr class="memitem:a9a76f6d5614046e0a10981a78bb1b43f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDrawer.html#a9a76f6d5614046e0a10981a78bb1b43f">draw_line</a> (int x, int y1, int y2, const RGBColor &amp;color) const</td></tr>
+<tr class="memdesc:a9a76f6d5614046e0a10981a78bb1b43f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Draw a straight line in the canvas.  <a href="#a9a76f6d5614046e0a10981a78bb1b43f">More...</a><br /></td></tr>
 <tr class="separator:a9a76f6d5614046e0a10981a78bb1b43f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a88fa6ef293571f693863eddce50d5063"><td class="memItemLeft" align="right" valign="top"><a id="a88fa6ef293571f693863eddce50d5063"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>draw_column</b> (int x1, int x2, int y, const RGBColor &amp;color) const</td></tr>
+<tr class="memitem:a88fa6ef293571f693863eddce50d5063"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDrawer.html#a88fa6ef293571f693863eddce50d5063">draw_column</a> (int x1, int x2, int y, const RGBColor &amp;color) const</td></tr>
+<tr class="memdesc:a88fa6ef293571f693863eddce50d5063"><td class="mdescLeft">&#160;</td><td class="mdescRight">Draw a straight column in the canvas.  <a href="#a88fa6ef293571f693863eddce50d5063">More...</a><br /></td></tr>
 <tr class="separator:a88fa6ef293571f693863eddce50d5063"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
 <tr class="memitem:ac45d66fca544713679097481fab61066"><td class="memItemLeft" align="right" valign="top"><a id="ac45d66fca544713679097481fab61066"></a>
-<a class="el" href="classCanvas.html">Canvas</a>&lt; Point2D&lt; int &gt; &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>_canvas</b></td></tr>
+<a class="el" href="classCanvas.html">Canvas</a>&lt; Point2D&lt; int &gt; &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDrawer.html#ac45d66fca544713679097481fab61066">_canvas</a></td></tr>
+<tr class="memdesc:ac45d66fca544713679097481fab61066"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reference to a 2D canvas. <br /></td></tr>
 <tr class="separator:ac45d66fca544713679097481fab61066"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
@@ -132,7 +133,44 @@ class Drawer&lt; ObjType &gt;</h3>
 
 <p>An interface for drawable objects in the canvas. </p>
 <dl class="section author"><dt>Author</dt><dd>Vitor Greati </dd></dl>
-</div><h2 class="groupheader">Member Function Documentation</h2>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a3d79285db98b4a1207f7255c8b819ade"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3d79285db98b4a1207f7255c8b819ade">&#9670;&nbsp;</a></span>Drawer()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename ObjType&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classDrawer.html">Drawer</a>&lt; ObjType &gt;::<a class="el" href="classDrawer.html">Drawer</a> </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classCanvas.html">Canvas</a>&lt; Point2D&lt; int &gt;&gt; &amp;&#160;</td>
+          <td class="paramname"><em>canvas</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Constructor which takes a canvas reference. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">canvas</td><td>canvas reference </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
 <a id="a95f2efa6c0e865980d9d978c2cc8bf68"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a95f2efa6c0e865980d9d978c2cc8bf68">&#9670;&nbsp;</a></span>draw()</h2>
 
@@ -167,7 +205,129 @@ template&lt;typename ObjType&gt; </div>
   </dd>
 </dl>
 
-<p>Implemented in <a class="el" href="classXiaolinWuLineDrawer.html#a8387d1615e3d8e3e5ff88b3ae583c5fe">XiaolinWuLineDrawer</a>, <a class="el" href="classPolylineDrawer.html#a2a91268f9d2503a1d72d9b264c6e86d1">PolylineDrawer</a>, <a class="el" href="classBresenhamLineDrawer.html#afb4daab296843114731d1e93fa70e090">BresenhamLineDrawer</a>, <a class="el" href="classDDALineDrawer.html#a429ce4dbc94009b811c419007ba4db02">DDALineDrawer</a>, <a class="el" href="classPointDrawer.html#ae80afcd640fa6e2bdca7d68769856666">PointDrawer</a>, <a class="el" href="classMidpointCircleDrawer.html#a96b8cc5488cfdee50c1e36fe70d31429">MidpointCircleDrawer</a>, and <a class="el" href="classXiaolinWuEllipsisDrawer.html#a29e8e7b610c6f7e65df2fea9605f7094">XiaolinWuEllipsisDrawer</a>.</p>
+<p>Implemented in <a class="el" href="classPolylineDrawer.html#a2a91268f9d2503a1d72d9b264c6e86d1">PolylineDrawer</a>, <a class="el" href="classBresenhamLineDrawer.html#afb4daab296843114731d1e93fa70e090">BresenhamLineDrawer</a>, <a class="el" href="classDDALineDrawer.html#a429ce4dbc94009b811c419007ba4db02">DDALineDrawer</a>, <a class="el" href="classXiaolinWuLineDrawer.html#a8387d1615e3d8e3e5ff88b3ae583c5fe">XiaolinWuLineDrawer</a>, <a class="el" href="classMidpointCircleDrawer.html#a96b8cc5488cfdee50c1e36fe70d31429">MidpointCircleDrawer</a>, <a class="el" href="classPointDrawer.html#ae80afcd640fa6e2bdca7d68769856666">PointDrawer</a>, and <a class="el" href="classXiaolinWuEllipsisDrawer.html#a29e8e7b610c6f7e65df2fea9605f7094">XiaolinWuEllipsisDrawer</a>.</p>
+
+</div>
+</div>
+<a id="a88fa6ef293571f693863eddce50d5063"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a88fa6ef293571f693863eddce50d5063">&#9670;&nbsp;</a></span>draw_column()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename ObjType&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="classDrawer.html">Drawer</a>&lt; ObjType &gt;::draw_column </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>x1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>x2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>y</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const RGBColor &amp;&#160;</td>
+          <td class="paramname"><em>color</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Draw a straight column in the canvas. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">x1</td><td>col index </td></tr>
+    <tr><td class="paramname">x2</td><td>row index start </td></tr>
+    <tr><td class="paramname">y</td><td>row index end </td></tr>
+    <tr><td class="paramname">color</td><td>color </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a9a76f6d5614046e0a10981a78bb1b43f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9a76f6d5614046e0a10981a78bb1b43f">&#9670;&nbsp;</a></span>draw_line()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename ObjType&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="classDrawer.html">Drawer</a>&lt; ObjType &gt;::draw_line </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>y1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>y2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const RGBColor &amp;&#160;</td>
+          <td class="paramname"><em>color</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Draw a straight line in the canvas. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">x</td><td>line index </td></tr>
+    <tr><td class="paramname">y1</td><td>col index start </td></tr>
+    <tr><td class="paramname">y2</td><td>col index end </td></tr>
+    <tr><td class="paramname">color</td><td>color </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>

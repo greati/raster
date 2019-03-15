@@ -9,6 +9,12 @@
 #include "drawers/DDALineDrawer.h"
 #include <iostream>
 
+/**
+ * Polyline drawer.
+ * Implements line thickness.
+ *
+ * @author Vitor Greati
+ * */
 class PolylineDrawer : Drawer<Polyline<>> {
 
     public:

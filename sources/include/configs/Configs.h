@@ -20,10 +20,15 @@ class Configs {
 
     private:
 
-        ConfigsData _configs;
+        ConfigsData _configs;   /**< Configuration data */
 
     public:
 
+        /**
+         * Construtor based on data.
+         *
+         * @param configs configs data
+         * */
         Configs(ConfigsData configs) : _configs {configs} {/*empty*/}
 
         /**

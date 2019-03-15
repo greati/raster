@@ -5,10 +5,18 @@
 #include <optional>
 #include "common.h"
 
+/**
+ * Represents an object in a scene.
+ *
+ * @author Vitor Greati
+ * */
 class Object {
 
     public:
 
+        /**
+         * Object types.
+         * */
         enum class Type {
             POINT,
             LINE_SEGMENT,
@@ -18,6 +26,9 @@ class Object {
             ELLIPSIS
         };
 
+        /**
+         * Possible stroke drawers.
+         * */
         enum class StrokeDrawer {
             BRESENHAM,
             DDA,
@@ -25,12 +36,18 @@ class Object {
             MIDPOINT
         };
 
+        /**
+         * Possible fillers.
+         * */
         enum class Filler {
             SCANLINE,
             FLOOD,
             BOUNDARY
         };
 
+        /**
+         * Represents a stroke.
+         * */
         template<typename ColorType=RGBColor>
         struct Stroke {
             ColorType color;
@@ -44,6 +61,9 @@ class Object {
                 : color {_color}, thickness {_thickness}, drawer {_drawer}, antialiased {_antialiased} {/*empty*/}
         };
 
+        /**
+         * Represents a fill.
+         * */
         template<typename ColorType=RGBColor>
         struct Fill {
             ColorType color;
@@ -56,6 +76,11 @@ class Object {
 
         std::string name;
 
+        /**
+         * Maximum horizontal coordinate.
+         *
+         * @return maximum horizontal coordinate
+         * */
         virtual int max_horizontal() const = 0;
 
 };

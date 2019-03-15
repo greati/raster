@@ -15,7 +15,7 @@ var classCanvasDescVisitor =
     [ "visit_object_draw", "classCanvasDescVisitor.html#aebfa21f2518fa13246a24a2f9efad952", null ],
     [ "visit_object_draw", "classCanvasDescVisitor.html#aa8c4b9d374f899675c1159ffcbc232f2", null ],
     [ "visit_object_draw", "classCanvasDescVisitor.html#a5a44029974dfd45feb7a0d853ef7c152", null ],
-    [ "visit_post_processing", "classCanvasDescVisitor.html#a88909603a4824ff9d3d43ededbeff21c", null ],
+    [ "visit_post_processing", "classCanvasDescVisitor.html#a01978f67447291395c1767cdf9611715", null ],
     [ "visit_scanline_fill", "classCanvasDescVisitor.html#aa306b662eba70c30c3d8e4e60e6f7d6d", null ],
     [ "visit_scene_background", "classCanvasDescVisitor.html#a939b2e40d23217b068f5cc242181a40c", null ],
     [ "visit_scene_background", "classCanvasDescVisitor.html#ac0dd02449e6815067bea1cf2ca1102d8", null ],

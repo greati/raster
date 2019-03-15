@@ -94,16 +94,106 @@ $(document).ready(function(){initNavTree('classInteriorFinder.html','');});
 <div class="title">InteriorFinder&lt; ObjType, PointType &gt; Class Template Reference<span class="mlabels"><span class="mlabel">abstract</span></span></div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Find interior points to an object.  
+ <a href="classInteriorFinder.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="InteriorFinder_8h_source.html">InteriorFinder.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:aa8952e9a9e60ccd91fd77148381ac4a6"><td class="memItemLeft" align="right" valign="top"><a id="aa8952e9a9e60ccd91fd77148381ac4a6"></a>
-virtual PointType&#160;</td><td class="memItemRight" valign="bottom"><b>find_one</b> (const ObjType &amp;obj) const =0</td></tr>
+<tr class="memitem:aa8952e9a9e60ccd91fd77148381ac4a6"><td class="memItemLeft" align="right" valign="top">virtual PointType&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classInteriorFinder.html#aa8952e9a9e60ccd91fd77148381ac4a6">find_one</a> (const ObjType &amp;obj) const =0</td></tr>
+<tr class="memdesc:aa8952e9a9e60ccd91fd77148381ac4a6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Find one point.  <a href="#aa8952e9a9e60ccd91fd77148381ac4a6">More...</a><br /></td></tr>
 <tr class="separator:aa8952e9a9e60ccd91fd77148381ac4a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a66c5c1ca767de93fc2725da0f17695d4"><td class="memItemLeft" align="right" valign="top"><a id="a66c5c1ca767de93fc2725da0f17695d4"></a>
-virtual std::vector&lt; PointType &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>find_many</b> (const ObjType &amp;obj) const =0</td></tr>
+<tr class="memitem:a66c5c1ca767de93fc2725da0f17695d4"><td class="memItemLeft" align="right" valign="top">virtual std::vector&lt; PointType &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classInteriorFinder.html#a66c5c1ca767de93fc2725da0f17695d4">find_many</a> (const ObjType &amp;obj) const =0</td></tr>
+<tr class="memdesc:a66c5c1ca767de93fc2725da0f17695d4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Find a list of interior points.  <a href="#a66c5c1ca767de93fc2725da0f17695d4">More...</a><br /></td></tr>
 <tr class="separator:a66c5c1ca767de93fc2725da0f17695d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><h3>template&lt;typename ObjType, typename PointType = Point2D&lt;int&gt;&gt;<br />
+class InteriorFinder&lt; ObjType, PointType &gt;</h3>
+
+<p>Find interior points to an object. </p>
+<dl class="section author"><dt>Author</dt><dd>Vitor Greati </dd></dl>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="a66c5c1ca767de93fc2725da0f17695d4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a66c5c1ca767de93fc2725da0f17695d4">&#9670;&nbsp;</a></span>find_many()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename ObjType, typename PointType = Point2D&lt;int&gt;&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual std::vector&lt;PointType&gt; <a class="el" href="classInteriorFinder.html">InteriorFinder</a>&lt; ObjType, PointType &gt;::find_many </td>
+          <td>(</td>
+          <td class="paramtype">const ObjType &amp;&#160;</td>
+          <td class="paramname"><em>obj</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Find a list of interior points. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">obj</td><td>the object </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>list of points </dd></dl>
+
+<p>Implemented in <a class="el" href="classPolygonInteriorFinder.html#aae4374595f0a93272eea06d83a9df2ed">PolygonInteriorFinder&lt; PointType &gt;</a>.</p>
+
+</div>
+</div>
+<a id="aa8952e9a9e60ccd91fd77148381ac4a6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa8952e9a9e60ccd91fd77148381ac4a6">&#9670;&nbsp;</a></span>find_one()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename ObjType, typename PointType = Point2D&lt;int&gt;&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual PointType <a class="el" href="classInteriorFinder.html">InteriorFinder</a>&lt; ObjType, PointType &gt;::find_one </td>
+          <td>(</td>
+          <td class="paramtype">const ObjType &amp;&#160;</td>
+          <td class="paramname"><em>obj</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Find one point. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">obj</td><td>the object </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>a point </dd></dl>
+
+<p>Implemented in <a class="el" href="classPolygonInteriorFinder.html#affd7f71b69056a91ec064b0b8f9c9c2f">PolygonInteriorFinder&lt; PointType &gt;</a>.</p>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following file:<ul>
 <li>/home/vitorgreati/git-repos/raster/sources/include/interior_finders/<a class="el" href="InteriorFinder_8h_source.html">InteriorFinder.h</a></li>
 </ul>

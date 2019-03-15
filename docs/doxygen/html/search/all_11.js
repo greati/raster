@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['width',['width',['../classCanvas.html#a0375c51717c2b61099664ca37304dba0',1,'Canvas::width()'],['../classCanvas2D.html#a34db3260382b12785bf0be68747efe80',1,'Canvas2D::width()']]]
+  ['thinner',['thinner',['../classLineSegment.html#aab859c7091888ab84723809fd603b55b',1,'LineSegment']]],
+  ['type',['Type',['../classObject.html#ad8dadb365053c182931671a424199e36',1,'Object']]]
 ];

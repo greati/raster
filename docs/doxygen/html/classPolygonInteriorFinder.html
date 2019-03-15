@@ -94,6 +94,11 @@ $(document).ready(function(){initNavTree('classPolygonInteriorFinder.html','');}
 <div class="title">PolygonInteriorFinder&lt; PointType &gt; Class Template Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Find point inside polygons.  
+ <a href="classPolygonInteriorFinder.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="PolygonInteriorFinder_8h_source.html">PolygonInteriorFinder.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for PolygonInteriorFinder&lt; PointType &gt;:</div>
 <div class="dyncontent">
@@ -109,16 +114,150 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a5788406fac927d301ab4f7cb7895f2ea"><td class="memItemLeft" align="right" valign="top"><a id="a5788406fac927d301ab4f7cb7895f2ea"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>PolygonInteriorFinder</b> (<a class="el" href="classPointSampler.html">PointSampler</a>&lt;&gt; &amp;_sampler)</td></tr>
 <tr class="separator:a5788406fac927d301ab4f7cb7895f2ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:affd7f71b69056a91ec064b0b8f9c9c2f"><td class="memItemLeft" align="right" valign="top"><a id="affd7f71b69056a91ec064b0b8f9c9c2f"></a>
-Point2D&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>find_one</b> (const <a class="el" href="classPolygon.html">Polygon</a>&lt;&gt; &amp;polygon) const override</td></tr>
+<tr class="memitem:affd7f71b69056a91ec064b0b8f9c9c2f"><td class="memItemLeft" align="right" valign="top">Point2D&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPolygonInteriorFinder.html#affd7f71b69056a91ec064b0b8f9c9c2f">find_one</a> (const <a class="el" href="classPolygon.html">Polygon</a>&lt;&gt; &amp;polygon) const override</td></tr>
+<tr class="memdesc:affd7f71b69056a91ec064b0b8f9c9c2f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Find one point.  <a href="#affd7f71b69056a91ec064b0b8f9c9c2f">More...</a><br /></td></tr>
 <tr class="separator:affd7f71b69056a91ec064b0b8f9c9c2f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aae4374595f0a93272eea06d83a9df2ed"><td class="memItemLeft" align="right" valign="top"><a id="aae4374595f0a93272eea06d83a9df2ed"></a>
-std::vector&lt; Point2D&lt; int &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>find_many</b> (const <a class="el" href="classPolygon.html">Polygon</a>&lt;&gt; &amp;polygon) const override</td></tr>
+<tr class="memitem:aae4374595f0a93272eea06d83a9df2ed"><td class="memItemLeft" align="right" valign="top">std::vector&lt; Point2D&lt; int &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPolygonInteriorFinder.html#aae4374595f0a93272eea06d83a9df2ed">find_many</a> (const <a class="el" href="classPolygon.html">Polygon</a>&lt;&gt; &amp;polygon) const override</td></tr>
+<tr class="memdesc:aae4374595f0a93272eea06d83a9df2ed"><td class="mdescLeft">&#160;</td><td class="mdescRight">Find a list of interior points.  <a href="#aae4374595f0a93272eea06d83a9df2ed">More...</a><br /></td></tr>
 <tr class="separator:aae4374595f0a93272eea06d83a9df2ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac81229542c2d4a07cf2a38d2889fa27e"><td class="memItemLeft" align="right" valign="top"><a id="ac81229542c2d4a07cf2a38d2889fa27e"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>is_interior</b> (const <a class="el" href="classPolygon.html">Polygon</a>&lt;&gt; &amp;polygon, const Point2D&lt; int &gt; point) const</td></tr>
+<tr class="memitem:ac81229542c2d4a07cf2a38d2889fa27e"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPolygonInteriorFinder.html#ac81229542c2d4a07cf2a38d2889fa27e">is_interior</a> (const <a class="el" href="classPolygon.html">Polygon</a>&lt;&gt; &amp;polygon, const Point2D&lt; int &gt; point) const</td></tr>
+<tr class="memdesc:ac81229542c2d4a07cf2a38d2889fa27e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if a given point is inside a polygon.  <a href="#ac81229542c2d4a07cf2a38d2889fa27e">More...</a><br /></td></tr>
 <tr class="separator:ac81229542c2d4a07cf2a38d2889fa27e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><h3>template&lt;typename PointType = Point2D&lt;int&gt;&gt;<br />
+class PolygonInteriorFinder&lt; PointType &gt;</h3>
+
+<p>Find point inside polygons. </p>
+<p>Implements a variation of the parity check internal points.</p>
+<dl class="section author"><dt>Author</dt><dd>Vitor Greati </dd></dl>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="aae4374595f0a93272eea06d83a9df2ed"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aae4374595f0a93272eea06d83a9df2ed">&#9670;&nbsp;</a></span>find_many()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename PointType  = Point2D&lt;int&gt;&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;Point2D&lt;int&gt; &gt; <a class="el" href="classPolygonInteriorFinder.html">PolygonInteriorFinder</a>&lt; PointType &gt;::find_many </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classPolygon.html">Polygon</a>&lt;&gt; &amp;&#160;</td>
+          <td class="paramname"><em>obj</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Find a list of interior points. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">obj</td><td>the object </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>list of points </dd></dl>
+
+<p>Implements <a class="el" href="classInteriorFinder.html#a66c5c1ca767de93fc2725da0f17695d4">InteriorFinder&lt; Polygon&lt;&gt;, PointType &gt;</a>.</p>
+
+</div>
+</div>
+<a id="affd7f71b69056a91ec064b0b8f9c9c2f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#affd7f71b69056a91ec064b0b8f9c9c2f">&#9670;&nbsp;</a></span>find_one()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename PointType  = Point2D&lt;int&gt;&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Point2D&lt;int&gt; <a class="el" href="classPolygonInteriorFinder.html">PolygonInteriorFinder</a>&lt; PointType &gt;::find_one </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classPolygon.html">Polygon</a>&lt;&gt; &amp;&#160;</td>
+          <td class="paramname"><em>obj</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Find one point. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">obj</td><td>the object </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>a point </dd></dl>
+
+<p>Implements <a class="el" href="classInteriorFinder.html#aa8952e9a9e60ccd91fd77148381ac4a6">InteriorFinder&lt; Polygon&lt;&gt;, PointType &gt;</a>.</p>
+
+</div>
+</div>
+<a id="ac81229542c2d4a07cf2a38d2889fa27e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac81229542c2d4a07cf2a38d2889fa27e">&#9670;&nbsp;</a></span>is_interior()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename PointType  = Point2D&lt;int&gt;&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool <a class="el" href="classPolygonInteriorFinder.html">PolygonInteriorFinder</a>&lt; PointType &gt;::is_interior </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classPolygon.html">Polygon</a>&lt;&gt; &amp;&#160;</td>
+          <td class="paramname"><em>polygon</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const Point2D&lt; int &gt;&#160;</td>
+          <td class="paramname"><em>point</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Check if a given point is inside a polygon. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">polygon</td><td>the polygon </td></tr>
+    <tr><td class="paramname">point</td><td>the point </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>if the point is inside </dd></dl>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following file:<ul>
 <li>/home/vitorgreati/git-repos/raster/sources/include/interior_finders/<a class="el" href="PolygonInteriorFinder_8h_source.html">PolygonInteriorFinder.h</a></li>
 </ul>

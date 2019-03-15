@@ -95,10 +95,16 @@ $(document).ready(function(){initNavTree('classPolygonScanLineFiller.html','');}
 <div class="title">PolygonScanLineFiller Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Implementation of scanline algorithm to fill polygons.  
+ <a href="classPolygonScanLineFiller.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="PolygonScanLineFiller_8h_source.html">PolygonScanLineFiller.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structPolygonScanLineFiller_1_1EdgeEntry.html">EdgeEntry</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Edge representation in the scanline.  <a href="structPolygonScanLineFiller_1_1EdgeEntry.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
@@ -106,10 +112,48 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a2fc0973f274baed31f9aab7b0391846b"><td class="memItemLeft" align="right" valign="top"><a id="a2fc0973f274baed31f9aab7b0391846b"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>PolygonScanLineFiller</b> (<a class="el" href="classCanvas.html">Canvas</a>&lt; Point2D&lt; int &gt;&gt; &amp;canvas)</td></tr>
 <tr class="separator:a2fc0973f274baed31f9aab7b0391846b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9cd916a95d79ce988c8558e7823851e4"><td class="memItemLeft" align="right" valign="top"><a id="a9cd916a95d79ce988c8558e7823851e4"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>fill</b> (const std::map&lt; std::string, <a class="el" href="classPolygon.html">Polygon</a>&lt;&gt;&gt; &amp;polygons) const</td></tr>
+<tr class="memitem:a9cd916a95d79ce988c8558e7823851e4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPolygonScanLineFiller.html#a9cd916a95d79ce988c8558e7823851e4">fill</a> (const std::map&lt; std::string, <a class="el" href="classPolygon.html">Polygon</a>&lt;&gt;&gt; &amp;polygons) const</td></tr>
+<tr class="memdesc:a9cd916a95d79ce988c8558e7823851e4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fill a list of polygons.  <a href="#a9cd916a95d79ce988c8558e7823851e4">More...</a><br /></td></tr>
 <tr class="separator:a9cd916a95d79ce988c8558e7823851e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Implementation of scanline algorithm to fill polygons. </p>
+<dl class="section author"><dt>Author</dt><dd>Vitor Greati </dd></dl>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="a9cd916a95d79ce988c8558e7823851e4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9cd916a95d79ce988c8558e7823851e4">&#9670;&nbsp;</a></span>fill()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PolygonScanLineFiller::fill </td>
+          <td>(</td>
+          <td class="paramtype">const std::map&lt; std::string, <a class="el" href="classPolygon.html">Polygon</a>&lt;&gt;&gt; &amp;&#160;</td>
+          <td class="paramname"><em>polygons</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Fill a list of polygons. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">polygons</td><td>list of polygons </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following file:<ul>
 <li>/home/vitorgreati/git-repos/raster/sources/include/fillers/<a class="el" href="PolygonScanLineFiller_8h_source.html">PolygonScanLineFiller.h</a></li>
 </ul>

@@ -94,6 +94,11 @@ $(document).ready(function(){initNavTree('classCanvasDescVisitor.html','');});
 <div class="title">CanvasDescVisitor Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>A visitor for a 2D canvas based on integer coordinates.  
+ <a href="classCanvasDescVisitor.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="CanvasDescVisitor_8h_source.html">CanvasDescVisitor.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for CanvasDescVisitor:</div>
 <div class="dyncontent">
@@ -106,11 +111,11 @@ Inheritance diagram for CanvasDescVisitor:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:ae541590fba469d72223e4a231f124d59"><td class="memItemLeft" align="right" valign="top"><a id="ae541590fba469d72223e4a231f124d59"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>CanvasDescVisitor</b> (<a class="el" href="classCanvas.html">Canvas</a>&lt; Point2D&lt; int &gt;&gt; &amp;canvas)</td></tr>
+<tr class="memitem:ae541590fba469d72223e4a231f124d59"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCanvasDescVisitor.html#ae541590fba469d72223e4a231f124d59">CanvasDescVisitor</a> (<a class="el" href="classCanvas.html">Canvas</a>&lt; Point2D&lt; int &gt;&gt; &amp;<a class="el" href="classCanvasDescVisitor.html#ae89fd4a8b2a297d8bfa95b1191718298">canvas</a>)</td></tr>
+<tr class="memdesc:ae541590fba469d72223e4a231f124d59"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor which receiver a canvas reference.  <a href="#ae541590fba469d72223e4a231f124d59">More...</a><br /></td></tr>
 <tr class="separator:ae541590fba469d72223e4a231f124d59"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae89fd4a8b2a297d8bfa95b1191718298"><td class="memItemLeft" align="right" valign="top"><a id="ae89fd4a8b2a297d8bfa95b1191718298"></a>
-auto &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>canvas</b> () const</td></tr>
+<tr class="memitem:ae89fd4a8b2a297d8bfa95b1191718298"><td class="memItemLeft" align="right" valign="top">auto &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCanvasDescVisitor.html#ae89fd4a8b2a297d8bfa95b1191718298">canvas</a> () const</td></tr>
+<tr class="memdesc:ae89fd4a8b2a297d8bfa95b1191718298"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reference to the canvas.  <a href="#ae89fd4a8b2a297d8bfa95b1191718298">More...</a><br /></td></tr>
 <tr class="separator:ae89fd4a8b2a297d8bfa95b1191718298"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a939b2e40d23217b068f5cc242181a40c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCanvasDescVisitor.html#a939b2e40d23217b068f5cc242181a40c">visit_scene_background</a> (const RGBColor &amp;background) const override</td></tr>
 <tr class="memdesc:a939b2e40d23217b068f5cc242181a40c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called when background color is parsed.  <a href="#a939b2e40d23217b068f5cc242181a40c">More...</a><br /></td></tr>
@@ -145,30 +150,258 @@ auto &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>canvas</b> () c
 <tr class="memitem:aa306b662eba70c30c3d8e4e60e6f7d6d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCanvasDescVisitor.html#aa306b662eba70c30c3d8e4e60e6f7d6d">visit_scanline_fill</a> (const std::map&lt; std::string, <a class="el" href="classPolygon.html">Polygon</a>&lt;&gt;&gt; &amp;objs) override</td></tr>
 <tr class="memdesc:aa306b662eba70c30c3d8e4e60e6f7d6d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called to perform polygon scanline fill.  <a href="#aa306b662eba70c30c3d8e4e60e6f7d6d">More...</a><br /></td></tr>
 <tr class="separator:aa306b662eba70c30c3d8e4e60e6f7d6d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a488da4b34928a95ddd682ff2fd5cc873"><td class="memItemLeft" align="right" valign="top"><a id="a488da4b34928a95ddd682ff2fd5cc873"></a>
-std::unique_ptr&lt; <a class="el" href="classDrawer.html">Drawer</a>&lt; <a class="el" href="classEllipsis.html">Ellipsis</a>&lt;&gt; &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>get_ellipsis_drawer</b> (Object::StrokeDrawer) const</td></tr>
+<tr class="memitem:a488da4b34928a95ddd682ff2fd5cc873"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; <a class="el" href="classDrawer.html">Drawer</a>&lt; <a class="el" href="classEllipsis.html">Ellipsis</a>&lt;&gt; &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCanvasDescVisitor.html#a488da4b34928a95ddd682ff2fd5cc873">get_ellipsis_drawer</a> (<a class="el" href="classObject.html#a4d68fa357d0ab98402f4429faa53c273">Object::StrokeDrawer</a>) const</td></tr>
+<tr class="memdesc:a488da4b34928a95ddd682ff2fd5cc873"><td class="mdescLeft">&#160;</td><td class="mdescRight">Factory method for ellipsis drawer.  <a href="#a488da4b34928a95ddd682ff2fd5cc873">More...</a><br /></td></tr>
 <tr class="separator:a488da4b34928a95ddd682ff2fd5cc873"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac74aec43c4f64d117a8664c8b0b75b0f"><td class="memItemLeft" align="right" valign="top"><a id="ac74aec43c4f64d117a8664c8b0b75b0f"></a>
-std::unique_ptr&lt; <a class="el" href="classDrawer.html">Drawer</a>&lt; <a class="el" href="classCircle.html">Circle</a>&lt;&gt; &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>get_circle_drawer</b> (Object::StrokeDrawer) const</td></tr>
+<tr class="memitem:ac74aec43c4f64d117a8664c8b0b75b0f"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; <a class="el" href="classDrawer.html">Drawer</a>&lt; <a class="el" href="classCircle.html">Circle</a>&lt;&gt; &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCanvasDescVisitor.html#ac74aec43c4f64d117a8664c8b0b75b0f">get_circle_drawer</a> (<a class="el" href="classObject.html#a4d68fa357d0ab98402f4429faa53c273">Object::StrokeDrawer</a>) const</td></tr>
+<tr class="memdesc:ac74aec43c4f64d117a8664c8b0b75b0f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Factory method for circle drawer.  <a href="#ac74aec43c4f64d117a8664c8b0b75b0f">More...</a><br /></td></tr>
 <tr class="separator:ac74aec43c4f64d117a8664c8b0b75b0f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3e38dd40154bbc7a8591517fa6ae69fe"><td class="memItemLeft" align="right" valign="top"><a id="a3e38dd40154bbc7a8591517fa6ae69fe"></a>
-std::unique_ptr&lt; <a class="el" href="classDrawer.html">Drawer</a>&lt; <a class="el" href="classLineSegment.html">LineSegment</a>&lt;&gt; &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>get_line_drawer</b> (Object::StrokeDrawer) const</td></tr>
+<tr class="memitem:a3e38dd40154bbc7a8591517fa6ae69fe"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; <a class="el" href="classDrawer.html">Drawer</a>&lt; <a class="el" href="classLineSegment.html">LineSegment</a>&lt;&gt; &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCanvasDescVisitor.html#a3e38dd40154bbc7a8591517fa6ae69fe">get_line_drawer</a> (<a class="el" href="classObject.html#a4d68fa357d0ab98402f4429faa53c273">Object::StrokeDrawer</a>) const</td></tr>
+<tr class="memdesc:a3e38dd40154bbc7a8591517fa6ae69fe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Factory method for line segment drawer.  <a href="#a3e38dd40154bbc7a8591517fa6ae69fe">More...</a><br /></td></tr>
 <tr class="separator:a3e38dd40154bbc7a8591517fa6ae69fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa50777285b718a28c3e7343948e6b1ac"><td class="memItemLeft" align="right" valign="top"><a id="aa50777285b718a28c3e7343948e6b1ac"></a>
-std::unique_ptr&lt; <a class="el" href="classSingleFiller.html">SingleFiller</a>&lt; <a class="el" href="classCircle.html">Circle</a>&lt;&gt; &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>get_single_filler_circle</b> (Object::Filler filler) const</td></tr>
+<tr class="memitem:aa50777285b718a28c3e7343948e6b1ac"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; <a class="el" href="classSingleFiller.html">SingleFiller</a>&lt; <a class="el" href="classCircle.html">Circle</a>&lt;&gt; &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCanvasDescVisitor.html#aa50777285b718a28c3e7343948e6b1ac">get_single_filler_circle</a> (<a class="el" href="classObject.html#afd839de7e8b7b0fa8d70342669190810">Object::Filler</a> filler) const</td></tr>
+<tr class="memdesc:aa50777285b718a28c3e7343948e6b1ac"><td class="mdescLeft">&#160;</td><td class="mdescRight">Factory method for circle filler.  <a href="#aa50777285b718a28c3e7343948e6b1ac">More...</a><br /></td></tr>
 <tr class="separator:aa50777285b718a28c3e7343948e6b1ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a01c73dc90f94b9529f44752e21bfe03b"><td class="memItemLeft" align="right" valign="top"><a id="a01c73dc90f94b9529f44752e21bfe03b"></a>
-std::unique_ptr&lt; <a class="el" href="classSingleFiller.html">SingleFiller</a>&lt; <a class="el" href="classEllipsis.html">Ellipsis</a>&lt;&gt; &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>get_single_filler_ellipsis</b> (Object::Filler filler) const</td></tr>
+<tr class="memitem:a01c73dc90f94b9529f44752e21bfe03b"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; <a class="el" href="classSingleFiller.html">SingleFiller</a>&lt; <a class="el" href="classEllipsis.html">Ellipsis</a>&lt;&gt; &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCanvasDescVisitor.html#a01c73dc90f94b9529f44752e21bfe03b">get_single_filler_ellipsis</a> (<a class="el" href="classObject.html#afd839de7e8b7b0fa8d70342669190810">Object::Filler</a> filler) const</td></tr>
+<tr class="memdesc:a01c73dc90f94b9529f44752e21bfe03b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Factory method for ellipsis filler.  <a href="#a01c73dc90f94b9529f44752e21bfe03b">More...</a><br /></td></tr>
 <tr class="separator:a01c73dc90f94b9529f44752e21bfe03b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a91ca04cd6afe2e3bef272af22ee37ac5"><td class="memItemLeft" align="right" valign="top"><a id="a91ca04cd6afe2e3bef272af22ee37ac5"></a>
-std::unique_ptr&lt; <a class="el" href="classSingleFiller.html">SingleFiller</a>&lt; <a class="el" href="classPolygon.html">Polygon</a>&lt;&gt; &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>get_single_filler_poly</b> (Object::Filler filler) const</td></tr>
+<tr class="memitem:a91ca04cd6afe2e3bef272af22ee37ac5"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; <a class="el" href="classSingleFiller.html">SingleFiller</a>&lt; <a class="el" href="classPolygon.html">Polygon</a>&lt;&gt; &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCanvasDescVisitor.html#a91ca04cd6afe2e3bef272af22ee37ac5">get_single_filler_poly</a> (<a class="el" href="classObject.html#afd839de7e8b7b0fa8d70342669190810">Object::Filler</a> filler) const</td></tr>
+<tr class="memdesc:a91ca04cd6afe2e3bef272af22ee37ac5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Factory method for polygon filler.  <a href="#a91ca04cd6afe2e3bef272af22ee37ac5">More...</a><br /></td></tr>
 <tr class="separator:a91ca04cd6afe2e3bef272af22ee37ac5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a88909603a4824ff9d3d43ededbeff21c"><td class="memItemLeft" align="right" valign="top"><a id="a88909603a4824ff9d3d43ededbeff21c"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCanvasDescVisitor.html#a88909603a4824ff9d3d43ededbeff21c">visit_post_processing</a> ()</td></tr>
-<tr class="memdesc:a88909603a4824ff9d3d43ededbeff21c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Perform post processing. <br /></td></tr>
-<tr class="separator:a88909603a4824ff9d3d43ededbeff21c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a01978f67447291395c1767cdf9611715"><td class="memItemLeft" align="right" valign="top"><a id="a01978f67447291395c1767cdf9611715"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCanvasDescVisitor.html#a01978f67447291395c1767cdf9611715">visit_post_processing</a> () override</td></tr>
+<tr class="memdesc:a01978f67447291395c1767cdf9611715"><td class="mdescLeft">&#160;</td><td class="mdescRight">Perform post processing. <br /></td></tr>
+<tr class="separator:a01978f67447291395c1767cdf9611715"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>A visitor for a 2D canvas based on integer coordinates. </p>
+<dl class="section author"><dt>Author</dt><dd>Vitor Greati </dd></dl>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="ae541590fba469d72223e4a231f124d59"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae541590fba469d72223e4a231f124d59">&#9670;&nbsp;</a></span>CanvasDescVisitor()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">CanvasDescVisitor::CanvasDescVisitor </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classCanvas.html">Canvas</a>&lt; Point2D&lt; int &gt;&gt; &amp;&#160;</td>
+          <td class="paramname"><em>canvas</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Constructor which receiver a canvas reference. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">canvas</td><td>reference to canvas </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a id="ae89fd4a8b2a297d8bfa95b1191718298"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae89fd4a8b2a297d8bfa95b1191718298">&#9670;&nbsp;</a></span>canvas()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">auto&amp; CanvasDescVisitor::canvas </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Reference to the canvas. </p>
+<dl class="section return"><dt>Returns</dt><dd>reference to the canvas </dd></dl>
+
+</div>
+</div>
+<a id="ac74aec43c4f64d117a8664c8b0b75b0f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac74aec43c4f64d117a8664c8b0b75b0f">&#9670;&nbsp;</a></span>get_circle_drawer()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::unique_ptr&lt;<a class="el" href="classDrawer.html">Drawer</a>&lt;<a class="el" href="classCircle.html">Circle</a>&lt;&gt; &gt; &gt; CanvasDescVisitor::get_circle_drawer </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classObject.html#a4d68fa357d0ab98402f4429faa53c273">Object::StrokeDrawer</a>&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Factory method for circle drawer. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">stroke</td><td>stroke drawer </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>pointer to a drawer </dd></dl>
+
+</div>
+</div>
+<a id="a488da4b34928a95ddd682ff2fd5cc873"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a488da4b34928a95ddd682ff2fd5cc873">&#9670;&nbsp;</a></span>get_ellipsis_drawer()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::unique_ptr&lt;<a class="el" href="classDrawer.html">Drawer</a>&lt;<a class="el" href="classEllipsis.html">Ellipsis</a>&lt;&gt; &gt; &gt; CanvasDescVisitor::get_ellipsis_drawer </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classObject.html#a4d68fa357d0ab98402f4429faa53c273">Object::StrokeDrawer</a>&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Factory method for ellipsis drawer. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">stroke</td><td>stroke drawer </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>pointer to a drawer </dd></dl>
+
+</div>
+</div>
+<a id="a3e38dd40154bbc7a8591517fa6ae69fe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3e38dd40154bbc7a8591517fa6ae69fe">&#9670;&nbsp;</a></span>get_line_drawer()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::unique_ptr&lt;<a class="el" href="classDrawer.html">Drawer</a>&lt;<a class="el" href="classLineSegment.html">LineSegment</a>&lt;&gt; &gt; &gt; CanvasDescVisitor::get_line_drawer </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classObject.html#a4d68fa357d0ab98402f4429faa53c273">Object::StrokeDrawer</a>&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Factory method for line segment drawer. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">stroke</td><td>stroke drawer </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>pointer to a drawer </dd></dl>
+
+</div>
+</div>
+<a id="aa50777285b718a28c3e7343948e6b1ac"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa50777285b718a28c3e7343948e6b1ac">&#9670;&nbsp;</a></span>get_single_filler_circle()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::unique_ptr&lt;<a class="el" href="classSingleFiller.html">SingleFiller</a>&lt;<a class="el" href="classCircle.html">Circle</a>&lt;&gt; &gt; &gt; CanvasDescVisitor::get_single_filler_circle </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classObject.html#afd839de7e8b7b0fa8d70342669190810">Object::Filler</a>&#160;</td>
+          <td class="paramname"><em>filler</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Factory method for circle filler. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">filler</td><td>filler type </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>pointer to a filler </dd></dl>
+
+</div>
+</div>
+<a id="a01c73dc90f94b9529f44752e21bfe03b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a01c73dc90f94b9529f44752e21bfe03b">&#9670;&nbsp;</a></span>get_single_filler_ellipsis()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::unique_ptr&lt;<a class="el" href="classSingleFiller.html">SingleFiller</a>&lt;<a class="el" href="classEllipsis.html">Ellipsis</a>&lt;&gt; &gt; &gt; CanvasDescVisitor::get_single_filler_ellipsis </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classObject.html#afd839de7e8b7b0fa8d70342669190810">Object::Filler</a>&#160;</td>
+          <td class="paramname"><em>filler</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Factory method for ellipsis filler. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">filler</td><td>filler type </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>pointer to a filler </dd></dl>
+
+</div>
+</div>
+<a id="a91ca04cd6afe2e3bef272af22ee37ac5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a91ca04cd6afe2e3bef272af22ee37ac5">&#9670;&nbsp;</a></span>get_single_filler_poly()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::unique_ptr&lt;<a class="el" href="classSingleFiller.html">SingleFiller</a>&lt;<a class="el" href="classPolygon.html">Polygon</a>&lt;&gt; &gt; &gt; CanvasDescVisitor::get_single_filler_poly </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classObject.html#afd839de7e8b7b0fa8d70342669190810">Object::Filler</a>&#160;</td>
+          <td class="paramname"><em>filler</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Factory method for polygon filler. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">filler</td><td>filler type </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>pointer to a filler </dd></dl>
+
+</div>
+</div>
 <a id="a7f62a5061707037385332a0ddafb27c7"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a7f62a5061707037385332a0ddafb27c7">&#9670;&nbsp;</a></span>visit_object_draw() <span class="overload">[1/6]</span></h2>
 

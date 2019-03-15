@@ -6,12 +6,17 @@
 #include <memory>
 #include <optional>
 
+/**
+ * Represents a polygon.
+ *
+ * @author Vitor Greati
+ * */
 template<typename T=double, typename ColorType = RGBColor>
 class Polygon : public Polyline<T, ColorType> {
 
     private:
 
-        std::optional<Object::Fill<ColorType>> _fill;
+        std::optional<Object::Fill<ColorType>> _fill;   /**< Polygon fill */
 
     public:
 
@@ -25,6 +30,11 @@ class Polygon : public Polyline<T, ColorType> {
             this->_vertices.push_back(vertices[0]);
         };
 
+        /**
+         * The polygon fill.
+         *
+         * @return the polygon fill
+         * */
         auto fill() const { return _fill; }
 
 };

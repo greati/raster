@@ -5,13 +5,18 @@
 #include <cmath>
 #include <optional>
 
+/**
+ * Represents a polyline.
+ *
+ * @author Vitor Greati
+ * */
 template<typename T=double, typename ColorType = RGBColor>
 class Polyline : public Object {
 
     protected:
 
-        std::vector<Point2D<T>> _vertices;
-        std::optional<Object::Stroke<ColorType>> _stroke;
+        std::vector<Point2D<T>> _vertices;                  /**< Polyline vertices */
+        std::optional<Object::Stroke<ColorType>> _stroke;   /**< Polyline stroke */
 
     public:
 
@@ -24,8 +29,18 @@ class Polyline : public Object {
 
         };
 
+        /**
+         * Polyline vertices.
+         *
+         * @return polyline vertices
+         * */
         std::vector<Point2D<T>> vertices() const { return _vertices; };
 
+        /**
+         * Polyline stroke.
+         *
+         * @return polyline stroke
+         * */
         auto stroke() const { return _stroke; }
 
         int max_horizontal() const override {

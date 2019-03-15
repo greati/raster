@@ -1,14 +1,6 @@
 var searchData=
 [
-  ['linesegment',['LineSegment',['../classLineSegment.html',1,'']]],
-  ['lodepngcolormode',['LodePNGColorMode',['../structLodePNGColorMode.html',1,'']]],
-  ['lodepngcolorprofile',['LodePNGColorProfile',['../structLodePNGColorProfile.html',1,'']]],
-  ['lodepngcompresssettings',['LodePNGCompressSettings',['../structLodePNGCompressSettings.html',1,'']]],
-  ['lodepngdecodersettings',['LodePNGDecoderSettings',['../structLodePNGDecoderSettings.html',1,'']]],
-  ['lodepngdecompresssettings',['LodePNGDecompressSettings',['../structLodePNGDecompressSettings.html',1,'']]],
-  ['lodepngencodersettings',['LodePNGEncoderSettings',['../structLodePNGEncoderSettings.html',1,'']]],
-  ['lodepnginfo',['LodePNGInfo',['../structLodePNGInfo.html',1,'']]],
-  ['lodepngprinter',['LodePngPrinter',['../classLodePngPrinter.html',1,'']]],
-  ['lodepngstate',['LodePNGState',['../structLodePNGState.html',1,'']]],
-  ['lodepngtime',['LodePNGTime',['../structLodePNGTime.html',1,'']]]
+  ['interiorfinder',['InteriorFinder',['../classInteriorFinder.html',1,'']]],
+  ['interiorfinder_3c_20polygon_3c_3e_2c_20pointtype_20_3e',['InteriorFinder&lt; Polygon&lt;&gt;, PointType &gt;',['../classInteriorFinder.html',1,'']]],
+  ['is_5finterior',['is_interior',['../classPolygonInteriorFinder.html#ac81229542c2d4a07cf2a38d2889fa27e',1,'PolygonInteriorFinder']]]
 ];

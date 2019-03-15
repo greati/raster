@@ -4,6 +4,11 @@
 #include "objects/Point.h"
 #include <iostream>
 
+/**
+ * Point drawer, the simplest drawer ever.
+ *
+ * @author Vitor Greati
+ * */
 class PointDrawer : Drawer<Point<>> {
 
     public:

@@ -1,10 +1,6 @@
 var searchData=
 [
-  ['scenedescreader',['SceneDescReader',['../classSceneDescReader.html',1,'']]],
-  ['scenesettings',['SceneSettings',['../classSceneSettings.html',1,'']]],
-  ['set',['set',['../classCanvas.html#a61311dc778b50d8ce77d4c4b7780f207',1,'Canvas::set(CoordType point, PixelValue&lt; NChannels &gt; value) const =0'],['../classCanvas.html#a147e9c1d4bfec08d7b5ac7031669671a',1,'Canvas::set(CoordType point, PixelValue&lt; NChannels &gt; value, std::nothrow_t) const noexcept=0']]],
-  ['singlefiller',['SingleFiller',['../classSingleFiller.html',1,'']]],
-  ['squarepointsampler',['SquarePointSampler',['../classSquarePointSampler.html',1,'']]],
-  ['stroke',['Stroke',['../structObject_1_1Stroke.html',1,'Object']]],
-  ['stroke_5fpallete',['stroke_pallete',['../classSceneSettings.html#a3d8d84c0a4422ee1060629c8fe0e13c8',1,'SceneSettings']]]
+  ['radius',['radius',['../classEllipsis.html#a4a29712beb469626f5f4cce079cf216d',1,'Ellipsis']]],
+  ['read',['read',['../classSceneDescReader.html#aadf754d10d0eb67cfb7c0f4f426b8e2e',1,'SceneDescReader::read()'],['../classYAMLSceneDescReader.html#aac947f66e682b8eaf666a07cd844bc33',1,'YAMLSceneDescReader::read()']]],
+  ['reset',['reset',['../classCanvas.html#a0fe98b02bcfab0aa677159a6a57671c7',1,'Canvas::reset()'],['../classCanvas2D.html#a72a10a6d508c1eb74fd52cfa2e3c8dfc',1,'Canvas2D::reset()'],['../classPointSampler.html#afae64d03421f8fbd8397044226ce3084',1,'PointSampler::reset()'],['../classDummyPointSampler.html#ac8995c0f42f089ea2ca4a9183221e636',1,'DummyPointSampler::reset()'],['../classSquarePointSampler.html#a861b9f5e52e28222efc2b8a485df5510',1,'SquarePointSampler::reset()']]]
 ];

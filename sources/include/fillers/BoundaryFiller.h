@@ -8,6 +8,11 @@
 #include <vector>
 #include <stack>
 
+/**
+ * Implement boundary filler algorithm.
+ *
+ * @author Vitor Greati
+ * */
 template<typename ObjType>
 class BoundaryFiller : public SingleFiller<ObjType> {
 

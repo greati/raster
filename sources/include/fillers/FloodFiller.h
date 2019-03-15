@@ -7,6 +7,11 @@
 #include "interior_finders/PolygonInteriorFinder.h"
 #include <stack>
 
+/**
+ * Implement flood fill algorithm.
+ *
+ * @author Vitor Greati
+ * */
 template<typename ObjType>
 class FloodFiller : public SingleFiller<ObjType> {
 

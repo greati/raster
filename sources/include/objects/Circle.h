@@ -3,6 +3,11 @@
 
 #include "objects/Ellipsis.h"
 
+/**
+ * Represents a circle.
+ *
+ * @author Vitor Greati
+ * */
 template<typename T=double, typename ColorType = RGBColor>
 class Circle : public Ellipsis<T, ColorType> {
 

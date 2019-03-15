@@ -3,6 +3,11 @@
 
 #include "objects/Circle.h"
 
+/**
+ * Ellipsis drawer based on Xiaoling ellipsis drawer.
+ *
+ * @author Vitor Greati
+ * */
 class XiaolinWuEllipsisDrawer : public Drawer<Ellipsis<>> {
 
     public:

@@ -3,13 +3,18 @@
 
 #include "common.h"
 
+/**
+ * Represents a line segment.
+ *
+ * @author Vitor Greati
+ * */
 template<typename T=double, typename ColorType = RGBColor>
 class LineSegment : public Object {
 
     private:
 
-        Point2D<T> _p1, _p2;
-        Object::Stroke<ColorType> _stroke;
+        Point2D<T> _p1, _p2;                /**< line start and end points*/
+        Object::Stroke<ColorType> _stroke;  /**< stroke */
 
     public:
 
@@ -24,12 +29,24 @@ class LineSegment : public Object {
             return std::max(_p1.second, _p2.second);
         }
 
+        /**
+         * Produce a thinner line segment.
+         *
+         * @param delta_thickness thickness variation
+         * @return a thinner line segment
+         * */
         LineSegment<T, ColorType> thinner(int delta_thickness) const {
             auto stroke = this->_stroke;
             stroke.thickness -= delta_thickness;
             return LineSegment<T, ColorType> {this->_p1, this->_p2, stroke};
         }
 
+        /**
+         * Produce a parallel line based on a padding.
+         *
+         * @param move the padding
+         * @return a new line segment parallel to this one
+         * */
         LineSegment<T, ColorType> parallel(int move) const {
             auto p1 = this->_p1;
             auto p2 = this->_p2;

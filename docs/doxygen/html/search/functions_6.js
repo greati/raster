@@ -1,6 +1,4 @@
 var searchData=
 [
-  ['print',['print',['../classPrinter.html#a593e70d807258eefa413a52cd8e3c9ee',1,'Printer::print(const T *data, const Configs&lt; ConfigKeyType &gt; &amp;configs)'],['../classPrinter.html#a726243ffd10cdc4c706767513c175a1b',1,'Printer::print(const T *data, const Configs&lt; ConfigKeyType &gt; &amp;configs, const std::string &amp;dest)']]],
-  ['process_5fobject',['process_object',['../classYAMLSceneDescReader.html#a983ca2723660c9b5580d61720b83af18',1,'YAMLSceneDescReader']]],
-  ['process_5fscene',['process_scene',['../classYAMLSceneDescReader.html#a0779d7fc8d3e71bc48728f0fe87285e0',1,'YAMLSceneDescReader']]]
+  ['height',['height',['../classCanvas.html#af4e7efe29b8cf674716061d34d54b6da',1,'Canvas::height()'],['../classCanvas2D.html#a97dd96caa21e685c734191a495b6fdab',1,'Canvas2D::height()']]]
 ];

@@ -95,63 +95,73 @@ $(document).ready(function(){initNavTree('classEllipsis.html','');});
 <div class="title">Ellipsis&lt; T, ColorType &gt; Class Template Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Represents an ellipse.  
+ <a href="classEllipsis.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="Ellipsis_8h_source.html">Ellipsis.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for Ellipsis&lt; T, ColorType &gt;:</div>
 <div class="dyncontent">
  <div class="center">
   <img src="classEllipsis.png" usemap="#Ellipsis_3C_20T_2C_20ColorType_20_3E_map" alt=""/>
   <map id="Ellipsis_3C_20T_2C_20ColorType_20_3E_map" name="Ellipsis_3C_20T_2C_20ColorType_20_3E_map">
-<area href="classObject.html" alt="Object" shape="rect" coords="0,0,150,24"/>
-<area href="classCircle.html" alt="Circle&lt; T, ColorType &gt;" shape="rect" coords="0,112,150,136"/>
+<area href="classObject.html" title="Represents an object in a scene." alt="Object" shape="rect" coords="0,0,150,24"/>
+<area href="classCircle.html" title="Represents a circle." alt="Circle&lt; T, ColorType &gt;" shape="rect" coords="0,112,150,136"/>
   </map>
 </div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a3d90856e0c199ed370573c7e36909943"><td class="memItemLeft" align="right" valign="top"><a id="a3d90856e0c199ed370573c7e36909943"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>Ellipsis</b> (const Point2D&lt; T &gt; &amp;center, decltype(_radius) radius, <a class="el" href="structObject_1_1Stroke.html">Object::Stroke</a>&lt; ColorType &gt; stroke, std::optional&lt; <a class="el" href="structObject_1_1Fill.html">Object::Fill</a>&lt; ColorType &gt;&gt; fill=std::nullopt, decltype(_angle_limits) angle_limits=std::nullopt)</td></tr>
+&#160;</td><td class="memItemRight" valign="bottom"><b>Ellipsis</b> (const Point2D&lt; T &gt; &amp;<a class="el" href="classEllipsis.html#acf1bf81abaeb8bf4c97cc22b06ae3342">center</a>, decltype(<a class="el" href="classEllipsis.html#aec7caa426c73ea1ebbf1038d5fa27d77">_radius</a>) <a class="el" href="classEllipsis.html#a4a29712beb469626f5f4cce079cf216d">radius</a>, <a class="el" href="structObject_1_1Stroke.html">Object::Stroke</a>&lt; ColorType &gt; <a class="el" href="classEllipsis.html#a9860c2e72f0c3e97da8ce13447313c09">stroke</a>, std::optional&lt; <a class="el" href="structObject_1_1Fill.html">Object::Fill</a>&lt; ColorType &gt;&gt; <a class="el" href="classEllipsis.html#a71c52ba09691c1769a7e27c1edf166d8">fill</a>=std::nullopt, decltype(<a class="el" href="classEllipsis.html#a145770c7efaab7c4a3689e3086bf59fd">_angle_limits</a>) <a class="el" href="classEllipsis.html#a8ff5966b971debf7fb05a8d0e9a99aff">angle_limits</a>=std::nullopt)</td></tr>
 <tr class="separator:a3d90856e0c199ed370573c7e36909943"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4a29712beb469626f5f4cce079cf216d"><td class="memItemLeft" align="right" valign="top"><a id="a4a29712beb469626f5f4cce079cf216d"></a>
-auto&#160;</td><td class="memItemRight" valign="bottom"><b>radius</b> () const</td></tr>
+<tr class="memitem:a4a29712beb469626f5f4cce079cf216d"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEllipsis.html#a4a29712beb469626f5f4cce079cf216d">radius</a> () const</td></tr>
+<tr class="memdesc:a4a29712beb469626f5f4cce079cf216d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the radius.  <a href="#a4a29712beb469626f5f4cce079cf216d">More...</a><br /></td></tr>
 <tr class="separator:a4a29712beb469626f5f4cce079cf216d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acf1bf81abaeb8bf4c97cc22b06ae3342"><td class="memItemLeft" align="right" valign="top"><a id="acf1bf81abaeb8bf4c97cc22b06ae3342"></a>
-Point2D&lt; T &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>center</b> () const</td></tr>
+<tr class="memitem:acf1bf81abaeb8bf4c97cc22b06ae3342"><td class="memItemLeft" align="right" valign="top">Point2D&lt; T &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEllipsis.html#acf1bf81abaeb8bf4c97cc22b06ae3342">center</a> () const</td></tr>
+<tr class="memdesc:acf1bf81abaeb8bf4c97cc22b06ae3342"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the center.  <a href="#acf1bf81abaeb8bf4c97cc22b06ae3342">More...</a><br /></td></tr>
 <tr class="separator:acf1bf81abaeb8bf4c97cc22b06ae3342"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9860c2e72f0c3e97da8ce13447313c09"><td class="memItemLeft" align="right" valign="top"><a id="a9860c2e72f0c3e97da8ce13447313c09"></a>
-auto&#160;</td><td class="memItemRight" valign="bottom"><b>stroke</b> () const</td></tr>
+<tr class="memitem:a9860c2e72f0c3e97da8ce13447313c09"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEllipsis.html#a9860c2e72f0c3e97da8ce13447313c09">stroke</a> () const</td></tr>
+<tr class="memdesc:a9860c2e72f0c3e97da8ce13447313c09"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the stroke.  <a href="#a9860c2e72f0c3e97da8ce13447313c09">More...</a><br /></td></tr>
 <tr class="separator:a9860c2e72f0c3e97da8ce13447313c09"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a71c52ba09691c1769a7e27c1edf166d8"><td class="memItemLeft" align="right" valign="top"><a id="a71c52ba09691c1769a7e27c1edf166d8"></a>
-auto&#160;</td><td class="memItemRight" valign="bottom"><b>fill</b> () const</td></tr>
+<tr class="memitem:a71c52ba09691c1769a7e27c1edf166d8"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEllipsis.html#a71c52ba09691c1769a7e27c1edf166d8">fill</a> () const</td></tr>
+<tr class="memdesc:a71c52ba09691c1769a7e27c1edf166d8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the fill.  <a href="#a71c52ba09691c1769a7e27c1edf166d8">More...</a><br /></td></tr>
 <tr class="separator:a71c52ba09691c1769a7e27c1edf166d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a819f1d5ff9bbd7bd4cdb5b6c5a101093"><td class="memItemLeft" align="right" valign="top"><a id="a819f1d5ff9bbd7bd4cdb5b6c5a101093"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>max_horizontal</b> () const override</td></tr>
+<tr class="memitem:a819f1d5ff9bbd7bd4cdb5b6c5a101093"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEllipsis.html#a819f1d5ff9bbd7bd4cdb5b6c5a101093">max_horizontal</a> () const override</td></tr>
+<tr class="memdesc:a819f1d5ff9bbd7bd4cdb5b6c5a101093"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the max horizontal value.  <a href="#a819f1d5ff9bbd7bd4cdb5b6c5a101093">More...</a><br /></td></tr>
 <tr class="separator:a819f1d5ff9bbd7bd4cdb5b6c5a101093"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8ff5966b971debf7fb05a8d0e9a99aff"><td class="memItemLeft" align="right" valign="top"><a id="a8ff5966b971debf7fb05a8d0e9a99aff"></a>
-auto&#160;</td><td class="memItemRight" valign="bottom"><b>angle_limits</b> () const</td></tr>
+<tr class="memitem:a8ff5966b971debf7fb05a8d0e9a99aff"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEllipsis.html#a8ff5966b971debf7fb05a8d0e9a99aff">angle_limits</a> () const</td></tr>
+<tr class="memdesc:a8ff5966b971debf7fb05a8d0e9a99aff"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the angle limits.  <a href="#a8ff5966b971debf7fb05a8d0e9a99aff">More...</a><br /></td></tr>
 <tr class="separator:a8ff5966b971debf7fb05a8d0e9a99aff"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
 <tr class="memitem:aec7caa426c73ea1ebbf1038d5fa27d77"><td class="memItemLeft" align="right" valign="top"><a id="aec7caa426c73ea1ebbf1038d5fa27d77"></a>
-std::pair&lt; double, double &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>_radius</b></td></tr>
+std::pair&lt; double, double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEllipsis.html#aec7caa426c73ea1ebbf1038d5fa27d77">_radius</a></td></tr>
+<tr class="memdesc:aec7caa426c73ea1ebbf1038d5fa27d77"><td class="mdescLeft">&#160;</td><td class="mdescRight">vertical and horizontal radii <br /></td></tr>
 <tr class="separator:aec7caa426c73ea1ebbf1038d5fa27d77"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aec0feee0bba13d3656bf82512a693a06"><td class="memItemLeft" align="right" valign="top"><a id="aec0feee0bba13d3656bf82512a693a06"></a>
-Point2D&lt; T &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>_center</b></td></tr>
+Point2D&lt; T &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEllipsis.html#aec0feee0bba13d3656bf82512a693a06">_center</a></td></tr>
+<tr class="memdesc:aec0feee0bba13d3656bf82512a693a06"><td class="mdescLeft">&#160;</td><td class="mdescRight">the center <br /></td></tr>
 <tr class="separator:aec0feee0bba13d3656bf82512a693a06"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abeb7f0500a7e0d3e55bb43caee958e22"><td class="memItemLeft" align="right" valign="top"><a id="abeb7f0500a7e0d3e55bb43caee958e22"></a>
-<a class="el" href="structObject_1_1Stroke.html">Object::Stroke</a>&lt; ColorType &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>_stroke</b></td></tr>
+<a class="el" href="structObject_1_1Stroke.html">Object::Stroke</a>&lt; ColorType &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEllipsis.html#abeb7f0500a7e0d3e55bb43caee958e22">_stroke</a></td></tr>
+<tr class="memdesc:abeb7f0500a7e0d3e55bb43caee958e22"><td class="mdescLeft">&#160;</td><td class="mdescRight">stroke <br /></td></tr>
 <tr class="separator:abeb7f0500a7e0d3e55bb43caee958e22"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2a68dd1bc2fc39ae6077b2d504285f5f"><td class="memItemLeft" align="right" valign="top"><a id="a2a68dd1bc2fc39ae6077b2d504285f5f"></a>
-std::optional&lt; <a class="el" href="structObject_1_1Fill.html">Object::Fill</a>&lt; ColorType &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>_fill</b></td></tr>
+std::optional&lt; <a class="el" href="structObject_1_1Fill.html">Object::Fill</a>&lt; ColorType &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEllipsis.html#a2a68dd1bc2fc39ae6077b2d504285f5f">_fill</a></td></tr>
+<tr class="memdesc:a2a68dd1bc2fc39ae6077b2d504285f5f"><td class="mdescLeft">&#160;</td><td class="mdescRight">fill <br /></td></tr>
 <tr class="separator:a2a68dd1bc2fc39ae6077b2d504285f5f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a145770c7efaab7c4a3689e3086bf59fd"><td class="memItemLeft" align="right" valign="top"><a id="a145770c7efaab7c4a3689e3086bf59fd"></a>
-std::optional&lt; std::pair&lt; float, float &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>_angle_limits</b></td></tr>
+std::optional&lt; std::pair&lt; float, float &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEllipsis.html#a145770c7efaab7c4a3689e3086bf59fd">_angle_limits</a></td></tr>
+<tr class="memdesc:a145770c7efaab7c4a3689e3086bf59fd"><td class="mdescLeft">&#160;</td><td class="mdescRight">angle limits to draw arcs <br /></td></tr>
 <tr class="separator:a145770c7efaab7c4a3689e3086bf59fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
 <tr class="inherit_header pub_types_classObject"><td colspan="2" onclick="javascript:toggleInherit('pub_types_classObject')"><img src="closed.png" alt="-"/>&#160;Public Types inherited from <a class="el" href="classObject.html">Object</a></td></tr>
-<tr class="memitem:ad8dadb365053c182931671a424199e36 inherit pub_types_classObject"><td class="memItemLeft" align="right" valign="top"><a id="ad8dadb365053c182931671a424199e36"></a>enum &#160;</td><td class="memItemRight" valign="bottom"><b>Type</b> { <br />
+<tr class="memitem:ad8dadb365053c182931671a424199e36 inherit pub_types_classObject"><td class="memItemLeft" align="right" valign="top"><a id="ad8dadb365053c182931671a424199e36"></a>enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classObject.html#ad8dadb365053c182931671a424199e36">Type</a> { <br />
 &#160;&#160;<b>POINT</b>, 
 <b>LINE_SEGMENT</b>, 
 <b>CIRCLE</b>, 
@@ -161,23 +171,215 @@ Additional Inherited Members</h2></td></tr>
 <b>ELLIPSIS</b>
 <br />
  }</td></tr>
+<tr class="memdesc:ad8dadb365053c182931671a424199e36"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classObject.html" title="Represents an object in a scene.">Object</a> types. <br /></td></tr>
 <tr class="separator:ad8dadb365053c182931671a424199e36 inherit pub_types_classObject"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4d68fa357d0ab98402f4429faa53c273 inherit pub_types_classObject"><td class="memItemLeft" align="right" valign="top"><a id="a4d68fa357d0ab98402f4429faa53c273"></a>enum &#160;</td><td class="memItemRight" valign="bottom"><b>StrokeDrawer</b> { <b>BRESENHAM</b>, 
+<tr class="memitem:a4d68fa357d0ab98402f4429faa53c273 inherit pub_types_classObject"><td class="memItemLeft" align="right" valign="top"><a id="a4d68fa357d0ab98402f4429faa53c273"></a>enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classObject.html#a4d68fa357d0ab98402f4429faa53c273">StrokeDrawer</a> { <b>BRESENHAM</b>, 
 <b>DDA</b>, 
 <b>WU</b>, 
 <b>MIDPOINT</b>
  }</td></tr>
+<tr class="memdesc:a4d68fa357d0ab98402f4429faa53c273"><td class="mdescLeft">&#160;</td><td class="mdescRight">Possible stroke drawers. <br /></td></tr>
 <tr class="separator:a4d68fa357d0ab98402f4429faa53c273 inherit pub_types_classObject"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afd839de7e8b7b0fa8d70342669190810 inherit pub_types_classObject"><td class="memItemLeft" align="right" valign="top"><a id="afd839de7e8b7b0fa8d70342669190810"></a>enum &#160;</td><td class="memItemRight" valign="bottom"><b>Filler</b> { <b>SCANLINE</b>, 
+<tr class="memitem:afd839de7e8b7b0fa8d70342669190810 inherit pub_types_classObject"><td class="memItemLeft" align="right" valign="top"><a id="afd839de7e8b7b0fa8d70342669190810"></a>enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classObject.html#afd839de7e8b7b0fa8d70342669190810">Filler</a> { <b>SCANLINE</b>, 
 <b>FLOOD</b>, 
 <b>BOUNDARY</b>
  }</td></tr>
+<tr class="memdesc:afd839de7e8b7b0fa8d70342669190810"><td class="mdescLeft">&#160;</td><td class="mdescRight">Possible fillers. <br /></td></tr>
 <tr class="separator:afd839de7e8b7b0fa8d70342669190810 inherit pub_types_classObject"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_attribs_classObject"><td colspan="2" onclick="javascript:toggleInherit('pub_attribs_classObject')"><img src="closed.png" alt="-"/>&#160;Public Attributes inherited from <a class="el" href="classObject.html">Object</a></td></tr>
 <tr class="memitem:a24457e0a387492c80594aec7681a2277 inherit pub_attribs_classObject"><td class="memItemLeft" align="right" valign="top"><a id="a24457e0a387492c80594aec7681a2277"></a>
 std::string&#160;</td><td class="memItemRight" valign="bottom"><b>name</b></td></tr>
 <tr class="separator:a24457e0a387492c80594aec7681a2277 inherit pub_attribs_classObject"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><h3>template&lt;typename T = double, typename ColorType = RGBColor&gt;<br />
+class Ellipsis&lt; T, ColorType &gt;</h3>
+
+<p>Represents an ellipse. </p>
+<dl class="section author"><dt>Author</dt><dd>Vitor Greati </dd></dl>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="a8ff5966b971debf7fb05a8d0e9a99aff"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8ff5966b971debf7fb05a8d0e9a99aff">&#9670;&nbsp;</a></span>angle_limits()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T = double, typename ColorType = RGBColor&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">auto <a class="el" href="classEllipsis.html">Ellipsis</a>&lt; T, ColorType &gt;::angle_limits </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Return the angle limits. </p>
+<dl class="section return"><dt>Returns</dt><dd>the angle limits </dd></dl>
+
+</div>
+</div>
+<a id="acf1bf81abaeb8bf4c97cc22b06ae3342"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acf1bf81abaeb8bf4c97cc22b06ae3342">&#9670;&nbsp;</a></span>center()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T = double, typename ColorType = RGBColor&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Point2D&lt;T&gt; <a class="el" href="classEllipsis.html">Ellipsis</a>&lt; T, ColorType &gt;::center </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Return the center. </p>
+<dl class="section return"><dt>Returns</dt><dd>the center </dd></dl>
+
+</div>
+</div>
+<a id="a71c52ba09691c1769a7e27c1edf166d8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a71c52ba09691c1769a7e27c1edf166d8">&#9670;&nbsp;</a></span>fill()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T = double, typename ColorType = RGBColor&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">auto <a class="el" href="classEllipsis.html">Ellipsis</a>&lt; T, ColorType &gt;::fill </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Return the fill. </p>
+<dl class="section return"><dt>Returns</dt><dd>the fill </dd></dl>
+
+</div>
+</div>
+<a id="a819f1d5ff9bbd7bd4cdb5b6c5a101093"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a819f1d5ff9bbd7bd4cdb5b6c5a101093">&#9670;&nbsp;</a></span>max_horizontal()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T = double, typename ColorType = RGBColor&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int <a class="el" href="classEllipsis.html">Ellipsis</a>&lt; T, ColorType &gt;::max_horizontal </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Return the max horizontal value. </p>
+<dl class="section return"><dt>Returns</dt><dd>the max horizontal value </dd></dl>
+
+<p>Implements <a class="el" href="classObject.html#aa092e5226343701946c65e58c298ae47">Object</a>.</p>
+
+</div>
+</div>
+<a id="a4a29712beb469626f5f4cce079cf216d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4a29712beb469626f5f4cce079cf216d">&#9670;&nbsp;</a></span>radius()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T = double, typename ColorType = RGBColor&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">auto <a class="el" href="classEllipsis.html">Ellipsis</a>&lt; T, ColorType &gt;::radius </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Return the radius. </p>
+<dl class="section return"><dt>Returns</dt><dd>radius </dd></dl>
+
+</div>
+</div>
+<a id="a9860c2e72f0c3e97da8ce13447313c09"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9860c2e72f0c3e97da8ce13447313c09">&#9670;&nbsp;</a></span>stroke()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T = double, typename ColorType = RGBColor&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">auto <a class="el" href="classEllipsis.html">Ellipsis</a>&lt; T, ColorType &gt;::stroke </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Return the stroke. </p>
+<dl class="section return"><dt>Returns</dt><dd>the stroke </dd></dl>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following file:<ul>
 <li>/home/vitorgreati/git-repos/raster/sources/include/objects/<a class="el" href="Ellipsis_8h_source.html">Ellipsis.h</a></li>
 </ul>

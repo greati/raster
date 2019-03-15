@@ -9,6 +9,12 @@
 #include <set>
 #include <list>
 
+/**
+ * Implementation of scanline algorithm to fill
+ * polygons.
+ *
+ * @author Vitor Greati
+ * */
 class PolygonScanLineFiller {
 
     private:
@@ -17,6 +23,9 @@ class PolygonScanLineFiller {
 
     protected:
 
+        /**
+         * Edge representation in the scanline.
+         * */
         struct EdgeEntry {
             std::string _obj_name;
             long _row_max;
@@ -40,6 +49,11 @@ class PolygonScanLineFiller {
 
         PolygonScanLineFiller(Canvas<Point2D<int>> & canvas) : _canvas {canvas} {/* empty */}
 
+        /**
+         * Fill a list of polygons.
+         *
+         * @param polygons list of polygons
+         * */
         void fill(const std::map<std::string, Polygon<>> & polygons) const {
         
             std::vector<EdgeEntry> general_edges[_canvas.height()];

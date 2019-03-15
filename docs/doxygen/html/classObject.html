@@ -97,31 +97,38 @@ $(document).ready(function(){initNavTree('classObject.html','');});
 <div class="title">Object Class Reference<span class="mlabels"><span class="mlabel">abstract</span></span></div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Represents an object in a scene.  
+ <a href="classObject.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="Object_8h_source.html">Object.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for Object:</div>
 <div class="dyncontent">
  <div class="center">
   <img src="classObject.png" usemap="#Object_map" alt=""/>
   <map id="Object_map" name="Object_map">
-<area href="classEllipsis.html" alt="Ellipsis&lt; T, ColorType &gt;" shape="rect" coords="0,56,183,80"/>
-<area href="classLineSegment.html" alt="LineSegment&lt; T, ColorType &gt;" shape="rect" coords="193,56,376,80"/>
+<area href="classEllipsis.html" title="Represents an ellipse." alt="Ellipsis&lt; T, ColorType &gt;" shape="rect" coords="0,56,183,80"/>
+<area href="classLineSegment.html" title="Represents a line segment." alt="LineSegment&lt; T, ColorType &gt;" shape="rect" coords="193,56,376,80"/>
 <area href="classPoint.html" title="Represents a point in the 2D plane." alt="Point&lt; T, ColorType &gt;" shape="rect" coords="386,56,569,80"/>
-<area href="classPolyline.html" alt="Polyline&lt; T, ColorType &gt;" shape="rect" coords="579,56,762,80"/>
-<area href="classCircle.html" alt="Circle&lt; T, ColorType &gt;" shape="rect" coords="0,112,183,136"/>
-<area href="classPolygon.html" alt="Polygon&lt; T, ColorType &gt;" shape="rect" coords="579,112,762,136"/>
+<area href="classPolyline.html" title="Represents a polyline." alt="Polyline&lt; T, ColorType &gt;" shape="rect" coords="579,56,762,80"/>
+<area href="classCircle.html" title="Represents a circle." alt="Circle&lt; T, ColorType &gt;" shape="rect" coords="0,112,183,136"/>
+<area href="classPolygon.html" title="Represents a polygon." alt="Polygon&lt; T, ColorType &gt;" shape="rect" coords="579,112,762,136"/>
   </map>
 </div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structObject_1_1Fill.html">Fill</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents a fill.  <a href="structObject_1_1Fill.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structObject_1_1Stroke.html">Stroke</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents a stroke.  <a href="structObject_1_1Stroke.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
 Public Types</h2></td></tr>
-<tr class="memitem:ad8dadb365053c182931671a424199e36"><td class="memItemLeft" align="right" valign="top"><a id="ad8dadb365053c182931671a424199e36"></a>enum &#160;</td><td class="memItemRight" valign="bottom"><b>Type</b> { <br />
+<tr class="memitem:ad8dadb365053c182931671a424199e36"><td class="memItemLeft" align="right" valign="top"><a id="ad8dadb365053c182931671a424199e36"></a>enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classObject.html#ad8dadb365053c182931671a424199e36">Type</a> { <br />
 &#160;&#160;<b>POINT</b>, 
 <b>LINE_SEGMENT</b>, 
 <b>CIRCLE</b>, 
@@ -131,23 +138,26 @@ Public Types</h2></td></tr>
 <b>ELLIPSIS</b>
 <br />
  }</td></tr>
+<tr class="memdesc:ad8dadb365053c182931671a424199e36"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classObject.html" title="Represents an object in a scene.">Object</a> types. <br /></td></tr>
 <tr class="separator:ad8dadb365053c182931671a424199e36"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4d68fa357d0ab98402f4429faa53c273"><td class="memItemLeft" align="right" valign="top"><a id="a4d68fa357d0ab98402f4429faa53c273"></a>enum &#160;</td><td class="memItemRight" valign="bottom"><b>StrokeDrawer</b> { <b>BRESENHAM</b>, 
+<tr class="memitem:a4d68fa357d0ab98402f4429faa53c273"><td class="memItemLeft" align="right" valign="top"><a id="a4d68fa357d0ab98402f4429faa53c273"></a>enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classObject.html#a4d68fa357d0ab98402f4429faa53c273">StrokeDrawer</a> { <b>BRESENHAM</b>, 
 <b>DDA</b>, 
 <b>WU</b>, 
 <b>MIDPOINT</b>
  }</td></tr>
+<tr class="memdesc:a4d68fa357d0ab98402f4429faa53c273"><td class="mdescLeft">&#160;</td><td class="mdescRight">Possible stroke drawers. <br /></td></tr>
 <tr class="separator:a4d68fa357d0ab98402f4429faa53c273"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afd839de7e8b7b0fa8d70342669190810"><td class="memItemLeft" align="right" valign="top"><a id="afd839de7e8b7b0fa8d70342669190810"></a>enum &#160;</td><td class="memItemRight" valign="bottom"><b>Filler</b> { <b>SCANLINE</b>, 
+<tr class="memitem:afd839de7e8b7b0fa8d70342669190810"><td class="memItemLeft" align="right" valign="top"><a id="afd839de7e8b7b0fa8d70342669190810"></a>enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classObject.html#afd839de7e8b7b0fa8d70342669190810">Filler</a> { <b>SCANLINE</b>, 
 <b>FLOOD</b>, 
 <b>BOUNDARY</b>
  }</td></tr>
+<tr class="memdesc:afd839de7e8b7b0fa8d70342669190810"><td class="mdescLeft">&#160;</td><td class="mdescRight">Possible fillers. <br /></td></tr>
 <tr class="separator:afd839de7e8b7b0fa8d70342669190810"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:aa092e5226343701946c65e58c298ae47"><td class="memItemLeft" align="right" valign="top"><a id="aa092e5226343701946c65e58c298ae47"></a>
-virtual int&#160;</td><td class="memItemRight" valign="bottom"><b>max_horizontal</b> () const =0</td></tr>
+<tr class="memitem:aa092e5226343701946c65e58c298ae47"><td class="memItemLeft" align="right" valign="top">virtual int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classObject.html#aa092e5226343701946c65e58c298ae47">max_horizontal</a> () const =0</td></tr>
+<tr class="memdesc:aa092e5226343701946c65e58c298ae47"><td class="mdescLeft">&#160;</td><td class="mdescRight">Maximum horizontal coordinate.  <a href="#aa092e5226343701946c65e58c298ae47">More...</a><br /></td></tr>
 <tr class="separator:aa092e5226343701946c65e58c298ae47"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
@@ -156,6 +166,40 @@ Public Attributes</h2></td></tr>
 std::string&#160;</td><td class="memItemRight" valign="bottom"><b>name</b></td></tr>
 <tr class="separator:a24457e0a387492c80594aec7681a2277"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Represents an object in a scene. </p>
+<dl class="section author"><dt>Author</dt><dd>Vitor Greati </dd></dl>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="aa092e5226343701946c65e58c298ae47"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa092e5226343701946c65e58c298ae47">&#9670;&nbsp;</a></span>max_horizontal()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual int Object::max_horizontal </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Maximum horizontal coordinate. </p>
+<dl class="section return"><dt>Returns</dt><dd>maximum horizontal coordinate </dd></dl>
+
+<p>Implemented in <a class="el" href="classEllipsis.html#a819f1d5ff9bbd7bd4cdb5b6c5a101093">Ellipsis&lt; T, ColorType &gt;</a>, <a class="el" href="classPolyline.html#a55c2501812b2645c285154a64e2d2365">Polyline&lt; T, ColorType &gt;</a>, <a class="el" href="classPoint.html#aae5dc4665c3c7cb32054c9f667349eee">Point&lt; T, ColorType &gt;</a>, <a class="el" href="classLineSegment.html#a4f80e798ab72d7b969631e0c52d39eb6">LineSegment&lt; T, ColorType &gt;</a>, and <a class="el" href="classCircle.html#ad9afa4297d2091d227bb368a4f49c06f">Circle&lt; T, ColorType &gt;</a>.</p>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following file:<ul>
 <li>/home/vitorgreati/git-repos/raster/sources/include/objects/<a class="el" href="Object_8h_source.html">Object.h</a></li>
 </ul>

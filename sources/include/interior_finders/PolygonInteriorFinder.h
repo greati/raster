@@ -7,11 +7,17 @@
 #include "PointSamplers.h"
 #include <limits>
 
+/**
+ * Find point inside polygons.
+ * Implements a variation of the parity check internal points.
+ *
+ * @author Vitor Greati
+ * */
 template<typename PointType=Point2D<int>>
 class PolygonInteriorFinder : public InteriorFinder<Polygon<>, PointType> {
 
     private:
-        PointSampler<> & sampler;
+        PointSampler<> & sampler; /**< A reference to a sampler */
 
     public:
 
@@ -46,6 +52,13 @@ class PolygonInteriorFinder : public InteriorFinder<Polygon<>, PointType> {
             return int_points;
         };
 
+        /**
+         * Check if a given point is inside a polygon.
+         *
+         * @param polygon the polygon
+         * @param point the point
+         * @return if the point is inside
+         * */
         bool is_interior(const Polygon<> & polygon, const Point2D<int> point) const {
 
             auto [px, py] = point;

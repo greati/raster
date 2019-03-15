@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['object',['Object',['../classObject.html',1,'']]]
+  ['netpbmprinter',['NetpbmPrinter',['../classNetpbmPrinter.html',1,'']]]
 ];
