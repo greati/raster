@@ -9,6 +9,12 @@
 #include <set>
 #include <list>
 
+/**
+ * Implementation of scanline algorithm to fill
+ * polygons.
+ *
+ * @author Vitor Greati
+ * */
 class PolygonScanLineFiller {
 
     private:
@@ -17,21 +23,26 @@ class PolygonScanLineFiller {
 
     protected:
 
+        /**
+         * Edge representation in the scanline.
+         * */
         struct EdgeEntry {
             std::string _obj_name;
+            double _inverse_m;
             long _row_max;
-            long _col_intercept;
-            long _delta_row, _delta_col;
+            long _row_min;
+            double _col_intercept;
+            double _delta_row, _delta_col;
             long _slope_int, _slope_frac;
             long _remainder_col = 0;
 
-            EdgeEntry(std::string obj_name, long row_max, long col_intercept,
-                    long delta_row, long delta_col)
-                : _obj_name {obj_name}, _row_max {row_max}, _col_intercept {col_intercept},
+            EdgeEntry(std::string obj_name, long row_max, long row_min, double col_intercept,
+                    double delta_row, double delta_col)
+                : _obj_name {obj_name}, _row_max {row_max}, _row_min {row_min}, _col_intercept {col_intercept},
                   _delta_row {delta_row}, _delta_col {delta_col} {
                 
-                _slope_int = _delta_col / _delta_row;
-                _slope_frac = _delta_col % _delta_row;
+                if (_delta_row == 0) _inverse_m = 0.0;
+                else _inverse_m = delta_col / delta_row;
 
             };
         };
@@ -40,6 +51,11 @@ class PolygonScanLineFiller {
 
         PolygonScanLineFiller(Canvas<Point2D<int>> & canvas) : _canvas {canvas} {/* empty */}
 
+        /**
+         * Fill a list of polygons.
+         *
+         * @param polygons list of polygons
+         * */
         void fill(const std::map<std::string, Polygon<>> & polygons) const {
         
             std::vector<EdgeEntry> general_edges[_canvas.height()];
@@ -65,9 +81,10 @@ class PolygonScanLineFiller {
                     EdgeEntry edge {
                         obj_name, 
                         max_x,
-                        std::lround(p1y),
-                        std::lround(p2x-p1x),
-                        std::lround(p2y-p1y)
+                        min_x,
+                        p1y,
+                        p2x-p1x,
+                        p2y-p1y
                     };
                     general_edges[min_x].push_back(edge);
                 }
@@ -83,38 +100,55 @@ class PolygonScanLineFiller {
 
             // sorting
             for (int i = 0; i < _canvas.height(); ++i) {
-                std::sort(general_edges[i].begin(), general_edges[i].end(), sort_inc_rowmax);
+                std::sort(general_edges[i].begin(), general_edges[i].end(), sort_col_interc);
             }
 
             // scanline
-            std::list<EdgeEntry> active_edges;
-            int i = 0; // TODO should be min
+            std::vector<EdgeEntry> active_edges;
+            int i = 0; // TODO optimization: should be min row
             while (i < _canvas.height()) {
                 // new edges
                 for (auto & e : general_edges[i])
                    active_edges.push_back(e); 
-                // fill
-                active_edges.sort(sort_col_interc);
-                for (auto it = active_edges.begin(); it != active_edges.end();) {
-                    auto e1 = *it;
-                    if (++it != active_edges.end()) {
-                        auto e2 = *it;
-                        if (e1._col_intercept == e2._col_intercept) {
-                            if (i == e1._row_max) continue;
-                            else if(i == e2._row_max) {
-                                if (++it != active_edges.end())
-                                    e2 = *it;
-                                else break;
-                            }
+
+                std::sort(active_edges.begin(), active_edges.end(), sort_col_interc);
+
+                int j = 0;
+                int k = 0, l = 1;
+                
+                while (true) {
+
+                    if (l >= active_edges.size())
+                        break;
+
+                    auto e1 = active_edges[k];
+                    auto e2 = active_edges[l]; 
+
+                    if ((i == e1._row_max && i == e2._row_min)) {
+                        l++;
+                        continue;
+                    } else if ((i == e2._row_max && i == e1._row_min)) {
+                        k = l;
+                        l++;
+                        continue;
+                    }
+
+                    auto [r, g, b] = polygons.find(e1._obj_name)->second.fill().value().color;
+                    for (int x = std::ceil(e1._col_intercept); x <= std::floor(e2._col_intercept); ++x) {
+                        this->_canvas.set({i, x}, {r, g, b}, std::nothrow_t{});
+                    }
+                    // special: local max or min
+                    if (e1._col_intercept == e2._col_intercept) {
+                        if ((i == e1._row_min && i == e2._row_min)
+                                || (i == e1._row_max && i == e2._row_max)) {
+                            k = l;
+                            l++;
+                            continue;
                         }
-                        auto [r, g, b] = polygons.find(e1._obj_name)->second.fill().value().color;
-                        for (int x = e1._col_intercept; x < e2._col_intercept; ++x) {
-                            this->_canvas.set({i, x}, {r, g, b});
-                        }
-                        if (++it != active_edges.end()) ; 
-                        else break;
-                    } else break;
+                    }
+                    l+=2; k+=2;
                 }
+
                 // erase row_max edges 
                 for (auto it = active_edges.begin(); it != active_edges.end();) {
                     if (it->_row_max == i) {
@@ -126,17 +160,7 @@ class PolygonScanLineFiller {
                 // update cols
                 for (auto edge = active_edges.begin(); edge != active_edges.end(); ++edge) {
                     if (edge->_delta_row != 0) { // non-horizontal
-                        if (edge->_delta_row > 0) { // down
-                            long add = edge->_slope_int + 
-                                ((edge->_remainder_col + edge->_slope_frac) / edge->_delta_row);
-                            edge->_remainder_col = (edge->_remainder_col + edge->_slope_frac) % edge->_delta_row;
-                            edge->_col_intercept += add;//; 
-                        } else { // up
-                            long add = std::abs(edge->_slope_int) + 
-                                ((edge->_remainder_col + edge->_slope_frac) / std::abs(edge->_delta_row));
-                            edge->_remainder_col = (edge->_remainder_col + edge->_slope_frac) % std::abs(edge->_delta_row);
-                            edge->_col_intercept -= add;//; 
-                        }
+                        edge->_col_intercept += edge->_inverse_m;
                     }
                 
                 }

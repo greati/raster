@@ -16,13 +16,13 @@ void CanvasDescVisitor::visit_scene_background(const std::string & filepath) con
      }
 
      int row, col;
-     for (int i = 0; i < this->_canvas.width() * this->_canvas.height(); i += 4) {
+     for (int i = 0; i < width*height*4; i += 4) {
          auto r = image[i]; 
          auto g = image[i + 1]; 
          auto b = image[i + 2];
          row = i / (4*width);
          col = (i/4) - row*width;
-         this->_canvas.set({row, col}, {r, g, b});
+         this->_canvas.set({row, col}, {r, g, b}, std::nothrow_t{});
      }
 }
 
@@ -84,8 +84,11 @@ void CanvasDescVisitor::visit_object_draw(const Polygon<> & obj) {
         if (fill.value().filler != Object::Filler::SCANLINE) {
             if (stroke != std::nullopt) {
                 draw_stroke();
+                if (obj.interior_points() == std::nullopt) {
+                    std::cout << "[warning] raster will try to find interior points"  << std::endl;
+                }
                 get_single_filler_poly(fill.value().filler)->fill(obj, fill.value().color, stroke.value().color,
-                        SingleFiller<>::Connectivity::CONNECTED4, fill.value().seed);
+                        SingleFiller<>::Connectivity::CONNECTED4, obj.interior_points());
             }
         }
     } else {
@@ -105,7 +108,7 @@ void CanvasDescVisitor::visit_object_draw(const Circle<> & obj) const {
     if (fill != std::nullopt) {
         get_single_filler_circle(fill.value().filler)->
             fill(obj, fill.value().color, stroke.color, 
-                    SingleFiller<Circle<>>::Connectivity::CONNECTED4, obj.center()
+                    SingleFiller<Circle<>>::Connectivity::CONNECTED4, std::vector<Point2D<int>>{obj.center()}
             );
     }
 }
@@ -119,7 +122,7 @@ void CanvasDescVisitor::visit_object_draw(const Ellipsis<> & obj) const {
     if (fill != std::nullopt) {
         get_single_filler_ellipsis(fill.value().filler)->
             fill(obj, fill.value().color, stroke.color, 
-                    SingleFiller<Ellipsis<>>::Connectivity::CONNECTED4, obj.center()
+                    SingleFiller<Ellipsis<>>::Connectivity::CONNECTED4, std::vector<Point2D<int>>{obj.center()}
             );
     }
 }
@@ -202,10 +205,12 @@ std::unique_ptr<Drawer<Ellipsis<>>> CanvasDescVisitor::get_ellipsis_drawer(Objec
 }
 
 void CanvasDescVisitor::visit_post_processing() {
-    if (this->global_aa)
+    if (this->global_aa) {
         raster::convolve(this->_canvas, 
                 {{1./16, 2./16, 1./16},
                  {2./16, 4./16, 2./16},
                  {1./16, 2./16, 1./16}
                 }, {0, 0}, {this->_canvas.height()-1, this->_canvas.width()-1});
+        raster::gamma_correction(this->_canvas, 2);
+    }
 }

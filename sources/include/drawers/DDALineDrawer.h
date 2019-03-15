@@ -6,6 +6,12 @@
 #include "objects/Object.h"
 #include "objects/LineSegment.h"
 
+/**
+ * Line drawer based on DDA algorithm.
+ * Implements line thickness.
+ *
+ * @author Vitor Greati
+ * */
 class DDALineDrawer : public Drawer<LineSegment<>> {
 
     public:

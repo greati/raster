@@ -54,8 +54,8 @@ settings:
 scene:
     width: 800
     height: 600
-    background: blue_cute #"/home/vitorgreati/git-repos/raster/examples/penguin_background.png"
-    global_aa: False
+    background: white
+    global_aa: True
     objects:
         my_point:
             type: point
@@ -75,6 +75,7 @@ scene:
             vertices: [ulc, urc, llc, lrc]
             stroke: thick
             fill: basic
+            interior: [[45, 350]]
         my_circle:
             type: circle
             center: [500, 500]

@@ -4,7 +4,7 @@
 #include "Printer.h"
 
 /**
- * A printer for the netpbm format.
+ * A printer for the png format.
  * 
  * @author Vitor Greati
  * */
@@ -14,7 +14,7 @@ class LodePngPrinter : public Printer<T, ConfigKeyType> {
     protected:
 
         /**
-         * Convert the data array into a string in netpbm format
+         * Convert the data array into a string.
          *
          * @param data data array
          * @return string representation of that data

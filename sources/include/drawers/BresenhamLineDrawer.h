@@ -7,6 +7,11 @@
 #include "drawers/Drawer.h"
 #include "common.h"
 
+/**
+ * Line segment drawer based on Bresenham algorithm.
+ *
+ * @author Vitor Greati
+ * */
 class BresenhamLineDrawer : public Drawer<LineSegment<>> {
 
     public:

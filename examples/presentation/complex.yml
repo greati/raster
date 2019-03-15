@@ -1,0 +1,38 @@
+settings:
+    points:
+        A: [200, 100]
+        B: [500, 500]
+        C: [150, 300]
+        D: [500, 100]
+        E: [200, 500]
+        F: [200, 600]
+        G: [180, 750]
+        H: [500, 400]
+        I: [350, 790]
+    strokes:
+        basic:
+            drawer: bresenham
+            color: black
+    fills:
+        basic:
+            filler: scanline
+            color: red
+        basic_2:
+            filler: scanline
+            color: red
+scene:
+    width: 800
+    height: 600
+    background: white
+    global_aa: True
+    objects:
+        complex_1:
+            type: polygon
+            vertices: [A, B, C, D, E]
+            fill: basic
+            stroke: basic
+        complex_2:
+            type: polygon
+            vertices: [F, G, H, I]
+            fill: basic_2
+            stroke: basic

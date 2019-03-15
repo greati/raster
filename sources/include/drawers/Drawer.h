@@ -13,10 +13,15 @@ class Drawer {
 
     protected:
 
-        Canvas<Point2D<int>> & _canvas;
+        Canvas<Point2D<int>> & _canvas;     /**< Reference to a 2D canvas */
 
     public:
 
+        /** 
+         * Constructor which takes a canvas reference.
+         *
+         * @param canvas canvas reference
+         * */
         Drawer(Canvas<Point2D<int>>& canvas) : _canvas{canvas} {/*empty*/} 
 
         /**
@@ -27,6 +32,15 @@ class Drawer {
         virtual void draw(const ObjType & obj) const = 0;
 
     protected:
+
+        /**
+         * Draw a straight line in the canvas.
+         *
+         * @param x         line index
+         * @param y1        col index start
+         * @param y2        col index end
+         * @param color     color
+         * */
         void draw_line(int x, int y1, int y2, const RGBColor & color) const {
             auto [r, g, b] = color;
             while (y1 <= y2) {
@@ -35,6 +49,14 @@ class Drawer {
             }
         }
 
+        /**
+         * Draw a straight column in the canvas.
+         *
+         * @param x1         col index
+         * @param x2         row index start
+         * @param y          row index end
+         * @param color      color
+         * */
         void draw_column(int x1, int x2, int y, const RGBColor & color) const {
             auto [r, g, b] = color;
             while (x1 <= x2) {

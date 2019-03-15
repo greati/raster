@@ -6,19 +6,54 @@
 #include "common.h"
 #include <random>
 
+/**
+ * Interface for point sampler.
+ *
+ * @author Vitor Greati
+ * */
 template<typename PointType = Point2D<int>>
 class PointSampler {
 
     public:
 
+        /**
+         * Sample one point.
+         *
+         * @param obj a base point
+         * @return a point
+         * */
         virtual PointType one(const PointType & obj) = 0;
+
+        /**
+         * Sample a list of points.
+         *
+         * @param obj a base point
+         * @return the list of points
+         * */
         virtual std::vector<PointType> many(const PointType & obj) = 0;
+
+        /**
+         * Update the sampler internal state.
+         * */
         virtual void expand() = 0;
+
+        /**
+         * Reset the sampler internal state.
+         * */
         virtual void reset() = 0;
+
+        /**
+         * Finalize the sampler.
+         * */
         virtual bool end() = 0;
 
 };
 
+/**
+ * Sampler used only for debugging.
+ *
+ * @author Vitor Greati
+ * */
 class DummyPointSampler : public PointSampler<Point2D<int>> {
     public:
 
@@ -44,12 +79,18 @@ class DummyPointSampler : public PointSampler<Point2D<int>> {
         }
 };
 
+/**
+ * Sample in squares arount a given point.
+ * Maintains the state of the current padding.
+ *
+ * @author Vitor Greati
+ * */
 class SquarePointSampler : public PointSampler<Point2D<int>> {
 
     private:
 
-        Size<2> frame_size;
-        int padding;
+        Size<2> frame_size; /**< Size of the frame */
+        int padding;        /**< Padding of the square */
 
     public:
 
@@ -64,7 +105,7 @@ class SquarePointSampler : public PointSampler<Point2D<int>> {
         }
 
         std::vector<Point2D<int>> many(const Point2D<int> & point) override {
-            return square_sample(point); 
+            return this->square_sample(point); 
         }
 
         void expand() override {
@@ -82,9 +123,19 @@ class SquarePointSampler : public PointSampler<Point2D<int>> {
 
     private:
 
-        std::vector<Point2D<int>> square_sample(const Point2D<int> & point) {
+        /**
+         * Produces a fence around the starting point, using the
+         * current padding state.
+         *
+         * @point the base point
+         * @return a list of points
+         * */
+        inline std::vector<Point2D<int>> square_sample(const Point2D<int> & point) {
+
+            std::cout << "sampling..." << std::endl;
+
             auto [x, y] = point;
-            auto [width, height] = frame_size;
+            auto [height, width] = frame_size;
             std::vector<Point2D<int>> points;
 
             for (int j = std::max(0, x - padding); j < std::min(x + padding, height); ++j) {
@@ -92,8 +143,8 @@ class SquarePointSampler : public PointSampler<Point2D<int>> {
                 points.push_back({j, std::min(width, y+padding)});
             }
             for (int i = std::max(0, y - padding); i < std::min(y + padding, width); ++i) {
-                points.push_back({std::max(0, x-padding), y});
-                points.push_back({std::min(height, x+padding), y});
+                points.push_back({std::max(0, x-padding), i});
+                points.push_back({std::min(height, x+padding), i});
             }
             return points;
         }

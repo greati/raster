@@ -6,7 +6,13 @@
 #include "interior_finders/PolygonInteriorFinder.h"
 #include "fillers/SingleFiller.h"
 #include <vector>
+#include <stack>
 
+/**
+ * Implement boundary filler algorithm.
+ *
+ * @author Vitor Greati
+ * */
 template<typename ObjType>
 class BoundaryFiller : public SingleFiller<ObjType> {
 
@@ -20,11 +26,16 @@ class BoundaryFiller : public SingleFiller<ObjType> {
             : SingleFiller<ObjType>{canvas, interior_finder} {/* empty */}
 
         void fill(const ObjType& obj, const RGBColor & fill, const RGBColor & border_color, 
-                typename SingleFiller<ObjType>::Connectivity conn, std::optional<Point2D<int>> seed = std::nullopt) {
-            if (seed != std::nullopt) {
-                fill_interior(seed.value(), fill, border_color, conn);
+                typename SingleFiller<ObjType>::Connectivity conn, 
+                std::optional<std::vector<Point2D<int>>> seeds = std::nullopt) {
+            if (seeds != std::nullopt) {
+                std::for_each(seeds.value().begin(), seeds.value().end(),
+                        [&](const Point2D<int> p){
+                            fill_interior(p, fill, border_color, conn);
+                        });
             } else if (this->_interior_finder != nullptr) {
                 std::vector<Point2D<int>> interiors = this->_interior_finder->find_many(obj);
+                if (interiors.size() == 0) std::cout << "[warning] no interior point found\n";
                 std::for_each(interiors.begin(), interiors.end(),
                         [&](const Point2D<int>& p) {
                             fill_interior(p, fill, border_color, conn);
@@ -37,32 +48,63 @@ class BoundaryFiller : public SingleFiller<ObjType> {
 
     private:
 
+        std::stack<Point2D<int>> points_stack;
+
         void fill_interior(const Point2D<int> & interior, 
                 const RGBColor & fill, const RGBColor & border_color, 
                 typename SingleFiller<ObjType>::Connectivity conn) {
 
-            auto [x, y] = interior;
-            if (y < 0 || y >= this->_canvas.width()) return;
-            if (x < 0 || x >= this->_canvas.height()) return;
-
-            auto [fr, fg, fb] = fill;
-            auto [r, g, b] = this->_canvas.at({x, y});
+            // validation of seed
+            auto [r, g, b] = this->_canvas.at(interior);
             auto current = RGBColor{r, g, b};
+            if (current == border_color) {
+                std::cout << "[warning] boundary filler wont fill: seed color is border color" << std::endl;
+                return;
+            }
+            if (current == fill) {
+                std::cout << "[warning] boundary filler wont fill: seed color is fill color" << std::endl;
+                return;
+            }
 
-            if (current != border_color && current != fill) {
-                this->_canvas.set({x, y}, {fr, fg, fb});
-                fill_interior({x+1, y}, fill, border_color, conn);
-                fill_interior({x-1, y}, fill, border_color, conn);
-                fill_interior({x, y+1}, fill, border_color, conn);
-                fill_interior({x, y-1}, fill, border_color, conn);
-                if (conn == SingleFiller<ObjType>::Connectivity::CONNECTED8) {
-                    fill_interior({x+1, y+1}, fill, border_color, conn);
-                    fill_interior({x-1, y-1}, fill, border_color, conn);
-                    fill_interior({x+1, y-1}, fill, border_color, conn);
-                    fill_interior({x-1, y+1}, fill, border_color, conn);
+            // algorithm goes
+            points_stack.push(interior);
+
+            int point_count = 0;
+
+            while (!points_stack.empty()) {
+                
+                auto [x, y] = points_stack.top();
+                points_stack.pop();
+
+                if (y < 0 || y >= this->_canvas.width()) continue;
+                if (x < 0 || x >= this->_canvas.height()) continue;
+
+                auto [fr, fg, fb] = fill;
+                auto [r, g, b] = this->_canvas.at({x, y});
+                auto current = RGBColor{r, g, b};
+
+                if (current != border_color && current != fill) {
+                    this->_canvas.set({x, y}, {fr, fg, fb}, std::nothrow_t{});
+                    points_stack.push({x+1, y});
+                    points_stack.push({x-1, y});
+                    points_stack.push({x, y+1});
+                    points_stack.push({x, y-1});
+                    if (conn == SingleFiller<ObjType>::Connectivity::CONNECTED8) {
+                       points_stack.push({x+1, y+1});
+                       points_stack.push({x-1, y-1});
+                       points_stack.push({x+1, y-1});
+                       points_stack.push({x-1, y+1});
+                    }
+                }
+                point_count++;
+                if (point_count >= this->_canvas.width() * this->_canvas.height()) {
+                    std::cout <<
+                            "[warning] boundary filler could not reach an end;"
+                            "verify the object's fill and stroke colors";
+                    return;
                 }
             }
-            
+
         }
 
 };

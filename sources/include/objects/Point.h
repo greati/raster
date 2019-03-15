@@ -14,8 +14,8 @@ class Point : public Object {
 
     private:
 
-        Point2D<T> _coords;
-        ColorType _color;
+        Point2D<T> _coords;     /**< Point coordinates */
+        ColorType _color;       /**< Point color */
 
     public:
 
@@ -23,8 +23,18 @@ class Point : public Object {
 
         Point(Point2D<T> coords, ColorType color) : _coords{coords}, _color{color} {/*empty*/} 
 
+        /**
+         * Point coordinates.
+         *
+         * @return point coordinates
+         * */
         Point2D<T> coords() const { return _coords; }
 
+        /**
+         * Color.
+         *
+         * @return the point color
+         * */
         ColorType color() const { return _color; }
 
         int max_horizontal() const override {

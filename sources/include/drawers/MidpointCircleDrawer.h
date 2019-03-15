@@ -3,6 +3,12 @@
 
 #include "objects/Circle.h"
 
+/**
+ * Circle drawer based on midpoint algorithm.
+ * Implements line thickness.
+ *
+ * @author Vitor Greati
+ * */
 class MidpointCircleDrawer : public Drawer<Circle<>> {
 
     public:

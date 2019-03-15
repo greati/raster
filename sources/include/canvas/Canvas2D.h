@@ -20,6 +20,12 @@ class Canvas2D : public Canvas<Point2D<int>, N> {
 
     public:
         
+        /**
+         * Constructor based on scene size.
+         *
+         * @param width the scene width
+         * @param height the scene height
+         * */
         Canvas2D(int width, int height);
 
         PixelValue<N> at(Point2D<int> point) const override;
@@ -28,6 +34,11 @@ class Canvas2D : public Canvas<Point2D<int>, N> {
 
         void set(Point2D<int> point, PixelValue<N> value, std::nothrow_t) const noexcept override;
 
+        /**
+         * The number of channels in the canvas.
+         *
+         * @return the number of channels
+         * */
         inline int channels() const noexcept { return N; }
 
         inline int width() const noexcept override { return _width; }
@@ -38,6 +49,11 @@ class Canvas2D : public Canvas<Point2D<int>, N> {
 
         void clear(const PixelValue<N> & value) override;
 
+        /**
+         * A pointer to the canvas data.
+         *
+         * @return a pointer to the canvas data
+         * */
         inline unsigned char* data() noexcept { return _data.get(); }
 
     private:

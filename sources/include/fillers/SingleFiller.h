@@ -6,6 +6,11 @@
 #include "objects/Polygon.h"
 #include "interior_finders/InteriorFinder.h"
 
+/**
+ * A filler for single objects.
+ *
+ * @author Vitor Greati
+ * */
 template<typename ObjType=Polygon<>>
 class SingleFiller {
 
@@ -27,11 +32,20 @@ class SingleFiller {
         SingleFiller(Canvas<Point2D<int>> & canvas) 
             : _canvas {canvas}, _interior_finder {nullptr} {/* empty */}
 
+        /**
+         * Fill an object.
+         *
+         * @param obj object
+         * @param fill fill color
+         * @param aux_color auxiliar color
+         * @param conn connectivity
+         * @param seed interior point to start
+         * */
         virtual void fill(const ObjType& obj, 
                 const RGBColor & fill, 
-                const RGBColor & border_color, 
+                const RGBColor & aux_color, 
                 Connectivity conn,
-                std::optional<Point2D<int>> seed = std::nullopt) = 0;
+                std::optional<std::vector<Point2D<int>>> seed = std::nullopt) = 0;
 
 };
 
