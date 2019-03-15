@@ -1,6 +1,6 @@
 # Raster
 
-A simple 2D Raster in C++.
+A simple 2D Raster in C++ (![read the docs](https://greati.github.io/raster/doxygen/html/index.html)).
 
 <img src="https://cdn1.imggmi.com/uploads/2019/3/16/8a52b068ecc89daceaf9b1a2a69ece6a-full.png"/>
 
@@ -43,6 +43,13 @@ mkdir build
 cd build
 cmake ../sources .
 cmake --build .
+```
+
+## Run
+
+```
+cd build
+./raster <your yml description> <path to destination>
 ```
 
 ## Test
