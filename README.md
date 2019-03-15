@@ -1,6 +1,6 @@
 # Raster
 
-A simple 2D Raster in C++ (![read the docs](https://greati.github.io/raster/doxygen/html/index.html)).
+A simple 2D Raster in C++ ([read the docs](https://greati.github.io/raster/doxygen/html/index.html)).
 
 ![star](examples/star.png)
 
