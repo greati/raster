@@ -34,7 +34,8 @@ A simple 2D Raster in C++ ([read the docs](https://greati.github.io/raster/doxyg
     * [x] Boundary fill
 * [ ] Antialiasing
     * [x] Xiaolin-Wu - experimental, only for black backgrounds
-    * [x] Convolution with gamma correction
+    * [x] Convolution
+* [x] Global gamma correction option
 * [x] Pallets
     * [x] Colors
     * [x] Fills
@@ -44,7 +45,7 @@ A simple 2D Raster in C++ ([read the docs](https://greati.github.io/raster/doxyg
 
 ## Build
 
-```
+```bash
 mkdir build
 cd build
 cmake ../sources .
@@ -55,14 +56,14 @@ cmake --build .
 
 Raster currently outputs a PPM P3 image.
 
-```
+```bash
 cd build
 ./raster <your yml description> <path to .ppm destination>
 ```
 
 ## Test
 
-```
+```bash
 make test
 ```
 
@@ -240,6 +241,7 @@ scene:
 If PNG, specify the absolute path
 *  **objects**: dictionary of objects to be drawn.
 *  **global_aa**: enables global antialiasing
+*  **global_gamma**: defines the level of gamma correction to be applied
 
 #### Example
 
@@ -249,6 +251,7 @@ scene:
     height: 600
     background: [255, 255, 255]
     global_aa: True
+    global_gamma: 2
     objects:
         your_object1: #...
         your_object2: #... 
