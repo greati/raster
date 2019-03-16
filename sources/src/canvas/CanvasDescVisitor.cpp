@@ -30,6 +30,10 @@ void CanvasDescVisitor::visit_scene_global_aa(bool aa) {
     this->global_aa = aa;
 }
 
+void CanvasDescVisitor::visit_scene_global_gamma(int level) {
+    this->gamma_level = level;
+}
+
 void CanvasDescVisitor::visit_scene_size(const Size<2> & size) {
     this->_canvas.reset(size);
 }
@@ -211,6 +215,10 @@ void CanvasDescVisitor::visit_post_processing() {
                  {2./16, 4./16, 2./16},
                  {1./16, 2./16, 1./16}
                 }, {0, 0}, {this->_canvas.height()-1, this->_canvas.width()-1});
-        raster::gamma_correction(this->_canvas, 2);
     }
+
+    if (this->gamma_level != std::nullopt) {
+        raster::gamma_correction(this->_canvas, this->gamma_level.value());
+    }
+
 }

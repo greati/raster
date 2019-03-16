@@ -70,6 +70,10 @@ void YAMLSceneDescReader::read(const std::string & filename) {
         this->_visitor->visit_scene_global_aa(scene["global_aa"].as<bool>()); 
     }
 
+    if (scene["global_gamma"]) {
+        this->_visitor->visit_scene_global_gamma(scene["global_gamma"].as<int>()); 
+    }
+
     auto objects = scene["objects"];
 
     for (auto it = objects.begin(); it != objects.end(); ++it) {

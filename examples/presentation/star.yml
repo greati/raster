@@ -26,6 +26,7 @@ scene:
     height: 600
     background: "/home/vitorgreati/git-repos/raster/examples/presentation/universe.png"
     global_aa: True
+    global_gamma: 1
     objects:
         star:
             type: polygon

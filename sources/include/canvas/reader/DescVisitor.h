@@ -48,6 +48,13 @@ class DescVisitor {
         virtual void visit_scene_global_aa(bool aa) = 0;
 
         /**
+         * Called when global gamma correction is parsed.
+         *
+         * @param level gamma level
+         * */
+        virtual void visit_scene_global_gamma(int level) = 0;
+
+        /**
          * Called when scene size is parsed.
          *
          * @param size scene size

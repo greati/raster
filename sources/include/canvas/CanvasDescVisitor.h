@@ -38,6 +38,8 @@ class CanvasDescVisitor : public DescVisitor {
         Canvas<Point2D<int>> & _canvas;     /**< Reference to the canvas */
 
         bool global_aa;                     /**< Indicates global antialiasing */
+
+        std::optional<int> gamma_level {std::nullopt};
        
     public:
 
@@ -64,6 +66,8 @@ class CanvasDescVisitor : public DescVisitor {
         void visit_scene_background(const std::string & filepath) const override;
 
         void visit_scene_global_aa(bool aa) override;
+
+        void visit_scene_global_gamma(int level) override;
 
         void visit_scene_size(const Size<2> &) override;
 
